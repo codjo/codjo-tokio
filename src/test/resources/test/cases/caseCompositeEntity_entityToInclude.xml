@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<entities>
+    <entity id="child">
+        <parameters>
+            <parameter name="age"/>
+        </parameters>
+        <body>
+            <table name="AP_DUMMY">
+                <row id="childDummy">
+                    <field name="age" value="@age@"/>
+                    <field name="comment" value="with id"/>
+                </row>
+                <copy row="childDummy">
+                    <field name="age" value="@age@"/>
+                    <field name="comment" value="copy"/>
+                </copy>
+                <row>
+                    <field name="age" value="@age@"/>
+                    <field name="comment" value="no id"/>
+                </row>
+            </table>
+        </body>
+    </entity>
+</entities>

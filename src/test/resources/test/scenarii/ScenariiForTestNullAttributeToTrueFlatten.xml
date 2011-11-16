@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<?xml-stylesheet type="text/xsl" href="../Scenarii.xsl"?>
+<Scenarii name="Controles des VL">
+    <Scenario id="ControleNoCoherenceForAttributes">
+        <input>
+            <AP_VL_QUARANTINE identityInsert="on">
+                <row>
+                    <NULLFIELDFORCED value="0" null="true"/>
+                </row>
+            </AP_VL_QUARANTINE>
+        </input>
+        <etalon/>
+    </Scenario>
+</Scenarii>

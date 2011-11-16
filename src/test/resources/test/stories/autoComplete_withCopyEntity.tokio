@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<!DOCTYPE story PUBLIC "-//AGF, Inc.//DTD story 2.0//EN" "http://story.dtd">
+<story id="nominal">
+    <include-entities file="../entities/autoComplete.xml"/>
+    <input>
+        <table name="MY_TABLE">
+            <row>
+                <field name="FIELD1"/>
+            </row>
+        </table>
+        <create-entity name="nominal" id="MyEntity"/>
+
+        <copy-entity entity="MyEntity" id="MyCopyEntity"/>
+    </input>
+</story>

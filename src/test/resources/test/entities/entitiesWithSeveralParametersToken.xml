@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<!DOCTYPE entities PUBLIC "-//AGF, Inc.//DTD entities 2.0//EN" "http://entities.dtd">
+<entities>
+    <entity id="MyEntity">
+        <comment>MyEntity</comment>
+
+        <parameters>
+            <parameter name="param1"/>
+            <parameter name="param2"/>
+            <parameter name="param3"/>
+            <parameter name="param4" default="@param5@ test"/>
+            <parameter name="param5" default="@param6@ @param1@"/>
+            <parameter name="param6" default="en titi"/>
+        </parameters>
+
+        <body>
+            <table name="TABLE">
+                <row>
+                    <field name="FIELD1" value="field1"/>
+                    <field name="FIELD2_ONLY_PARAM" value="@param1@"/>
+                    <field name="FIELD3_BEFORE_PARAM" value="Before@param1@"/>
+                    <field name="FIELD4_AFTER_PARAM" value="@param1@After"/>
+                    <field name="FIELD5_MIDDLE_PARAM" value="Before@param1@After"/>
+                    <field name="FIELD6_BEFORE_NULL_PARAM" value="Before@param2@"/>
+                    <field name="FIELD7_MIDDLE_NULL_PARAM" value="Before@param2@After"/>
+                    <field name="FIELD8_AFTER_NULL_PARAM" value="@param2@After"/>
+                    <field name="FIELD9_EMPTY_PARAM" value="Before@param3@After"/>
+                    <field name="FIELD10" value="@param4@"/>
+                    <field name="FIELD11" value="@param5@"/>
+                    <field name="FIELD12" value="@param6@"/>
+                </row>
+            </table>
+        </body>
+
+    </entity>
+</entities>

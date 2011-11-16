@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<story id="UseCaseEntities">
+
+    <include-entities file="../entities/entitiesFlatten.xml"/>
+
+    <input>
+        <MY_TABLE>
+            <row>
+                <FIELD1 value="valueField1"/>
+                <FIELD2 value="valueField2"/>
+            </row>
+        </MY_TABLE>
+
+        <create-entity name="MyEntity" id="entity1">
+            <parameter name="param1" value="valueParam1Entity1"/>
+            <parameter name="param2" value="valueParam2Entity1"/>
+        </create-entity>
+
+        <copy-entity entity="unknownEntity" id="entity1Copy"/>
+
+    </input>
+
+</story>

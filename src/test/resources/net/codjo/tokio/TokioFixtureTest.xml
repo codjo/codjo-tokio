@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<!DOCTYPE Scenarii SYSTEM "http://scenarii.dtd">
+<Scenarii name="AUTOMATIC">
+    <Scenario id="myStory">
+        <input>
+            <table name="TABLE_TEST" temporary="true">
+                <row>
+                    <field name="COL_A" value="ANCIEN"/>
+                </row>
+            </table>
+        </input>
+        <etalon>
+            <table name="TABLE_TEST">
+                <row>
+                    <field name="COL_A" value="NEW"/>
+                </row>
+            </table>
+        </etalon>
+    </Scenario>
+    <Scenario id="doNotDeleteBeforeInsert">
+        <input>
+            <table name="TABLE_TEST_BIS" temporary="true">
+                <row>
+                    <field name="COL_BIS" value="VAL_BIS"/>
+                </row>
+            </table>
+        </input>
+        <etalon>
+        </etalon>
+    </Scenario>
+</Scenarii>

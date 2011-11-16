@@ -1,0 +1,62 @@
+net.codjo.tokio
+	-> net.codjo.database.common.api
+	-> net.codjo.database.common.api.structure
+	-> net.codjo.database.common.impl.sqlfield
+	-> net.codjo.database.common.repository.builder
+	-> net.codjo.test.common
+	-> net.codjo.test.common.fixture
+	-> net.codjo.tokio.datagenerators
+	-> net.codjo.tokio.foreignkeys
+	-> net.codjo.tokio.model
+	-> net.codjo.tokio.tableorder
+	-> net.codjo.tokio.util
+	-> net.codjo.variable.basic
+	-> junit.framework
+	-> org.junit
+	-> org.w3c.dom
+	-> org.xml.sax
+
+net.codjo.tokio.builder
+	-> net.codjo.test.common
+	-> net.codjo.tokio
+	-> net.codjo.tokio.model
+
+net.codjo.tokio.datagenerators
+
+net.codjo.tokio.foreignkeys
+
+net.codjo.tokio.model
+	-> net.codjo.test.common
+	-> net.codjo.tokio.datagenerators
+	-> net.codjo.tokio.util
+	-> org.w3c.dom
+
+net.codjo.tokio.tableorder
+	-> net.codjo.database.common.api
+	-> net.codjo.tokio.model
+
+net.codjo.tokio.util
+	-> net.codjo.database.common.api
+	-> net.codjo.database.common.impl.sqlfield
+	-> net.codjo.util.file
+	-> com.sun.org.apache.xerces.internal.parsers
+	-> com.sun.org.apache.xerces.internal.xni
+	-> org.w3c.dom
+	-> org.xml.sax
+
+net.codjo.tokio.viewer
+	-> net.codjo.database.common.api
+	-> net.codjo.tokio
+	-> net.codjo.tokio.model
+	-> net.codjo.tokio.viewer.model
+	-> net.codjo.tokio.viewer.table
+	-> com.intellij.uiDesigner.core
+	-> com.jgoodies.looks.plastic
+	-> com.jgoodies.looks.plastic.theme
+	-> com.jidesoft.swing
+	-> org.jdesktop.swingx
+	-> org.jdesktop.swingx.decorator
+
+net.codjo.tokio.viewer.model
+
+net.codjo.tokio.viewer.table

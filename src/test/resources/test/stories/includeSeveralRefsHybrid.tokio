@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<story id="SeveralIncludes">
+
+    <include-story file="referentialStandard.tokio"/>
+    <include-story file="referentialBisFlatten.tokio"/>
+
+    <input>
+        <MY_TABLE>
+            <row>
+                <FIELD1 value="value1SeveralIncludes"/>
+                <FIELD2 value="value2SeveralIncludes"/>
+            </row>
+        </MY_TABLE>
+
+        <MY_TABLE_BIS>
+            <row>
+                <BIS1 value="bis1SeveralIncludes"/>
+                <BIS2 value="bis2SeveralIncludes"/>
+            </row>
+        </MY_TABLE_BIS>
+
+        <MY_TABLE_SPEC>
+            <row>
+                <SPEC_FIELD1 value="valueSpecField1"/>
+                <SPEC_FIELD2 value="valueSpecField2"/>
+            </row>
+        </MY_TABLE_SPEC>
+    </input>
+
+</story>

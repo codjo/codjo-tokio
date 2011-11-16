@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<cases xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="default.xsd">
+    <case id="NominalCase">
+        <input>
+            <MY_TABLE>
+                <row id="row1">
+                    <FIELD1 value="valueField1"/>
+                    <FIELD2 value="valueField2"/>
+                </row>
+            </MY_TABLE>
+        </input>
+        <output>
+            <MY_TABLE>
+                <row id="row2">
+                    <FIELD1 value="valueOutputField1"/>
+                    <FIELD2 value="valueOutputField2"/>
+                </row>
+            </MY_TABLE>
+        </output>
+    </case>
+    <case id="AuxiliaryFirstCase" inheritId="NominalCase">
+        <input>
+            <MY_TABLE>
+                <remove row="row1"/>
+                <row id="row3">
+                    <FIELD1 value="valueField1NewRow"/>
+                    <FIELD2 value="valueField2NewRow"/>
+                </row>
+            </MY_TABLE>
+        </input>
+        <output>
+            <MY_TABLE>
+                <remove row="row2"/>
+                <row id="row4">
+                    <FIELD1 value="valueOutputField1NewRow"/>
+                    <FIELD2 value="valueOutputField2NewRow"/>
+                </row>
+            </MY_TABLE>
+        </output>
+    </case>
+    <case id="AuxiliarySecondCase" inheritId="AuxiliaryFirstCase">
+        <input>
+            <MY_TABLE>
+                <remove row="row3"/>
+            </MY_TABLE>
+        </input>
+        <output>
+            <MY_TABLE>
+                <remove row="row4"/>
+            </MY_TABLE>
+        </output>
+    </case>
+</cases>

@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<cases xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:noNamespaceSchemaLocation="file:C:/dev/platform/cache/xsd/red-cases.xsd">
+    <include-entities file="location_withInheritedCases.entities"/>
+    <case id="nominal">
+        <input>
+            <table name="AP_TABLE">
+                <row id="row1">
+                    <field name="FIELD1" value="nothing"/>
+                </row>
+            </table>
+        </input>
+    </case>
+    <case id="extended1" inheritId="nominal">
+        <input>
+            <table name="AP_TABLE">
+                <replace row="row1">
+                    <field name="FIELD1"/>
+                </replace>
+            </table>
+        </input>
+    </case>
+    <case id="extended2" inheritId="extended1">
+        <input>
+            <table name="AP_TABLE">
+                <copy row="row1"/>
+            </table>
+        </input>
+    </case>
+    <case id="extended3" inheritId="extended2">
+        <input>
+            <create-entity name="row1"/>
+        </input>
+    </case>
+</cases>

@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<!DOCTYPE story PUBLIC "-//AGF, Inc.//DTD story 2.0//EN" "http://story.dtd">
+<story id="CopyOutputFromInput">
+
+    <input>
+        <table name="MY_TABLE">
+            <row id="row1">
+                <field name="FIELD1" value="valueField1Row1"/>
+                <field name="FIELD2" value="valueField2Row1"/>
+            </row>
+            <row id="row2">
+                <field name="FIELD1" value="valueField1Row2"/>
+                <field name="FIELD2" value="valueField2Row2"/>
+            </row>
+        </table>
+    </input>
+
+    <output>
+        <table name="MY_TABLE">
+            <copy row="row1">
+                <field name="FIELD2" value="newValue"/>
+            </copy>
+            <copy row="row2"/>
+        </table>
+    </output>
+</story>

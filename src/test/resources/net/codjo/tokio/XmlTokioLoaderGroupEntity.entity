@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<entity id="entityWithGroup" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:noNamespaceSchemaLocation="file:C:/dev/platform/cache/xsd/red-entities.xsd">
+    <body>
+        <group name="un groupe">
+            <AP_FROM_ENTITY_GROUP>
+                <row>
+                    <BLOOMBERG_ISSUER_ID/>
+                    <CREATION_DATE/>
+                </row>
+            </AP_FROM_ENTITY_GROUP>
+        </group>
+    </body>
+</entity>

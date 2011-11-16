@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<!DOCTYPE cases PUBLIC "-//AGF, Inc.//DTD stories 2.0//EN" "http://cases.dtd">
+<cases>
+    <case id="NominalCase">
+        <input>
+            <table name="MY_TABLE">
+                <row id="row1">
+                    <field name="FIELD1">
+                        <generateNumeric precision="38,3"/>
+                    </field>
+                    <field name="FIELD2">
+                        <generateNumeric precision="38,3"/>
+                    </field>
+                </row>
+            </table>
+        </input>
+        <output>
+            <table name="MY_TABLE">
+                <row id="row2">
+                    <field name="FIELD1" value="valueOutputField1"/>
+                    <field name="FIELD2" value="valueOutputField2"/>
+                </row>
+            </table>
+        </output>
+    </case>
+    <case id="AuxiliaryFirstCase" inheritId="NominalCase">
+        <input>
+            <table name="MY_TABLE">
+                <row>
+                    <field name="FIELD1" value="valueField1NewRow"/>
+                    <field name="FIELD2" value="valueField2NewRow"/>
+                </row>
+                <copy row="row1">
+                    <field name="FIELD2" value="newValueField2"/>
+                </copy>
+            </table>
+        </input>
+        <output>
+            <table name="MY_TABLE">
+                <row>
+                    <field name="FIELD1" value="valueOutputField1NewRow"/>
+                    <field name="FIELD2" value="valueOutputField2NewRow"/>
+                </row>
+                <copy id="copyRow2" row="row2">
+                    <field name="FIELD1" value="newValueOutputField1"/>
+                </copy>
+            </table>
+        </output>
+    </case>
+    <case id="AuxiliarySecondCase" inheritId="AuxiliaryFirstCase">
+        <input>
+            <table name="MY_TABLE">
+                <copy row="row1">
+                    <field name="FIELD2" value="copyValueField2"/>
+                </copy>
+            </table>
+        </input>
+        <output>
+            <table name="MY_TABLE">
+                <copy row="copyRow2">
+                    <field name="FIELD2" value="copyValueOutputField2"/>
+                </copy>
+            </table>
+        </output>
+    </case>
+</cases>

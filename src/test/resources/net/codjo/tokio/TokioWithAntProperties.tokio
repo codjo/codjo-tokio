@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<!DOCTYPE story PUBLIC "-//AGF, Inc.//DTD stories 2.0//EN" "http://story.dtd">
+<story id="MyStory">
+    <input>
+        <table name="TABLE">
+            <row>
+                <field name="FIELD" value="$key1$"/>
+            </row>
+        </table>
+    </input>
+</story>

@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<cases xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:noNamespaceSchemaLocation="file:C:/dev/platform/cache/xsd/red-cases.xsd">
+    <include-entities file="required_withInheritedCase.entities"/>
+
+    <case id="husband">
+        <input>
+            <create-entity name="child"/>
+        </input>
+    </case>
+
+    <case id="wife" inheritId="husband">
+        <input>
+            <table name="AP_COUSIN">
+                <row>
+                    <field name="FIRSTNAME" value="Harry"/>
+                    <field name="LASTNAME" value="POTTER"/>
+                </row>
+            </table>
+        </input>
+    </case>
+</cases>

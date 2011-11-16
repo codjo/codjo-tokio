@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<!DOCTYPE story PUBLIC "-//AGF, Inc.//DTD story 2.0//EN" "http://story.dtd">
+<story id="UseCaseEntities">
+
+    <include-entities file="../entities/copyRowInterEntities.xml"/>
+
+    <input>
+        <table name="MY_TABLE">
+            <row>
+                <field name="FIELD1" value="valueField1"/>
+                <field name="FIELD2" value="valueField2"/>
+            </row>
+        </table>
+
+        <create-entity name="MyEntityType2" id="entity2">
+            <parameter name="param1" value="valueParam1"/>
+        </create-entity>
+
+        <table name="FIRST_TABLE">
+            <replace row="entity2.entityType2Row">
+                <field name="FIRST_FIELD2" value="newField2"/>
+            </replace>
+            <copy row="entity2.entityType2Row">
+                <field name="FIRST_FIELD3" value="newField3"/>
+            </copy>
+        </table>
+    </input>
+
+</story>

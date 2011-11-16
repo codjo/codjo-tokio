@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<!DOCTYPE story PUBLIC "-//AGF, Inc.//DTD story 2.0//EN" "http://story.dtd">
+<story id="SeveralIncludes">
+
+    <include-story file="referentialBisWithInclude.tokio"/>
+
+    <input>
+        <table name="MY_TABLE">
+            <row>
+                <field name="FIELD1" value="value1SeveralIncludes"/>
+                <field name="FIELD2" value="value2SeveralIncludes"/>
+            </row>
+        </table>
+
+        <table name="MY_TABLE_BIS">
+            <row>
+                <field name="BIS1" value="bis1SeveralIncludes"/>
+                <field name="BIS2" value="bis2SeveralIncludes"/>
+            </row>
+        </table>
+
+        <table name="MY_TABLE_SPEC">
+            <row>
+                <field name="SPEC_FIELD1" value="valueSpecField1"/>
+                <field name="SPEC_FIELD2" value="valueSpecField2"/>
+            </row>
+        </table>
+    </input>
+
+</story>

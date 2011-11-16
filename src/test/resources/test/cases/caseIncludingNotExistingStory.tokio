@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<!DOCTYPE cases PUBLIC "-//AGF, Inc.//DTD stories 2.0//EN" "http://cases.dtd">
+<cases>
+    <case id="NominalCase">
+        <include-story file="notExistingStory.tokio"/>
+
+        <input>
+            <table name="MY_TABLE">
+                <copy id="copyRowInput" row="refRowInput">
+                    <field name="FIELD1" value="copyValueField1Row0"/>
+                </copy>
+            </table>
+            <table name="ANOTHER_TABLE">
+                <row>
+                    <field name="ANOTHER_FIELD1" value="valueInputField1"/>
+                    <field name="ANOTHER_FIELD2" value="valueInputField2"/>
+                </row>
+            </table>
+        </input>
+        <output>
+            <table name="MY_TABLE">
+                <copy id="copyRowOutput" row="refRowOutput">
+                    <field name="FIELD1" value="copyValueField1"/>
+                </copy>
+            </table>
+            <table name="ANOTHER_TABLE">
+                <row>
+                    <field name="ANOTHER_FIELD1" value="valueOutputField1"/>
+                    <field name="ANOTHER_FIELD2" value="valueOutputField2"/>
+                </row>
+            </table>
+        </output>
+    </case>
+    <case id="AuxiliaryCase" inheritId="NominalCase">
+        <include-story file="auxiliaryReferential.tokio"/>
+
+        <input>
+            <table name="MY_TABLE">
+                <copy row="copyRowInput">
+                    <field name="FIELD2" value="copyValueField2Row0"/>
+                </copy>
+            </table>
+        </input>
+        <output>
+            <table name="MY_TABLE">
+                <copy row="refRowOutput">
+                     <field name="FIELD2" value="copyValueField2"/>
+                </copy>
+            </table>
+        </output>
+    </case>
+</cases>

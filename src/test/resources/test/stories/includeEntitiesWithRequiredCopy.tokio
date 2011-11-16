@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<story id="UseCaseEntities">
+
+    <include-entities file="../entities/entitiesWithRequired.xml"/>
+
+    <input>
+
+        <create-entity name="MyEntity" id="entity1">
+            <parameter name="param1" value="valueParam1"/>
+            <parameter name="param2" value="valueParam2"/>
+        </create-entity>
+
+        <copy-entity id="entity2" entity="entity1"/>
+
+    </input>
+    <output>
+
+        <copy-entity entity="entity2"/>
+
+    </output>
+
+</story>

@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<!DOCTYPE story PUBLIC "-//AGF, Inc.//DTD story 2.0//EN" "http://story.dtd">
+<story id="UseCaseEntities">
+
+    <include-entities file="../entities/entitiesWithIdentityInsert.xml"/>
+
+    <input>
+        <create-entity name="MyEntity" id="entity1">
+            <parameter name="param" value=""/>
+        </create-entity>
+    </input>
+</story>

@@ -1,0 +1,47 @@
+net.codjo.tokio
+	-> net.codjo.database.common.api
+	-> net.codjo.database.common.api.confidential
+	-> net.codjo.database.common.api.structure
+	-> net.codjo.database.common.impl.sqlfield
+	-> net.codjo.database.common.repository.builder
+	-> net.codjo.test.common
+	-> net.codjo.test.common.fixture
+	-> net.codjo.test.common.matcher
+	-> net.codjo.tokio.datagenerators
+	-> net.codjo.tokio.foreignkeys
+	-> net.codjo.tokio.model
+	-> net.codjo.tokio.tableorder
+	-> net.codjo.tokio.util
+	-> fakedb
+	-> org.mockito
+	-> org.mockito.internal.progress
+	-> org.w3c.dom
+	-> org.xml.sax
+
+net.codjo.tokio.foreignkeys
+	-> net.codjo.database.common.api
+	-> net.codjo.database.common.api.structure
+	-> net.codjo.test.common.fixture
+	-> net.codjo.test.common.matcher
+
+net.codjo.tokio.model
+	-> net.codjo.test.common
+	-> net.codjo.tokio.datagenerators
+	-> net.codjo.tokio.util
+	-> org.w3c.dom
+	-> org.xml.sax
+
+net.codjo.tokio.util
+	-> net.codjo.database.common.api
+	-> net.codjo.database.common.impl.sqlfield
+	-> net.codjo.test.common
+	-> net.codjo.test.common.matcher
+	-> net.codjo.tokio.datagenerators
+	-> net.codjo.tokio.model
+	-> fakedb
+	-> org.w3c.dom
+	-> org.xml.sax
+
+net.codjo.tokio.viewer
+	-> net.codjo.test.common
+	-> org.uispec4j

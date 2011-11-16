@@ -1,0 +1,25 @@
+<Scenarii name="olfFormalism">
+    <Scenario id="nominal">
+        <input>
+            <table name="REF_CURRENCY" base="BASE_DIR/refCurrency.tokio">
+                <row>
+                    <field name="CODE" value="EUR"/>
+                    <field name="LABEL" value="EURO"/>
+                </row>
+            </table>
+            <table name="REF_COUNTRY" base="BASE_DIR/refCountry.tokio">
+                <row>
+                    <field name="CODE" value="FR"/>
+                    <field name="LABEL" value="FRANCE"/>
+                </row>
+            </table>
+            <table name="AP_FAMILY">
+                <row>
+                    <field name="FIRSTNAME" value="John"/>
+                    <field name="LASTNAME" value="SMITH"/>
+                </row>
+            </table>
+        </input>
+        <etalon/>
+    </Scenario>
+</Scenarii>

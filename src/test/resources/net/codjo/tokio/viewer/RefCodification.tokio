@@ -1,0 +1,1682 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<!DOCTYPE story PUBLIC "-//AGF, Inc.//DTD stories 2.0//EN" "http://story.dtd">
+
+<story id="ReferentialCodification">
+    <comment>Référentiel codification</comment>
+    <input>
+        <table name="REF_TE_REFERENCE">
+            <row>
+                <field name="REF_CODE" value="CS"/>
+                <field name="REF_LABEL" value="Chiffre saisi"/>
+                <field name="CLOSE_DATE" value="9999-12-31 00:00:00.0"/>
+            </row>
+            <row>
+                <field name="REF_CODE" value="CIBLE"/>
+                <field name="REF_LABEL" value="Cible"/>
+                <field name="CLOSE_DATE" value="9999-12-31 00:00:00.0"/>
+            </row>
+            <row>
+                <field name="REF_CODE" value="DD"/>
+                <field name="REF_LABEL" value="Dernière disponible"/>
+                <field name="CLOSE_DATE" value="9999-12-31 00:00:00.0"/>
+            </row>
+            <row>
+                <field name="REF_CODE" value="MAX"/>
+                <field name="REF_LABEL" value="Max"/>
+                <field name="CLOSE_DATE" value="9999-12-31 00:00:00.0"/>
+            </row>
+        </table>
+
+        <table name="REF_LANGUAGE">
+            <row id="LANGUAGE_FRA">
+                <field name="REF_CODE" value="FRA"/>
+                <field name="REF_LABEL" value="Français"/>
+                <field name="CLOSE_DATE" value="9999-12-31 00:00:00.0"/>
+            </row>
+            <row id="LANGUAGE_ENG">
+                <field name="REF_CODE" value="ENG"/>
+                <field name="REF_LABEL" value="Anglais"/>
+                <field name="CLOSE_DATE" value="9999-12-31 00:00:00.0"/>
+            </row>
+            <row id="LANGUAGE_DEU">
+                <field name="REF_CODE" value="DEU"/>
+                <field name="REF_LABEL" value="Allemand"/>
+                <field name="CLOSE_DATE" value="9999-12-31 00:00:00.0"/>
+            </row>
+        </table>
+
+        <table name="REF_PRODUCT_SELECTION">
+            <row>
+                <field name="REF_CODE" value="1"/>
+                <field name="REF_LABEL" value="SELECTION ROSES"/>
+                <field name="FAMILY" value="CARACTERISTIQUES"/>
+                <field name="RIGHT_CODE" value="TOUS_DROITS"/>
+                <field name="CLOSE_DATE" value="9999-12-31 00:00:00.0"/>
+            </row>
+            <row>
+                <field name="REF_CODE" value="3"/>
+                <field name="REF_LABEL" value="SELECTION ALLIANZ"/>
+                <field name="FAMILY" value="OPCVM"/>
+                <field name="RIGHT_CODE" value="TOUS_DROITS"/>
+                <field name="CLOSE_DATE" value="9999-12-31 00:00:00.0"/>
+            </row>
+            <row>
+                <field name="REF_CODE" value="4"/>
+                <field name="REF_LABEL" value="SELECTION BNP"/>
+                <field name="FAMILY" value="ASSURANCES"/>
+                <field name="RIGHT_CODE" value="TOUS_DROITS"/>
+                <field name="CLOSE_DATE" value="9999-12-31 00:00:00.0"/>
+            </row>
+            <row>
+                <field name="REF_CODE" value="10"/>
+                <field name="REF_LABEL" value="SELECTION MAIL"/>
+                <field name="FAMILY" value="VL"/>
+                <field name="RIGHT_CODE" value="TOUS_DROITS"/>
+                <field name="CLOSE_DATE" value="2005-12-31 00:00:00.0"/>
+            </row>
+            <row>
+                <field name="REF_CODE" value="20"/>
+                <field name="REF_LABEL" value="SELECTION INTERNET"/>
+                <field name="FAMILY" value="VL"/>
+                <field name="RIGHT_CODE" value="TOUS_DROITS"/>
+                <field name="CLOSE_DATE" value="9999-12-31 00:00:00.0"/>
+            </row>
+            <row>
+                <field name="REF_CODE" value="30"/>
+                <field name="REF_LABEL" value="TRAITEMENT SELECTION FININFO"/>
+                <field name="FAMILY" value="VL"/>
+                <field name="RIGHT_CODE" value="DROIT_SPECIFIQUE"/>
+                <field name="CLOSE_DATE" value="9999-12-31 00:00:00.0"/>
+            </row>
+        </table>
+        <table name="REF_JURIDICAL_STRUCTURE">
+            <row>
+                <field name="REF_CODE" value="FCIMT"/>
+                <field name="LANGUAGE_CODE" value="FRA"/>
+                <field name="REF_LABEL" value="FCIMT"/>
+                <field name="CLOSE_DATE" value="9999-12-31 00:00:00.0"/>
+            </row>
+            <row>
+                <field name="REF_CODE" value="FCIMT"/>
+                <field name="LANGUAGE_CODE" value="ENG"/>
+                <field name="REF_LABEL" value="FCIMT Anglais"/>
+                <field name="CLOSE_DATE" value="9999-12-31 00:00:00.0"/>
+            </row>
+            <row>
+                <field name="REF_CODE" value="FCP"/>
+                <field name="LANGUAGE_CODE" value="FRA"/>
+                <field name="REF_LABEL" value="FCP"/>
+                <field name="CLOSE_DATE" value="9999-12-31 00:00:00.0"/>
+            </row>
+            <row>
+                <field name="REF_CODE" value="FCP"/>
+                <field name="LANGUAGE_CODE" value="ENG"/>
+                <field name="REF_LABEL" value="FCP Anglais"/>
+                <field name="CLOSE_DATE" value="9999-12-31 00:00:00.0"/>
+            </row>
+            <row>
+                <field name="REF_CODE" value="FCPPA"/>
+                <field name="LANGUAGE_CODE" value="FRA"/>
+                <field name="REF_LABEL" value="FCP à procédure allégée"/>
+                <field name="CLOSE_DATE" value="9999-12-31 00:00:00.0"/>
+            </row>
+            <row>
+                <field name="REF_CODE" value="FCPPA"/>
+                <field name="LANGUAGE_CODE" value="ENG"/>
+                <field name="REF_LABEL" value="FCP with light procedure"/>
+                <field name="CLOSE_DATE" value="9999-12-31 00:00:00.0"/>
+            </row>
+            <row>
+                <field name="REF_CODE" value="FCPE"/>
+                <field name="LANGUAGE_CODE" value="FRA"/>
+                <field name="REF_LABEL" value="FCPE"/>
+                <field name="CLOSE_DATE" value="9999-12-31 00:00:00.0"/>
+            </row>
+            <row>
+                <field name="REF_CODE" value="FCPE"/>
+                <field name="LANGUAGE_CODE" value="ENG"/>
+                <field name="REF_LABEL" value="FCPE Anglais"/>
+                <field name="CLOSE_DATE" value="9999-12-31 00:00:00.0"/>
+            </row>
+            <row>
+                <field name="REF_CODE" value="FCPI"/>
+                <field name="LANGUAGE_CODE" value="FRA"/>
+                <field name="REF_LABEL" value="FCPI"/>
+                <field name="CLOSE_DATE" value="9999-12-31 00:00:00.0"/>
+            </row>
+            <row>
+                <field name="REF_CODE" value="FCPI"/>
+                <field name="LANGUAGE_CODE" value="ENG"/>
+                <field name="REF_LABEL" value="FCPI Anglais"/>
+                <field name="CLOSE_DATE" value="9999-12-31 00:00:00.0"/>
+            </row>
+            <row>
+                <field name="REF_CODE" value="FCPR"/>
+                <field name="LANGUAGE_CODE" value="FRA"/>
+                <field name="REF_LABEL" value="FCPR"/>
+                <field name="CLOSE_DATE" value="9999-12-31 00:00:00.0"/>
+            </row>
+            <row>
+                <field name="REF_CODE" value="FCPR"/>
+                <field name="LANGUAGE_CODE" value="ENG"/>
+                <field name="REF_LABEL" value="FCPR Anglais"/>
+                <field name="CLOSE_DATE" value="9999-12-31 00:00:00.0"/>
+            </row>
+            <row>
+                <field name="REF_CODE" value="MANDAT"/>
+                <field name="LANGUAGE_CODE" value="FRA"/>
+                <field name="REF_LABEL" value="Mandat de gestion"/>
+                <field name="CLOSE_DATE" value="9999-12-31 00:00:00.0"/>
+            </row>
+            <row>
+                <field name="REF_CODE" value="MANDAT"/>
+                <field name="LANGUAGE_CODE" value="ENG"/>
+                <field name="REF_LABEL" value="Management Mandate"/>
+                <field name="CLOSE_DATE" value="9999-12-31 00:00:00.0"/>
+            </row>
+            <row>
+                <field name="REF_CODE" value="SICAV"/>
+                <field name="LANGUAGE_CODE" value="FRA"/>
+                <field name="REF_LABEL" value="SICAV"/>
+                <field name="CLOSE_DATE" value="9999-12-31 00:00:00.0"/>
+            </row>
+            <row>
+                <field name="REF_CODE" value="SICAV"/>
+                <field name="LANGUAGE_CODE" value="ENG"/>
+                <field name="REF_LABEL" value="SICAV Anglais"/>
+                <field name="CLOSE_DATE" value="9999-12-31 00:00:00.0"/>
+            </row>
+        </table>
+        <table name="REF_PRODUCTION_CENTER">
+            <row>
+                <field name="REF_CODE" value="AGI"/>
+                <field name="REF_LABEL" value="AGI"/>
+                <field name="CLOSE_DATE" value="9999-12-31 00:00:00.0"/>
+            </row>
+            <row>
+                <field name="REF_CODE" value="PIMCO"/>
+                <field name="REF_LABEL" value="PIMCO"/>
+                <field name="CLOSE_DATE" value="9999-12-31 00:00:00.0"/>
+            </row>
+            <row>
+                <field name="REF_CODE" value="AAAM"/>
+                <field name="REF_LABEL" value="AAAM"/>
+                <field name="CLOSE_DATE" value="9999-12-31 00:00:00.0"/>
+            </row>
+            <row>
+                <field name="REF_CODE" value="FEXT"/>
+                <field name="REF_LABEL" value="Fonds externe"/>
+                <field name="CLOSE_DATE" value="9999-12-31 00:00:00.0"/>
+            </row>
+            <row>
+                <field name="REF_CODE" value="AIM"/>
+                <field name="REF_LABEL" value="AIM"/>
+                <field name="CLOSE_DATE" value="9999-12-31 00:00:00.0"/>
+            </row>
+            <row>
+                <field name="REF_CODE" value="DIT"/>
+                <field name="REF_LABEL" value="DIT"/>
+                <field name="CLOSE_DATE" value="9999-12-31 00:00:00.0"/>
+            </row>
+        </table>
+        <table name="REF_EUROPEAN_COMPLIANCE">
+            <row>
+                <field name="REF_CODE" value="CNE"/>
+                <field name="REF_LABEL" value="Conforme aux normes européennes"/>
+                <field name="CLOSE_DATE" value="9999-12-31 00:00:00.0"/>
+            </row>
+            <row>
+                <field name="REF_CODE" value="NCNE"/>
+                <field name="REF_LABEL" value="Non-conforme aux normes européennes"/>
+                <field name="CLOSE_DATE" value="9999-12-31 00:00:00.0"/>
+            </row>
+            <row>
+                <field name="REF_CODE" value="611CE"/>
+                <field name="REF_LABEL"
+                       value="Respecte les règles d'investissement de la directive 85/611/CE modifiée"/>
+                <field name="CLOSE_DATE" value="9999-12-31 00:00:00.0"/>
+            </row>
+        </table>
+        <table name="REF_ACCOUNT_CLOSE_DATE">
+            <row>
+                <field name="REF_CODE" value="LVL06"/>
+                <field name="REF_LABEL" value="Dernière valeur liquidative du mois de Juin"/>
+                <field name="CLOSE_DATE" value="9999-12-31 00:00:00.0"/>
+            </row>
+            <row>
+                <field name="REF_CODE" value="LVL12"/>
+                <field name="REF_LABEL" value="Dernière valeur liquidative du mois de Décembre"/>
+                <field name="CLOSE_DATE" value="9999-12-31 00:00:00.0"/>
+            </row>
+        </table>
+        <table name="REF_PROROGATION_OPCVM">
+            <row>
+                <field name="REF_CODE" value="NEANT"/>
+                <field name="REF_LABEL" value="Néant"/>
+                <field name="CLOSE_DATE" value="9999-12-31 00:00:00.0"/>
+            </row>
+            <row>
+                <field name="REF_CODE" value="STD"/>
+                <field name="REF_LABEL" value="Standard"/>
+                <field name="CLOSE_DATE" value="9999-12-31 00:00:00.0"/>
+            </row>
+        </table>
+        <table name="REF_DURATION_EXIST_OPCVM">
+            <row>
+                <field name="REF_CODE" value="99"/>
+                <field name="REF_LABEL" value="99 ans"/>
+                <field name="CLOSE_DATE" value="9999-12-31 00:00:00.0"/>
+            </row>
+        </table>
+        <table name="REF_PRODUCT_TYPE">
+            <row>
+                <field name="REF_CODE" value="ASSU"/>
+                <field name="REF_LABEL" value="Assurance"/>
+                <field name="IS_VALUATED" value="false"/>
+                <field name="CLOSE_DATE" value="9999-12-31 00:00:00.0"/>
+                <field name="CREATION_BY" value="OZONE"/>
+                <field name="CREATION_DATETIME" value="2006-09-01 00:00:00.0"/>
+                <field name="UPDATE_BY"/>
+                <field name="UPDATE_DATETIME"/>
+            </row>
+            <row>
+                <field name="REF_CODE" value="SICAV"/>
+                <field name="REF_LABEL" value="de type SICAV"/>
+                <field name="IS_VALUATED" value="true"/>
+                <field name="CLOSE_DATE" value="2000-01-01 00:00:00.0"/>
+                <field name="CREATION_BY" value="OZONE"/>
+                <field name="CREATION_DATETIME" value="2006-09-01 00:00:00.0"/>
+                <field name="UPDATE_BY"/>
+                <field name="UPDATE_DATETIME"/>
+            </row>
+            <row>
+                <field name="REF_CODE" value="OPCVM"/>
+                <field name="REF_LABEL" value="de type OPCVM"/>
+                <field name="IS_VALUATED" value="true"/>
+                <field name="CLOSE_DATE" value="9999-12-31 00:00:00.0"/>
+                <field name="CREATION_BY" value="OZONE"/>
+                <field name="CREATION_DATETIME" value="2006-09-01 00:00:00.0"/>
+                <field name="UPDATE_BY"/>
+                <field name="UPDATE_DATETIME"/>
+            </row>
+            <row>
+                <field name="REF_CODE" value="MANDAT"/>
+                <field name="REF_LABEL" value="de type MANDA"/>
+                <field name="IS_VALUATED" value="true"/>
+                <field name="CLOSE_DATE" value="2002-12-31 00:00:00.0"/>
+                <field name="CREATION_BY" value="OZONE"/>
+                <field name="CREATION_DATETIME" value="2006-09-01 00:00:00.0"/>
+                <field name="UPDATE_BY"/>
+                <field name="UPDATE_DATETIME"/>
+            </row>
+            <row>
+                <field name="REF_CODE" value="FONDEX"/>
+                <field name="REF_LABEL" value="Fonds Externes"/>
+                <field name="IS_VALUATED" value="true"/>
+                <field name="CLOSE_DATE" value="9999-12-31 00:00:00.0"/>
+                <field name="CREATION_BY" value="OZONE"/>
+                <field name="CREATION_DATETIME" value="2006-09-01 00:00:00.0"/>
+                <field name="UPDATE_BY"/>
+                <field name="UPDATE_DATETIME"/>
+            </row>
+        </table>
+        <table name="REF_COUNTRY">
+            <row>
+                <field name="REF_CODE" value="ALL"/>
+                <field name="REF_LABEL" value="Allemagne"/>
+                <field name="CLOSE_DATE" value="2000-02-02 00:00:00.0"/>
+                <field name="CREATION_BY" value="OZONE"/>
+                <field name="CREATION_DATETIME" value="2006-09-01 00:00:00.0"/>
+                <field name="UPDATE_BY"/>
+                <field name="UPDATE_DATETIME"/>
+            </row>
+            <row>
+                <field name="REF_CODE" value="BEL"/>
+                <field name="REF_LABEL" value="Belgique"/>
+                <field name="CLOSE_DATE" value="2006-12-31 00:00:00.0"/>
+                <field name="CREATION_BY" value="OZONE"/>
+                <field name="CREATION_DATETIME" value="2006-09-01 00:00:00.0"/>
+                <field name="UPDATE_BY"/>
+                <field name="UPDATE_DATETIME"/>
+            </row>
+            <row>
+                <field name="REF_CODE" value="FRA"/>
+                <field name="REF_LABEL" value="France"/>
+                <field name="CLOSE_DATE" value="9999-12-31 00:00:00.0"/>
+                <field name="CREATION_BY" value="OZONE"/>
+                <field name="CREATION_DATETIME" value="2006-09-01 00:00:00.0"/>
+                <field name="UPDATE_BY"/>
+                <field name="UPDATE_DATETIME"/>
+            </row>
+            <row>
+                <field name="REF_CODE" value="USA"/>
+                <field name="REF_LABEL" value="UNION des S. d'Amerique"/>
+                <field name="CLOSE_DATE" value="9999-12-31 00:00:00.0"/>
+                <field name="CREATION_BY" value="OZONE"/>
+                <field name="CREATION_DATETIME" value="2006-09-01 00:00:00.0"/>
+                <field name="UPDATE_BY"/>
+                <field name="UPDATE_DATETIME"/>
+            </row>
+        </table>
+
+        <table name="REF_CLASSIF_AMF">
+            <row>
+                <field name="REF_CODE" value="AZE"/>
+                <field name="LANGUAGE_CODE" value="FRA"/>
+                <field name="REF_LABEL" value="Actions de pays de la zone euro"/>
+                <field name="CLOSE_DATE" value="9999-12-31 00:00:00.0"/>
+                <field name="CREATION_BY" value="OZONE"/>
+                <field name="CREATION_DATETIME" value="2006-09-01 00:00:00.0"/>
+                <field name="UPDATE_BY"/>
+                <field name="UPDATE_DATETIME"/>
+            </row>
+            <row>
+                <field name="REF_CODE" value="APCE"/>
+                <field name="LANGUAGE_CODE" value="FRA"/>
+                <field name="REF_LABEL" value="Actions des pays de la communauté européenne"/>
+                <field name="CLOSE_DATE" value="2000-02-02 00:00:00.0"/>
+                <field name="CREATION_BY" value="OZONE"/>
+                <field name="CREATION_DATETIME" value="2006-09-01 00:00:00.0"/>
+                <field name="UPDATE_BY"/>
+                <field name="UPDATE_DATETIME"/>
+            </row>
+            <row>
+                <field name="REF_CODE" value="AZE"/>
+                <field name="LANGUAGE_CODE" value="ENG"/>
+                <field name="REF_LABEL" value="Actions de pays de la zone euro (anglais)"/>
+                <field name="CLOSE_DATE" value="9999-12-31 00:00:00.0"/>
+                <field name="CREATION_BY" value="OZONE"/>
+                <field name="CREATION_DATETIME" value="2006-09-01 00:00:00.0"/>
+                <field name="UPDATE_BY"/>
+                <field name="UPDATE_DATETIME"/>
+            </row>
+            <row>
+                <field name="REF_CODE" value="APCE"/>
+                <field name="LANGUAGE_CODE" value="ENG"/>
+                <field name="REF_LABEL" value="Actions des pays de la communauté européenne (anglais)"/>
+                <field name="CLOSE_DATE" value="2000-02-02 00:00:00.0"/>
+                <field name="CREATION_BY" value="OZONE"/>
+                <field name="CREATION_DATETIME" value="2006-09-01 00:00:00.0"/>
+                <field name="UPDATE_BY"/>
+                <field name="UPDATE_DATETIME"/>
+            </row>
+            <row>
+                <field name="REF_CODE" value="AFR"/>
+                <field name="LANGUAGE_CODE" value="FRA"/>
+                <field name="REF_LABEL" value="Actions Françaises"/>
+                <field name="CLOSE_DATE" value="2006-12-31 00:00:00.0"/>
+                <field name="CREATION_BY" value="OZONE"/>
+                <field name="CREATION_DATETIME" value="2006-09-01 00:00:00.0"/>
+                <field name="UPDATE_BY"/>
+                <field name="UPDATE_DATETIME"/>
+            </row>
+            <row>
+                <field name="REF_CODE" value="AI"/>
+                <field name="LANGUAGE_CODE" value="FRA"/>
+                <field name="REF_LABEL" value="Actions Internationales"/>
+                <field name="CLOSE_DATE" value="2006-12-31 00:00:00.0"/>
+                <field name="CREATION_BY" value="OZONE"/>
+                <field name="CREATION_DATETIME" value="2006-09-01 00:00:00.0"/>
+                <field name="UPDATE_BY"/>
+                <field name="UPDATE_DATETIME"/>
+            </row>
+            <row>
+                <field name="REF_CODE" value="OX"/>
+                <field name="LANGUAGE_CODE" value="FRA"/>
+                <field name="REF_LABEL" value="OPCVM à formule"/>
+                <field name="CLOSE_DATE" value="9999-12-31 00:00:00.0"/>
+                <field name="CREATION_BY" value="OZONE"/>
+                <field name="CREATION_DATETIME" value="2006-09-01 00:00:00.0"/>
+                <field name="UPDATE_BY"/>
+                <field name="UPDATE_DATETIME"/>
+            </row>
+            <row>
+                <field name="REF_CODE" value="OALT"/>
+                <field name="LANGUAGE_CODE" value="FRA"/>
+                <field name="REF_LABEL" value="OPCVM de fonds alternatifs"/>
+                <field name="CLOSE_DATE" value="9999-12-31 00:00:00.0"/>
+                <field name="CREATION_BY" value="OZONE"/>
+                <field name="CREATION_DATETIME" value="2006-09-01 00:00:00.0"/>
+                <field name="UPDATE_BY"/>
+                <field name="UPDATE_DATETIME"/>
+            </row>
+            <row>
+                <field name="REF_CODE" value="MEU"/>
+                <field name="LANGUAGE_CODE" value="FRA"/>
+                <field name="REF_LABEL" value="Monétaire euro"/>
+                <field name="CLOSE_DATE" value="9999-12-31 00:00:00.0"/>
+                <field name="CREATION_BY" value="OZONE"/>
+                <field name="CREATION_DATETIME" value="2006-09-01 00:00:00.0"/>
+                <field name="UPDATE_BY"/>
+                <field name="UPDATE_DATETIME"/>
+            </row>
+            <row>
+                <field name="REF_CODE" value="OCI"/>
+                <field name="LANGUAGE_CODE" value="FRA"/>
+                <field name="REF_LABEL" value="Obligations et autres titres de créance internationaux"/>
+                <field name="CLOSE_DATE" value="9999-12-31 00:00:00.0"/>
+                <field name="CREATION_BY" value="OZONE"/>
+                <field name="CREATION_DATETIME" value="2006-09-01 00:00:00.0"/>
+                <field name="UPDATE_BY"/>
+                <field name="UPDATE_DATETIME"/>
+            </row>
+            <row>
+                <field name="REF_CODE" value="OCIEU"/>
+                <field name="LANGUAGE_CODE" value="FRA"/>
+                <field name="REF_LABEL" value="Obligations et autres titres de créance libellés en euro"/>
+                <field name="CLOSE_DATE" value="9999-12-31 00:00:00.0"/>
+                <field name="CREATION_BY" value="OZONE"/>
+                <field name="CREATION_DATETIME" value="2006-09-01 00:00:00.0"/>
+                <field name="UPDATE_BY"/>
+                <field name="UPDATE_DATETIME"/>
+            </row>
+            <row>
+                <field name="REF_CODE" value="ODIV"/>
+                <field name="LANGUAGE_CODE" value="FRA"/>
+                <field name="REF_LABEL" value="OPCVM Diversifié"/>
+                <field name="CLOSE_DATE" value="9999-12-31 00:00:00.0"/>
+                <field name="CREATION_BY" value="OZONE"/>
+                <field name="CREATION_DATETIME" value="2006-09-01 00:00:00.0"/>
+                <field name="UPDATE_BY"/>
+                <field name="UPDATE_DATETIME"/>
+            </row>
+        </table>
+        <table name="REF_OPCVM_OF_OPCVM">
+            <row>
+                <field name="REF_CODE" value="10"/>
+                <field name="REF_LABEL" value="Inférieur à 10 % de l'actif net"/>
+                <field name="CLOSE_DATE" value="9999-12-31 00:00:00.0"/>
+                <field name="CREATION_BY" value="OZONE"/>
+                <field name="CREATION_DATETIME" value="2006-09-01 00:00:00.0"/>
+                <field name="UPDATE_BY"/>
+                <field name="UPDATE_DATETIME"/>
+            </row>
+            <row>
+                <field name="REF_CODE" value="20"/>
+                <field name="REF_LABEL" value="Inférieur à 20 % de l'actif net"/>
+                <field name="CLOSE_DATE" value="9999-12-31 00:00:00.0"/>
+                <field name="CREATION_BY" value="OZONE"/>
+                <field name="CREATION_DATETIME" value="2006-09-01 00:00:00.0"/>
+                <field name="UPDATE_BY"/>
+                <field name="UPDATE_DATETIME"/>
+            </row>
+            <row>
+                <field name="REF_CODE" value="50"/>
+                <field name="REF_LABEL" value="Inférieur à 50 % de l'actif net"/>
+                <field name="CLOSE_DATE" value="9999-12-31 00:00:00.0"/>
+                <field name="CREATION_BY" value="OZONE"/>
+                <field name="CREATION_DATETIME" value="2006-09-01 00:00:00.0"/>
+                <field name="UPDATE_BY"/>
+                <field name="UPDATE_DATETIME"/>
+            </row>
+
+            <row>
+                <field name="REF_CODE" value="100"/>
+                <field name="REF_LABEL" value="Jusqu'à 100 % de l'actif net"/>
+                <field name="CLOSE_DATE" value="9999-12-31 00:00:00.0"/>
+                <field name="CREATION_BY" value="OZONE"/>
+                <field name="CREATION_DATETIME" value="2006-09-01 00:00:00.0"/>
+                <field name="UPDATE_BY"/>
+                <field name="UPDATE_DATETIME"/>
+            </row>
+        </table>
+        <table name="REF_GUARANTEE">
+            <row>
+                <field name="REF_CODE" value="BAGF"/>
+                <field name="REF_LABEL" value="Banque AGF"/>
+                <field name="CLOSE_DATE" value="9999-12-31 00:00:00.0"/>
+                <field name="CREATION_BY" value="OZONE"/>
+                <field name="CREATION_DATETIME" value="2006-09-01 00:00:00.0"/>
+                <field name="UPDATE_BY"/>
+                <field name="UPDATE_DATETIME"/>
+            </row>
+            <row>
+                <field name="REF_CODE" value="BOF"/>
+                <field name="REF_LABEL" value="Banque Off ligne"/>
+                <field name="CLOSE_DATE" value="9999-12-31 00:00:00.0"/>
+                <field name="CREATION_BY" value="OZONE"/>
+                <field name="CREATION_DATETIME" value="2006-09-01 00:00:00.0"/>
+                <field name="UPDATE_BY"/>
+                <field name="UPDATE_DATETIME"/>
+            </row>
+        </table>
+        <table name="REF_INVESTMENT_DURATION">
+            <row>
+                <field name="REF_CODE" value="99"/>
+                <field name="LANGUAGE_CODE" value="FRA"/>
+                <field name="REF_LABEL" value="99 ans"/>
+                <field name="CLOSE_DATE" value="9999-12-31 00:00:00.0"/>
+                <field name="CREATION_BY" value="OZONE"/>
+                <field name="CREATION_DATETIME" value="2006-09-01 00:00:00.0"/>
+                <field name="UPDATE_BY"/>
+                <field name="UPDATE_DATETIME"/>
+            </row>
+            <row>
+                <field name="REF_CODE" value="99"/>
+                <field name="LANGUAGE_CODE" value="ENG"/>
+                <field name="REF_LABEL" value="99 years"/>
+                <field name="CLOSE_DATE" value="9999-12-31 00:00:00.0"/>
+                <field name="CREATION_BY" value="OZONE"/>
+                <field name="CREATION_DATETIME" value="2006-09-01 00:00:00.0"/>
+                <field name="UPDATE_BY"/>
+                <field name="UPDATE_DATETIME"/>
+            </row>
+            <row>
+                <field name="REF_CODE" value="15"/>
+                <field name="LANGUAGE_CODE" value="FRA"/>
+                <field name="REF_LABEL" value="15 ans"/>
+                <field name="CLOSE_DATE" value="9999-12-31 00:00:00.0"/>
+                <field name="CREATION_BY" value="OZONE"/>
+                <field name="CREATION_DATETIME" value="2006-09-01 00:00:00.0"/>
+                <field name="UPDATE_BY"/>
+                <field name="UPDATE_DATETIME"/>
+            </row>
+            <row>
+                <field name="REF_CODE" value="15"/>
+                <field name="LANGUAGE_CODE" value="ENG"/>
+                <field name="REF_LABEL" value="15 years"/>
+                <field name="CLOSE_DATE" value="9999-12-31 00:00:00.0"/>
+                <field name="CREATION_BY" value="OZONE"/>
+                <field name="CREATION_DATETIME" value="2006-09-01 00:00:00.0"/>
+                <field name="UPDATE_BY"/>
+                <field name="UPDATE_DATETIME"/>
+            </row>
+        </table>
+        <table name="REF_CLASSIF_MIF">
+            <row>
+                <field name="REF_CODE" value="Mon"/>
+                <field name="REF_LABEL" value="Monétaire"/>
+                <field name="CLOSE_DATE" value="9999-12-31 00:00:00.0"/>
+                <field name="CREATION_BY" value="OZONE"/>
+                <field name="CREATION_DATETIME" value="2006-09-01 00:00:00.0"/>
+                <field name="UPDATE_BY"/>
+                <field name="UPDATE_DATETIME"/>
+            </row>
+            <row>
+                <field name="REF_CODE" value="MonD"/>
+                <field name="REF_LABEL" value="Monétaire dynamique"/>
+                <field name="CLOSE_DATE" value="9999-12-31 00:00:00.0"/>
+                <field name="CREATION_BY" value="OZONE"/>
+                <field name="CREATION_DATETIME" value="2006-09-01 00:00:00.0"/>
+                <field name="UPDATE_BY"/>
+                <field name="UPDATE_DATETIME"/>
+            </row>
+            <row>
+                <field name="REF_CODE" value="OEU"/>
+                <field name="REF_LABEL" value="Obligataire euro"/>
+                <field name="CLOSE_DATE" value="9999-12-31 00:00:00.0"/>
+                <field name="CREATION_BY" value="OZONE"/>
+                <field name="CREATION_DATETIME" value="2006-09-01 00:00:00.0"/>
+                <field name="UPDATE_BY"/>
+                <field name="UPDATE_DATETIME"/>
+            </row>
+            <row>
+                <field name="REF_CODE" value="OHYAT"/>
+                <field name="REF_LABEL"
+                       value="Obligataire devise et High Yield, fonds de fonds alternatifs de trésorerie"/>
+                <field name="CLOSE_DATE" value="9999-12-31 00:00:00.0"/>
+                <field name="CREATION_BY" value="OZONE"/>
+                <field name="CREATION_DATETIME" value="2006-09-01 00:00:00.0"/>
+                <field name="UPDATE_BY"/>
+                <field name="UPDATE_DATETIME"/>
+            </row>
+            <row>
+                <field name="REF_CODE" value="DFHTR"/>
+                <field name="REF_LABEL"
+                       value="Diversifié jusqu?à équilibre ? Fonds Horizons fonds total return"/>
+                <field name="CLOSE_DATE" value="9999-12-31 00:00:00.0"/>
+                <field name="CREATION_BY" value="OZONE"/>
+                <field name="CREATION_DATETIME" value="2006-09-01 00:00:00.0"/>
+                <field name="UPDATE_BY"/>
+                <field name="UPDATE_DATETIME"/>
+            </row>
+            <row>
+                <field name="REF_CODE" value="AOCDE"/>
+                <field name="REF_LABEL" value="Actions OCDE ? Diversifié autres, OPCVM à formule"/>
+                <field name="CLOSE_DATE" value="9999-12-31 00:00:00.0"/>
+                <field name="CREATION_BY" value="OZONE"/>
+                <field name="CREATION_DATETIME" value="2006-09-01 00:00:00.0"/>
+                <field name="UPDATE_BY"/>
+                <field name="UPDATE_DATETIME"/>
+            </row>
+            <row>
+                <field name="REF_CODE" value="APE"/>
+                <field name="REF_LABEL" value="Actions pays émergents"/>
+                <field name="CLOSE_DATE" value="9999-12-31 00:00:00.0"/>
+                <field name="CREATION_BY" value="OZONE"/>
+                <field name="CREATION_DATETIME" value="2006-09-01 00:00:00.0"/>
+                <field name="UPDATE_BY"/>
+                <field name="UPDATE_DATETIME"/>
+            </row>
+            <row>
+                <field name="REF_CODE" value="FFAHT"/>
+                <field name="REF_LABEL" value="FCPR, FCPI, OPCI, Fonds de fonds alternatifs hors trésorerie"/>
+                <field name="CLOSE_DATE" value="9999-12-31 00:00:00.0"/>
+                <field name="CREATION_BY" value="OZONE"/>
+                <field name="CREATION_DATETIME" value="2006-09-01 00:00:00.0"/>
+                <field name="UPDATE_BY"/>
+                <field name="UPDATE_DATETIME"/>
+            </row>
+            <row>
+                <field name="REF_CODE" value="NON"/>
+                <field name="REF_LABEL" value="Non autorisé à la commercialisation en France"/>
+                <field name="CLOSE_DATE" value="9999-12-31 00:00:00.0"/>
+                <field name="CREATION_BY" value="OZONE"/>
+                <field name="CREATION_DATETIME" value="2006-09-01 00:00:00.0"/>
+                <field name="UPDATE_BY"/>
+                <field name="UPDATE_DATETIME"/>
+            </row>
+        </table>
+        <table name="REF_CLASSIF_MICROPAL">
+            <row id="AMAN_FRA">
+                <field name="REF_CODE" value="AMAN"/>
+                <field name="LANGUAGE_CODE" value="FRA"/>
+                <field name="REF_LABEL" value="AM Amerique du Nord"/>
+                <field name="CLOSE_DATE" value="9999-12-31 00:00:00.0"/>
+                <field name="CREATION_BY" value="OZONE"/>
+                <field name="CREATION_DATETIME" value="2006-09-01 00:00:00.0"/>
+                <field name="UPDATE_BY"/>
+                <field name="UPDATE_DATETIME"/>
+            </row>
+            <row id="AMAN_ENG">
+                <field name="REF_CODE" value="AMAN"/>
+                <field name="LANGUAGE_CODE" value="ENG"/>
+                <field name="REF_LABEL" value="AM North America"/>
+                <field name="CLOSE_DATE" value="9999-12-31 00:00:00.0"/>
+                <field name="CREATION_BY" value="OZONE"/>
+                <field name="CREATION_DATETIME" value="2006-09-01 00:00:00.0"/>
+                <field name="UPDATE_BY"/>
+                <field name="UPDATE_DATETIME"/>
+            </row>
+            <row id="AMEU_FRA">
+                <field name="REF_CODE" value="AMEU"/>
+                <field name="LANGUAGE_CODE" value="FRA"/>
+                <field name="REF_LABEL" value="AM Etats-Unis"/>
+                <field name="CLOSE_DATE" value="9999-12-31 00:00:00.0"/>
+                <field name="CREATION_BY" value="OZONE"/>
+                <field name="CREATION_DATETIME" value="2006-09-01 00:00:00.0"/>
+                <field name="UPDATE_BY"/>
+                <field name="UPDATE_DATETIME"/>
+            </row>
+            <row id="AMEU_ENG">
+                <field name="REF_CODE" value="AMEU"/>
+                <field name="LANGUAGE_CODE" value="ENG"/>
+                <field name="REF_LABEL" value="AM United States"/>
+                <field name="CLOSE_DATE" value="9999-12-31 00:00:00.0"/>
+                <field name="CREATION_BY" value="OZONE"/>
+                <field name="CREATION_DATETIME" value="2006-09-01 00:00:00.0"/>
+                <field name="UPDATE_BY"/>
+                <field name="UPDATE_DATETIME"/>
+            </row>
+            <row id="AMJP_FRA">
+                <field name="REF_CODE" value="AMJP"/>
+                <field name="LANGUAGE_CODE" value="FRA"/>
+                <field name="REF_LABEL" value="AM Japon"/>
+                <field name="CLOSE_DATE" value="9999-12-31 00:00:00.0"/>
+                <field name="CREATION_BY" value="OZONE"/>
+                <field name="CREATION_DATETIME" value="2006-09-01 00:00:00.0"/>
+                <field name="UPDATE_BY"/>
+                <field name="UPDATE_DATETIME"/>
+            </row>
+            <row id="AMJP_ENG">
+                <field name="REF_CODE" value="AMJP"/>
+                <field name="LANGUAGE_CODE" value="ENG"/>
+                <field name="REF_LABEL" value="AM Japan"/>
+                <field name="CLOSE_DATE" value="9999-12-31 00:00:00.0"/>
+                <field name="CREATION_BY" value="OZONE"/>
+                <field name="CREATION_DATETIME" value="2006-09-01 00:00:00.0"/>
+                <field name="UPDATE_BY"/>
+                <field name="UPDATE_DATETIME"/>
+            </row>
+            <row id="AMME_FRA">
+                <field name="REF_CODE" value="AMME"/>
+                <field name="LANGUAGE_CODE" value="FRA"/>
+                <field name="REF_LABEL" value="AM Marches Emergents"/>
+                <field name="CLOSE_DATE" value="9999-12-31 00:00:00.0"/>
+                <field name="CREATION_BY" value="OZONE"/>
+                <field name="CREATION_DATETIME" value="2006-09-01 00:00:00.0"/>
+                <field name="UPDATE_BY"/>
+                <field name="UPDATE_DATETIME"/>
+            </row>
+            <row id="AMME_ENG">
+                <field name="REF_CODE" value="AMME"/>
+                <field name="LANGUAGE_CODE" value="ENG"/>
+                <field name="REF_LABEL" value="AM Emerging Markets"/>
+                <field name="CLOSE_DATE" value="9999-12-31 00:00:00.0"/>
+                <field name="CREATION_BY" value="OZONE"/>
+                <field name="CREATION_DATETIME" value="2006-09-01 00:00:00.0"/>
+                <field name="UPDATE_BY"/>
+                <field name="UPDATE_DATETIME"/>
+            </row>
+            <row id="AMRU_FRA">
+                <field name="REF_CODE" value="AMRU"/>
+                <field name="LANGUAGE_CODE" value="FRA"/>
+                <field name="REF_LABEL" value="AM Royaume-Uni"/>
+                <field name="CLOSE_DATE" value="9999-12-31 00:00:00.0"/>
+                <field name="CREATION_BY" value="OZONE"/>
+                <field name="CREATION_DATETIME" value="2006-09-01 00:00:00.0"/>
+                <field name="UPDATE_BY"/>
+                <field name="UPDATE_DATETIME"/>
+            </row>
+            <row id="AMRU_ENG">
+                <field name="REF_CODE" value="AMRU"/>
+                <field name="LANGUAGE_CODE" value="ENG"/>
+                <field name="REF_LABEL" value="AM United-Kingdom"/>
+                <field name="CLOSE_DATE" value="9999-12-31 00:00:00.0"/>
+                <field name="CREATION_BY" value="OZONE"/>
+                <field name="CREATION_DATETIME" value="2006-09-01 00:00:00.0"/>
+                <field name="UPDATE_BY"/>
+                <field name="UPDATE_DATETIME"/>
+            </row>
+        </table>
+        <table name="REF_WEB_INVEST_GEO_ZONE">
+            <row>
+                <field name="REF_CODE" value="FR"/>
+                <field name="REF_LABEL" value="France"/>
+                <field name="CLOSE_DATE" value="9999-12-31 00:00:00.0"/>
+                <field name="CREATION_BY" value="OZONE"/>
+                <field name="CREATION_DATETIME" value="2006-09-01 00:00:00.0"/>
+                <field name="UPDATE_BY"/>
+                <field name="UPDATE_DATETIME"/>
+            </row>
+            <row>
+                <field name="REF_CODE" value="ZEU"/>
+                <field name="REF_LABEL" value="Zone Euro"/>
+                <field name="CLOSE_DATE" value="9999-12-31 00:00:00.0"/>
+                <field name="CREATION_BY" value="OZONE"/>
+                <field name="CREATION_DATETIME" value="2006-09-01 00:00:00.0"/>
+                <field name="UPDATE_BY"/>
+                <field name="UPDATE_DATETIME"/>
+            </row>
+            <row>
+                <field name="REF_CODE" value="EU"/>
+                <field name="REF_LABEL" value="Europe"/>
+                <field name="CLOSE_DATE" value="9999-12-31 00:00:00.0"/>
+                <field name="CREATION_BY" value="OZONE"/>
+                <field name="CREATION_DATETIME" value="2006-09-01 00:00:00.0"/>
+                <field name="UPDATE_BY"/>
+                <field name="UPDATE_DATETIME"/>
+            </row>
+            <row>
+                <field name="REF_CODE" value="MONDE"/>
+                <field name="REF_LABEL" value="Monde"/>
+                <field name="CLOSE_DATE" value="9999-12-31 00:00:00.0"/>
+                <field name="CREATION_BY" value="OZONE"/>
+                <field name="CREATION_DATETIME" value="2006-09-01 00:00:00.0"/>
+                <field name="UPDATE_BY"/>
+                <field name="UPDATE_DATETIME"/>
+            </row>
+            <row>
+                <field name="REF_CODE" value="JP"/>
+                <field name="REF_LABEL" value="Japon"/>
+                <field name="CLOSE_DATE" value="9999-12-31 00:00:00.0"/>
+                <field name="CREATION_BY" value="OZONE"/>
+                <field name="CREATION_DATETIME" value="2006-09-01 00:00:00.0"/>
+                <field name="UPDATE_BY"/>
+                <field name="UPDATE_DATETIME"/>
+            </row>
+            <row>
+                <field name="REF_CODE" value="ME"/>
+                <field name="REF_LABEL" value="Marchés émergents"/>
+                <field name="CLOSE_DATE" value="9999-12-31 00:00:00.0"/>
+                <field name="CREATION_BY" value="OZONE"/>
+                <field name="CREATION_DATETIME" value="2006-09-01 00:00:00.0"/>
+                <field name="UPDATE_BY"/>
+                <field name="UPDATE_DATETIME"/>
+            </row>
+            <row>
+                <field name="REF_CODE" value="MEEU"/>
+                <field name="REF_LABEL" value="Marchés émergents européens"/>
+                <field name="CLOSE_DATE" value="9999-12-31 00:00:00.0"/>
+                <field name="CREATION_BY" value="OZONE"/>
+                <field name="CREATION_DATETIME" value="2006-09-01 00:00:00.0"/>
+                <field name="UPDATE_BY"/>
+                <field name="UPDATE_DATETIME"/>
+            </row>
+            <row>
+                <field name="REF_CODE" value="ZEEU"/>
+                <field name="REF_LABEL" value="Zone Euro/Europe"/>
+                <field name="CLOSE_DATE" value="9999-12-31 00:00:00.0"/>
+                <field name="CREATION_BY" value="OZONE"/>
+                <field name="CREATION_DATETIME" value="2006-09-01 00:00:00.0"/>
+                <field name="UPDATE_BY"/>
+                <field name="UPDATE_DATETIME"/>
+            </row>
+            <row>
+                <field name="REF_CODE" value="USA"/>
+                <field name="REF_LABEL" value="USA"/>
+                <field name="CLOSE_DATE" value="9999-12-31 00:00:00.0"/>
+                <field name="CREATION_BY" value="OZONE"/>
+                <field name="CREATION_DATETIME" value="2006-09-01 00:00:00.0"/>
+                <field name="UPDATE_BY"/>
+                <field name="UPDATE_DATETIME"/>
+            </row>
+        </table>
+        <table name="REF_WEB_INVEST_CLASS_ASSET">
+            <row>
+                <field name="REF_CODE" value="ACT"/>
+                <field name="REF_LABEL" value="Actions"/>
+                <field name="CLOSE_DATE" value="9999-12-31 00:00:00.0"/>
+                <field name="CREATION_BY" value="OZONE"/>
+                <field name="CREATION_DATETIME" value="2006-09-01 00:00:00.0"/>
+                <field name="UPDATE_BY"/>
+                <field name="UPDATE_DATETIME"/>
+            </row>
+            <row>
+                <field name="REF_CODE" value="ALT"/>
+                <field name="REF_LABEL" value="Alternatif"/>
+                <field name="CLOSE_DATE" value="9999-12-31 00:00:00.0"/>
+                <field name="CREATION_BY" value="OZONE"/>
+                <field name="CREATION_DATETIME" value="2006-09-01 00:00:00.0"/>
+                <field name="UPDATE_BY"/>
+                <field name="UPDATE_DATETIME"/>
+            </row>
+            <row>
+                <field name="REF_CODE" value="IMO"/>
+                <field name="REF_LABEL" value="Immobilier"/>
+                <field name="CLOSE_DATE" value="9999-12-31 00:00:00.0"/>
+                <field name="CREATION_BY" value="OZONE"/>
+                <field name="CREATION_DATETIME" value="2006-09-01 00:00:00.0"/>
+                <field name="UPDATE_BY"/>
+                <field name="UPDATE_DATETIME"/>
+            </row>
+            <row>
+                <field name="REF_CODE" value="ISR"/>
+                <field name="REF_LABEL" value="ISR"/>
+                <field name="CLOSE_DATE" value="9999-12-31 00:00:00.0"/>
+                <field name="CREATION_BY" value="OZONE"/>
+                <field name="CREATION_DATETIME" value="2006-09-01 00:00:00.0"/>
+                <field name="UPDATE_BY"/>
+                <field name="UPDATE_DATETIME"/>
+            </row>
+            <row>
+                <field name="REF_CODE" value="Forex"/>
+                <field name="REF_LABEL" value="Forex"/>
+                <field name="CLOSE_DATE" value="9999-12-31 00:00:00.0"/>
+                <field name="CREATION_BY" value="OZONE"/>
+                <field name="CREATION_DATETIME" value="2006-09-01 00:00:00.0"/>
+                <field name="UPDATE_BY"/>
+                <field name="UPDATE_DATETIME"/>
+            </row>
+            <row>
+                <field name="REF_CODE" value="FAF"/>
+                <field name="REF_LABEL" value="Fonds à formule"/>
+                <field name="CLOSE_DATE" value="9999-12-31 00:00:00.0"/>
+                <field name="CREATION_BY" value="OZONE"/>
+                <field name="CREATION_DATETIME" value="2006-09-01 00:00:00.0"/>
+                <field name="UPDATE_BY"/>
+                <field name="UPDATE_DATETIME"/>
+            </row>
+        </table>
+        <table name="REF_CLASSIF_REPORTING">
+            <row>
+                <field name="REF_CODE" value="LM"/>
+                <field name="REF_LABEL" value="Lettre Mensuelle"/>
+                <field name="CLOSE_DATE" value="9999-12-31 00:00:00.0"/>
+                <field name="CREATION_BY" value="OZONE"/>
+                <field name="CREATION_DATETIME" value="2006-09-01 00:00:00.0"/>
+                <field name="UPDATE_BY"/>
+                <field name="UPDATE_DATETIME"/>
+            </row>
+            <row>
+                <field name="REF_CODE" value="LH"/>
+                <field name="REF_LABEL" value="lettre hebdo"/>
+                <field name="CLOSE_DATE" value="9999-12-31 00:00:00.0"/>
+                <field name="CREATION_BY" value="OZONE"/>
+                <field name="CREATION_DATETIME" value="2006-09-01 00:00:00.0"/>
+                <field name="UPDATE_BY"/>
+                <field name="UPDATE_DATETIME"/>
+            </row>
+        </table>
+        <table name="REF_MANAGEMENT_TYPE">
+            <row>
+                <field name="REF_CODE" value="ACT"/>
+                <field name="REF_LABEL" value="Active"/>
+                <field name="CLOSE_DATE" value="9999-12-31 00:00:00.0"/>
+                <field name="CREATION_BY" value="OZONE"/>
+                <field name="CREATION_DATETIME" value="2006-09-01 00:00:00.0"/>
+                <field name="UPDATE_BY"/>
+                <field name="UPDATE_DATETIME"/>
+            </row>
+            <row>
+                <field name="REF_CODE" value="PAS"/>
+                <field name="REF_LABEL" value="Passive"/>
+                <field name="CLOSE_DATE" value="9999-12-31 00:00:00.0"/>
+                <field name="CREATION_BY" value="OZONE"/>
+                <field name="CREATION_DATETIME" value="2006-09-01 00:00:00.0"/>
+                <field name="UPDATE_BY"/>
+                <field name="UPDATE_DATETIME"/>
+            </row>
+        </table>
+        <table name="REF_MANAGEMENT_PHILOSOPHY">
+            <row>
+                <field name="REF_CODE" value="FDM"/>
+                <field name="REF_LABEL" value="Fondamentale"/>
+                <field name="CLOSE_DATE" value="9999-12-31 00:00:00.0"/>
+                <field name="CREATION_BY" value="OZONE"/>
+                <field name="CREATION_DATETIME" value="2006-09-01 00:00:00.0"/>
+                <field name="UPDATE_BY"/>
+                <field name="UPDATE_DATETIME"/>
+            </row>
+            <row>
+                <field name="REF_CODE" value="Quant"/>
+                <field name="REF_LABEL" value="Quantitative"/>
+                <field name="CLOSE_DATE" value="9999-12-31 00:00:00.0"/>
+                <field name="CREATION_BY" value="OZONE"/>
+                <field name="CREATION_DATETIME" value="2006-09-01 00:00:00.0"/>
+                <field name="UPDATE_BY"/>
+                <field name="UPDATE_DATETIME"/>
+            </row>
+        </table>
+
+        <table name="REF_CLASS_TYPE">
+            <row>
+                <field name="REF_CODE" value="I"/>
+                <field name="REF_LABEL" value="Institutionnel"/>
+                <field name="AMF_ORDER" value="1"/>
+                <field name="CLOSE_DATE" value="9999-12-31 00:00:00.0"/>
+                <field name="CREATION_BY" value="OZONE"/>
+                <field name="CREATION_DATETIME" value="2006-09-01 00:00:00.0"/>
+                <field name="UPDATE_BY"/>
+                <field name="UPDATE_DATETIME"/>
+            </row>
+            <row>
+                <field name="REF_CODE" value="R"/>
+                <field name="REF_LABEL" value="Retail"/>
+                <field name="AMF_ORDER" value="0"/>
+                <field name="CLOSE_DATE" value="9999-12-31 00:00:00.0"/>
+                <field name="CREATION_BY" value="OZONE"/>
+                <field name="CREATION_DATETIME" value="2006-09-01 00:00:00.0"/>
+                <field name="UPDATE_BY"/>
+                <field name="UPDATE_DATETIME"/>
+            </row>
+            <row>
+                <field name="REF_CODE" value="PA"/>
+                <field name="REF_LABEL" value="Type PA"/>
+                <field name="AMF_ORDER" value="3"/>
+                <field name="CLOSE_DATE" value="9999-12-31 00:00:00.0"/>
+                <field name="CREATION_BY" value="OZONE"/>
+                <field name="CREATION_DATETIME" value="2006-09-01 00:00:00.0"/>
+                <field name="UPDATE_BY"/>
+                <field name="UPDATE_DATETIME"/>
+            </row>
+        </table>
+
+        <table name="REF_C_D">
+            <row>
+                <field name="C_D_CODE" value="NONE"/>
+                <field name="LANGUAGE_CODE" value="FRA"/>
+                <field name="C_D_NAME" value="Aucun"/>
+                <field name="IS_CAPITALISATION_FREQUENCY" value="false"/>
+                <field name="IS_DISTRIBUTION_FREQUENCY" value="false"/>
+            </row>
+            <row>
+                <field name="C_D_CODE" value="C"/>
+                <field name="LANGUAGE_CODE" value="FRA"/>
+                <field name="C_D_NAME" value="Capitalisant"/>
+                <field name="IS_CAPITALISATION_FREQUENCY" value="true"/>
+                <field name="IS_DISTRIBUTION_FREQUENCY" value="false"/>
+            </row>
+            <row>
+                <field name="C_D_CODE" value="D"/>
+                <field name="LANGUAGE_CODE" value="FRA"/>
+                <field name="C_D_NAME" value="Distribuant"/>
+                <field name="IS_CAPITALISATION_FREQUENCY" value="false"/>
+                <field name="IS_DISTRIBUTION_FREQUENCY" value="true"/>
+            </row>
+            <row>
+                <field name="C_D_CODE" value="CetD"/>
+                <field name="LANGUAGE_CODE" value="FRA"/>
+                <field name="C_D_NAME" value="Capitalisant et Distribuant"/>
+                <field name="IS_CAPITALISATION_FREQUENCY" value="true"/>
+                <field name="IS_DISTRIBUTION_FREQUENCY" value="true"/>
+            </row>
+            <row>
+                <field name="C_D_CODE" value="CouD"/>
+                <field name="LANGUAGE_CODE" value="FRA"/>
+                <field name="C_D_NAME" value="Capitalisant ou Distribuant"/>
+                <field name="IS_CAPITALISATION_FREQUENCY" value="true"/>
+                <field name="IS_DISTRIBUTION_FREQUENCY" value="true"/>
+            </row>
+            <row>
+                <field name="C_D_CODE" value="NONE"/>
+                <field name="LANGUAGE_CODE" value="ENG"/>
+                <field name="C_D_NAME" value="None"/>
+                <field name="IS_CAPITALISATION_FREQUENCY" value="false"/>
+                <field name="IS_DISTRIBUTION_FREQUENCY" value="false"/>
+            </row>
+            <row>
+                <field name="C_D_CODE" value="C"/>
+                <field name="LANGUAGE_CODE" value="ENG"/>
+                <field name="C_D_NAME" value="Capitalisant anglais"/>
+                <field name="IS_CAPITALISATION_FREQUENCY" value="true"/>
+                <field name="IS_DISTRIBUTION_FREQUENCY" value="false"/>
+            </row>
+            <row>
+                <field name="C_D_CODE" value="D"/>
+                <field name="LANGUAGE_CODE" value="ENG"/>
+                <field name="C_D_NAME" value="Distribuant anglais"/>
+                <field name="IS_CAPITALISATION_FREQUENCY" value="false"/>
+                <field name="IS_DISTRIBUTION_FREQUENCY" value="true"/>
+            </row>
+            <row>
+                <field name="C_D_CODE" value="CetD"/>
+                <field name="LANGUAGE_CODE" value="ENG"/>
+                <field name="C_D_NAME" value="Capitalisant et Distribuant anglais"/>
+                <field name="IS_CAPITALISATION_FREQUENCY" value="true"/>
+                <field name="IS_DISTRIBUTION_FREQUENCY" value="true"/>
+            </row>
+            <row>
+                <field name="C_D_CODE" value="CouD"/>
+                <field name="LANGUAGE_CODE" value="ENG"/>
+                <field name="C_D_NAME" value="Capitalisant ou Distribuant anglais"/>
+                <field name="IS_CAPITALISATION_FREQUENCY" value="true"/>
+                <field name="IS_DISTRIBUTION_FREQUENCY" value="true"/>
+            </row>
+        </table>
+
+        <table name="REF_CURRENCY">
+            <row>
+                <field name="REF_CODE" value="DEU"/>
+                <field name="REF_LABEL" value="DEUTCHMARK"/>
+                <field name="CLOSE_DATE" value="9999-12-31 00:00:00.0"/>
+                <field name="CREATION_BY" value="OZONE"/>
+                <field name="CREATION_DATETIME" value="2006-09-01 00:00:00.0"/>
+                <field name="UPDATE_BY"/>
+                <field name="UPDATE_DATETIME"/>
+            </row>
+            <row>
+                <field name="REF_CODE" value="GBP"/>
+                <field name="REF_LABEL" value="LIVRE STERLING"/>
+                <field name="CLOSE_DATE" value="2000-06-06 00:00:00.0"/>
+                <field name="CREATION_BY" value="OZONE"/>
+                <field name="CREATION_DATETIME" value="2006-09-01 00:00:00.0"/>
+                <field name="UPDATE_BY"/>
+                <field name="UPDATE_DATETIME"/>
+            </row>
+            <row>
+                <field name="REF_CODE" value="FRF"/>
+                <field name="REF_LABEL" value="FRANC"/>
+                <field name="CLOSE_DATE" value="2006-12-31 00:00:00.0"/>
+                <field name="CREATION_BY" value="OZONE"/>
+                <field name="CREATION_DATETIME" value="2006-09-01 00:00:00.0"/>
+                <field name="UPDATE_BY"/>
+                <field name="UPDATE_DATETIME"/>
+            </row>
+            <row>
+                <field name="REF_CODE" value="ITL"/>
+                <field name="REF_LABEL" value="LIRE"/>
+                <field name="CLOSE_DATE" value="9999-12-31 00:00:00.0"/>
+                <field name="CREATION_BY" value="OZONE"/>
+                <field name="CREATION_DATETIME" value="2006-09-01 00:00:00.0"/>
+                <field name="UPDATE_BY"/>
+                <field name="UPDATE_DATETIME"/>
+            </row>
+            <row>
+                <field name="REF_CODE" value="EUR"/>
+                <field name="REF_LABEL" value="EUROS"/>
+                <field name="CLOSE_DATE" value="9999-12-31 00:00:00.0"/>
+                <field name="CREATION_BY" value="OZONE"/>
+                <field name="CREATION_DATETIME" value="2006-09-01 00:00:00.0"/>
+                <field name="UPDATE_BY"/>
+                <field name="UPDATE_DATETIME"/>
+            </row>
+            <row>
+                <field name="REF_CODE" value="USD"/>
+                <field name="REF_LABEL" value="DOLLAR"/>
+                <field name="CLOSE_DATE" value="9999-12-31 00:00:00.0"/>
+                <field name="CREATION_BY" value="OZONE"/>
+                <field name="CREATION_DATETIME" value="2006-09-01 00:00:00.0"/>
+                <field name="UPDATE_BY"/>
+                <field name="UPDATE_DATETIME"/>
+            </row>
+        </table>
+        <table name="REF_CAPI_DIS_FREQUENCY">
+            <row>
+                <field name="REF_CODE" value="AN"/>
+                <field name="REF_LABEL" value="annuelle"/>
+                <field name="CLOSE_DATE" value="9999-12-31 00:00:00.0"/>
+                <field name="CREATION_BY" value="OZONE"/>
+                <field name="CREATION_DATETIME" value="2006-09-01 00:00:00.0"/>
+                <field name="UPDATE_BY"/>
+                <field name="UPDATE_DATETIME"/>
+            </row>
+            <row>
+                <field name="REF_CODE" value="ANAC"/>
+                <field name="REF_LABEL" value="annuelle avec possibilité d'acomptes"/>
+                <field name="CLOSE_DATE" value="9999-12-31 00:00:00.0"/>
+                <field name="CREATION_BY" value="OZONE"/>
+                <field name="CREATION_DATETIME" value="2006-09-01 00:00:00.0"/>
+                <field name="UPDATE_BY"/>
+                <field name="UPDATE_DATETIME"/>
+            </row>
+            <row>
+                <field name="REF_CODE" value="MENS"/>
+                <field name="REF_LABEL" value="mensuelle"/>
+                <field name="CLOSE_DATE" value="9999-12-31 00:00:00.0"/>
+                <field name="CREATION_BY" value="OZONE"/>
+                <field name="CREATION_DATETIME" value="2006-09-01 00:00:00.0"/>
+                <field name="UPDATE_BY"/>
+                <field name="UPDATE_DATETIME"/>
+            </row>
+            <row>
+                <field name="REF_CODE" value="TRIM"/>
+                <field name="REF_LABEL" value="trimestrielle"/>
+                <field name="CLOSE_DATE" value="9999-12-31 00:00:00.0"/>
+                <field name="CREATION_BY" value="OZONE"/>
+                <field name="CREATION_DATETIME" value="2006-09-01 00:00:00.0"/>
+                <field name="UPDATE_BY"/>
+                <field name="UPDATE_DATETIME"/>
+            </row>
+            <row>
+                <field name="REF_CODE" value="SEM"/>
+                <field name="REF_LABEL" value="semestrielle"/>
+                <field name="CLOSE_DATE" value="9999-12-31 00:00:00.0"/>
+                <field name="CREATION_BY" value="OZONE"/>
+                <field name="CREATION_DATETIME" value="2006-09-01 00:00:00.0"/>
+                <field name="UPDATE_BY"/>
+                <field name="UPDATE_DATETIME"/>
+            </row>
+        </table>
+
+        <table name="REF_INITIAL_PAYMENT_SICAV">
+            <row>
+                <field name="REF_CODE" value="AEN"/>
+                <field name="REF_LABEL" value="Apports en nature"/>
+                <field name="CLOSE_DATE" value="9999-12-31 00:00:00.0"/>
+                <field name="CREATION_BY" value="OZONE"/>
+                <field name="CREATION_DATETIME" value="2006-09-01 00:00:00.0"/>
+                <field name="UPDATE_BY"/>
+                <field name="UPDATE_DATETIME"/>
+            </row>
+            <row>
+                <field name="REF_CODE" value="VEN"/>
+                <field name="REF_LABEL" value="Versements en numeraire"/>
+                <field name="CLOSE_DATE" value="9999-12-31 00:00:00.0"/>
+                <field name="CREATION_BY" value="OZONE"/>
+                <field name="CREATION_DATETIME" value="2006-09-01 00:00:00.0"/>
+                <field name="UPDATE_BY"/>
+                <field name="UPDATE_DATETIME"/>
+            </row>
+            <row>
+                <field name="REF_CODE" value="AVEN"/>
+                <field name="REF_LABEL" value="Apports en nature et versements en numeraire"/>
+                <field name="CLOSE_DATE" value="9999-12-31 00:00:00.0"/>
+                <field name="CREATION_BY" value="OZONE"/>
+                <field name="CREATION_DATETIME" value="2006-09-01 00:00:00.0"/>
+                <field name="UPDATE_BY"/>
+                <field name="UPDATE_DATETIME"/>
+            </row>
+        </table>
+        <table name="REF_EXONERATION_CASE">
+            <row>
+                <field name="REF_CODE" value="OGA"/>
+                <field name="REF_LABEL" value="OPCVM du Groupe ALLIANZ"/>
+                <field name="CLOSE_DATE" value="9999-12-31 00:00:00.0"/>
+            </row>
+            <row>
+                <field name="REF_CODE" value="OGAS"/>
+                <field name="REF_LABEL"
+                       value="OPCVM du Groupe ALLIANZ et ordres simultanés de souscription et de rachat d'un même montant sur une valeur liquidative"/>
+                <field name="CLOSE_DATE" value="9999-12-31 00:00:00.0"/>
+            </row>
+            <row>
+                <field name="REF_CODE" value="OSS"/>
+                <field name="REF_LABEL"
+                       value="ordres simultanés de souscription et de rachat d'un même montant"/>
+                <field name="CLOSE_DATE" value="9999-12-31 00:00:00.0"/>
+            </row>
+            <row>
+                <field name="REF_CODE" value="SFCP"/>
+                <field name="REF_LABEL" value="Souscriptions et rachats par les FCP nourriciers"/>
+                <field name="CLOSE_DATE" value="9999-12-31 00:00:00.0"/>
+            </row>
+        </table>
+        <table name="REF_MOVEMENT_BASE">
+            <row>
+                <field name="REF_CODE" value="AC1"/>
+                <field name="REF_LABEL" value="Assiette de commission 1"/>
+                <field name="CLOSE_DATE" value="9999-12-31 00:00:00.0"/>
+            </row>
+            <row>
+                <field name="REF_CODE" value="AC2"/>
+                <field name="REF_LABEL" value="Assiette de commission 2"/>
+                <field name="CLOSE_DATE" value="9999-12-31 00:00:00.0"/>
+            </row>
+            <row>
+                <field name="REF_CODE" value="AC3"/>
+                <field name="REF_LABEL" value="Assiette de commission 3"/>
+                <field name="CLOSE_DATE" value="9999-12-31 00:00:00.0"/>
+            </row>
+        </table>
+        <table name="REF_MOVEMENT_BENEFICIARY">
+            <row>
+                <field name="REF_CODE" value="MB1"/>
+                <field name="REF_LABEL" value="Bénéficiaire de commission 1"/>
+                <field name="CLOSE_DATE" value="9999-12-31 00:00:00.0"/>
+            </row>
+            <row>
+                <field name="REF_CODE" value="MB2"/>
+                <field name="REF_LABEL" value="Bénéficiaire de commission 2"/>
+                <field name="CLOSE_DATE" value="9999-12-31 00:00:00.0"/>
+            </row>
+            <row>
+                <field name="REF_CODE" value="MB3"/>
+                <field name="REF_LABEL" value="Bénéficiaire de commission 3"/>
+                <field name="CLOSE_DATE" value="9999-12-31 00:00:00.0"/>
+            </row>
+        </table>
+        <table name="REF_SURPERF_FREQUENCY">
+            <row>
+                <field name="REF_CODE" value="AN"/>
+                <field name="REF_LABEL" value="Annuelle"/>
+                <field name="CLOSE_DATE" value="9999-12-31 00:00:00.0"/>
+            </row>
+            <row>
+                <field name="REF_CODE" value="MENS"/>
+                <field name="REF_LABEL" value="Mensuelle"/>
+                <field name="CLOSE_DATE" value="9999-12-31 00:00:00.0"/>
+            </row>
+            <row>
+                <field name="REF_CODE" value="HEBD"/>
+                <field name="REF_LABEL" value="Hebdomadaire"/>
+                <field name="CLOSE_DATE" value="9999-12-31 00:00:00.0"/>
+            </row>
+        </table>
+        <table name="REF_SURPERF_COMMENT">
+            <row>
+                <field name="REF_CODE" value="com1"/>
+                <field name="REF_LABEL" value="commission de superperformance 1"/>
+                <field name="CLOSE_DATE" value="9999-12-31 00:00:00.0"/>
+            </row>
+            <row>
+                <field name="REF_CODE" value="com2"/>
+                <field name="REF_LABEL" value="commission de superperformance 2"/>
+                <field name="CLOSE_DATE" value="9999-12-31 00:00:00.0"/>
+            </row>
+            <row>
+                <field name="REF_CODE" value="com3"/>
+                <field name="REF_LABEL" value="commission de superperformance 3"/>
+                <field name="CLOSE_DATE" value="9999-12-31 00:00:00.0"/>
+            </row>
+        </table>
+        <table name="REF_SURPERF_THRESHOLD">
+            <row>
+                <field name="REF_CODE" value="SEUIL1"/>
+                <field name="REF_LABEL" value="0.30%"/>
+                <field name="CLOSE_DATE" value="9999-12-31 00:00:00.0"/>
+            </row>
+            <row>
+                <field name="REF_CODE" value="SEUIL2"/>
+                <field name="REF_LABEL" value="50%"/>
+                <field name="CLOSE_DATE" value="9999-12-31 00:00:00.0"/>
+            </row>
+            <row>
+                <field name="REF_CODE" value="SEUIL3"/>
+                <field name="REF_LABEL" value="performance supérieure à 6%"/>
+                <field name="CLOSE_DATE" value="9999-12-31 00:00:00.0"/>
+            </row>
+        </table>
+        <table name="REF_DIVISION_CLASS">
+            <row>
+                <field name="REF_CODE" value="D10"/>
+                <field name="REF_LABEL" value="10"/>
+                <field name="CLOSE_DATE" value="9999-12-31 00:00:00.0"/>
+            </row>
+            <row>
+                <field name="REF_CODE" value="D100"/>
+                <field name="REF_LABEL" value="100"/>
+                <field name="CLOSE_DATE" value="9999-12-31 00:00:00.0"/>
+            </row>
+            <row>
+                <field name="REF_CODE" value="D1000"/>
+                <field name="REF_LABEL" value="1000"/>
+                <field name="CLOSE_DATE" value="9999-12-31 00:00:00.0"/>
+            </row>
+        </table>
+        <table name="REF_SUBSCRIBERS_TYPE">
+            <row>
+                <field name="REF_CODE" value="TS"/>
+                <field name="REF_LABEL" value="Tout souscripteur"/>
+                <field name="CLOSE_DATE" value="9999-12-31 00:00:00.0"/>
+            </row>
+            <row>
+                <field name="REF_CODE" value="EI"/>
+                <field name="REF_LABEL" value="Entreprises et institutionnels"/>
+                <field name="CLOSE_DATE" value="9999-12-31 00:00:00.0"/>
+            </row>
+            <row>
+                <field name="REF_CODE" value="GA"/>
+                <field name="REF_LABEL" value="Groupe AGF"/>
+                <field name="CLOSE_DATE" value="9999-12-31 00:00:00.0"/>
+            </row>
+            <row>
+                <field name="REF_CODE" value="DD"/>
+                <field name="REF_LABEL" value="Dédié (Réservé à 20 porteurs au plus)"/>
+                <field name="CLOSE_DATE" value="9999-12-31 00:00:00.0"/>
+            </row>
+        </table>
+        <table name="REF_CONCERNED_SUBSCRIBERS">
+            <row>
+                <field name="REF_CODE" value="AA"/>
+                <field name="REF_LABEL" value="AGIRC et ARRCO"/>
+                <field name="CLOSE_DATE" value="9999-12-31 00:00:00.0"/>
+            </row>
+            <row>
+                <field name="REF_CODE" value="B2"/>
+                <field name="REF_LABEL" value="B2V"/>
+                <field name="CLOSE_DATE" value="9999-12-31 00:00:00.0"/>
+            </row>
+            <row>
+                <field name="REF_CODE" value="MA"/>
+                <field name="REF_LABEL" value="MAIF"/>
+                <field name="CLOSE_DATE" value="9999-12-31 00:00:00.0"/>
+            </row>
+        </table>
+        <table name="REF_REPORTING_MODEL">
+            <row>
+                <field name="REF_CODE" value="RM1"/>
+                <field name="REF_LABEL" value="reporting model 1"/>
+                <field name="CLOSE_DATE" value="9999-12-31 00:00:00.0"/>
+            </row>
+            <row>
+                <field name="REF_CODE" value="RM2"/>
+                <field name="REF_LABEL" value="reporting model 2"/>
+                <field name="CLOSE_DATE" value="9999-12-31 00:00:00.0"/>
+            </row>
+            <row>
+                <field name="REF_CODE" value="RM3"/>
+                <field name="REF_LABEL" value="reporting model 3"/>
+                <field name="CLOSE_DATE" value="9999-12-31 00:00:00.0"/>
+            </row>
+        </table>
+        <table name="REF_REPORTING_MODEL_TYPE">
+            <row>
+                <field name="REF_CODE" value="RT1"/>
+                <field name="REF_LABEL" value="reporting type 1"/>
+                <field name="CLOSE_DATE" value="9999-12-31 00:00:00.0"/>
+            </row>
+            <row>
+                <field name="REF_CODE" value="RT2"/>
+                <field name="REF_LABEL" value="reporting type 2"/>
+                <field name="CLOSE_DATE" value="9999-12-31 00:00:00.0"/>
+            </row>
+            <row>
+                <field name="REF_CODE" value="RT3"/>
+                <field name="REF_LABEL" value="reporting type 3"/>
+                <field name="CLOSE_DATE" value="9999-12-31 00:00:00.0"/>
+            </row>
+        </table>
+        <table name="REF_LEVEL2_RPT_SEGMENTATION">
+            <row>
+                <field name="REF_CODE" value="L1"/>
+                <field name="REF_LABEL" value="reporting niveau 1"/>
+                <field name="CLOSE_DATE" value="9999-12-31 00:00:00.0"/>
+            </row>
+            <row>
+                <field name="REF_CODE" value="L2"/>
+                <field name="REF_LABEL" value="reporting niveau 2"/>
+                <field name="CLOSE_DATE" value="9999-12-31 00:00:00.0"/>
+            </row>
+            <row>
+                <field name="REF_CODE" value="L3"/>
+                <field name="REF_LABEL" value="reporting niveau 3"/>
+                <field name="CLOSE_DATE" value="9999-12-31 00:00:00.0"/>
+            </row>
+        </table>
+        <table name="REF_WEB_CUSTOMER_PROFILE">
+            <row>
+                <field name="REF_CODE" value="EN"/>
+                <field name="REF_LABEL" value="entreprise"/>
+                <field name="CLOSE_DATE" value="9999-12-31 00:00:00.0"/>
+            </row>
+            <row>
+                <field name="REF_CODE" value="IN"/>
+                <field name="REF_LABEL" value="instit"/>
+                <field name="CLOSE_DATE" value="9999-12-31 00:00:00.0"/>
+            </row>
+            <row>
+                <field name="REF_CODE" value="PA"/>
+                <field name="REF_LABEL" value="particuliers"/>
+                <field name="CLOSE_DATE" value="9999-12-31 00:00:00.0"/>
+            </row>
+        </table>
+        <table name="REF_WEB_CUSTOMER_NEEDS">
+            <row>
+                <field name="REF_CODE" value="FISC"/>
+                <field name="REF_LABEL" value="fiscalité"/>
+                <field name="CLOSE_DATE" value="9999-12-31 00:00:00.0"/>
+            </row>
+            <row>
+                <field name="REF_CODE" value="RETR"/>
+                <field name="REF_LABEL" value="retraites"/>
+                <field name="CLOSE_DATE" value="9999-12-31 00:00:00.0"/>
+            </row>
+            <row>
+                <field name="REF_CODE" value="EPAR"/>
+                <field name="REF_LABEL" value="epargnes"/>
+                <field name="CLOSE_DATE" value="9999-12-31 00:00:00.0"/>
+            </row>
+        </table>
+        <table name="REF_RATING_MOODYS">
+            <row>
+                <field name="REF_CODE" value="Aa1"/>
+                <field name="REF_LABEL" value="Aa/MR1"/>
+                <field name="CLOSE_DATE" value="9999-12-31 00:00:00.0"/>
+            </row>
+            <row>
+                <field name="REF_CODE" value="Aa2"/>
+                <field name="REF_LABEL" value="Aa/MR2"/>
+                <field name="CLOSE_DATE" value="9999-12-31 00:00:00.0"/>
+            </row>
+            <row>
+                <field name="REF_CODE" value="Bb"/>
+                <field name="REF_LABEL" value="Bb/MR1"/>
+                <field name="CLOSE_DATE" value="9999-12-31 00:00:00.0"/>
+            </row>
+        </table>
+        <table name="REF_RATING_SP">
+            <row>
+                <field name="REF_CODE" value="A1"/>
+                <field name="REF_LABEL" value="A"/>
+                <field name="CLOSE_DATE" value="9999-12-31 00:00:00.0"/>
+            </row>
+            <row>
+                <field name="REF_CODE" value="B1"/>
+                <field name="REF_LABEL" value="B"/>
+                <field name="CLOSE_DATE" value="9999-12-31 00:00:00.0"/>
+            </row>
+            <row>
+                <field name="REF_CODE" value="C1"/>
+                <field name="REF_LABEL" value="C"/>
+                <field name="CLOSE_DATE" value="9999-12-31 00:00:00.0"/>
+            </row>
+        </table>
+        <table name="REF_RATING_MORNING_STAR">
+            <row>
+                <field name="REF_CODE" value="RMS1"/>
+                <field name="REF_LABEL" value="1"/>
+                <field name="CLOSE_DATE" value="9999-12-31 00:00:00.0"/>
+            </row>
+            <row>
+                <field name="REF_CODE" value="RMS2"/>
+                <field name="REF_LABEL" value="2"/>
+                <field name="CLOSE_DATE" value="9999-12-31 00:00:00.0"/>
+            </row>
+            <row>
+                <field name="REF_CODE" value="RMS3"/>
+                <field name="REF_LABEL" value="3"/>
+                <field name="CLOSE_DATE" value="9999-12-31 00:00:00.0"/>
+            </row>
+        </table>
+        <table name="REF_SUBS_MIN">
+            <row>
+                <field name="REF_CODE" value="1P"/>
+                <field name="REF_LABEL" value="1 part"/>
+                <field name="CLOSE_DATE" value="9999-12-31 00:00:00.0"/>
+            </row>
+            <row>
+                <field name="REF_CODE" value="150ME"/>
+                <field name="REF_LABEL" value="150 000 ?"/>
+                <field name="CLOSE_DATE" value="9999-12-31 00:00:00.0"/>
+            </row>
+            <row>
+                <field name="REF_CODE" value="160ME"/>
+                <field name="REF_LABEL" value="160 000 ?"/>
+                <field name="CLOSE_DATE" value="9999-12-31 00:00:00.0"/>
+            </row>
+            <row>
+                <field name="REF_CODE" value="500ME"/>
+                <field name="REF_LABEL" value="500 000 euros"/>
+                <field name="CLOSE_DATE" value="9999-12-31 00:00:00.0"/>
+            </row>
+            <row>
+                <field name="REF_CODE" value="30P"/>
+                <field name="REF_LABEL" value="lors de la première souscription:30 parts"/>
+                <field name="CLOSE_DATE" value="9999-12-31 00:00:00.0"/>
+            </row>
+        </table>
+        <table name="REF_FIRST_SUBS_MIN">
+            <row>
+                <field name="REF_CODE" value="F1P"/>
+                <field name="REF_LABEL" value="First 1 part"/>
+                <field name="CLOSE_DATE" value="9999-12-31 00:00:00.0"/>
+            </row>
+            <row>
+                <field name="REF_CODE" value="F150ME"/>
+                <field name="REF_LABEL" value="First 150 000 ?"/>
+                <field name="CLOSE_DATE" value="9999-12-31 00:00:00.0"/>
+            </row>
+        </table>
+        <table name="REF_MANAG_OBJECTIVE">
+            <row>
+                <field name="REF_CODE" value="OBJ1"/>
+                <field name="REF_LABEL" value="objectif de gestion classique avec indicateur de référence"/>
+                <field name="CLOSE_DATE" value="9999-12-31 00:00:00.0"/>
+            </row>
+            <row>
+                <field name="REF_CODE" value="OBJ2"/>
+                <field name="REF_LABEL" value="objectif de gestion classique sans indicateur de référence"/>
+                <field name="CLOSE_DATE" value="9999-12-31 00:00:00.0"/>
+            </row>
+            <row>
+                <field name="REF_CODE" value="OBJ3"/>
+                <field name="REF_LABEL" value="objectif de gestion Fonds Horizon"/>
+                <field name="CLOSE_DATE" value="9999-12-31 00:00:00.0"/>
+            </row>
+            <row>
+                <field name="REF_CODE" value="OBJ4"/>
+                <field name="REF_LABEL" value="objectif indiciel"/>
+                <field name="CLOSE_DATE" value="9999-12-31 00:00:00.0"/>
+            </row>
+            <row>
+                <field name="REF_CODE" value="OBJ5"/>
+                <field name="REF_LABEL" value="objectif spécifique"/>
+                <field name="CLOSE_DATE" value="9999-12-31 00:00:00.0"/>
+            </row>
+        </table>
+        <table name="REF_PERFORMANCE_LEVEL">
+            <row>
+                <field name="REF_CODE" value="PERF1"/>
+                <field name="REF_LABEL" value="équivalent"/>
+                <field name="CLOSE_DATE" value="9999-12-31 00:00:00.0"/>
+            </row>
+            <row>
+                <field name="REF_CODE" value="PERF2"/>
+                <field name="REF_LABEL" value="supérieur"/>
+                <field name="CLOSE_DATE" value="9999-12-31 00:00:00.0"/>
+            </row>
+            <row>
+                <field name="REF_CODE" value="PERF3"/>
+                <field name="REF_LABEL" value="supérieur ou égal"/>
+                <field name="CLOSE_DATE" value="9999-12-31 00:00:00.0"/>
+            </row>
+        </table>
+        <table name="REF_BENCHMARK_GAP">
+            <row>
+                <field name="REF_CODE" value="GAP1"/>
+                <field name="REF_LABEL" value="TE inf à 2 ou inférieur à 10% de la volatilité de l'indice"/>
+                <field name="CLOSE_DATE" value="9999-12-31 00:00:00.0"/>
+            </row>
+            <row>
+                <field name="REF_CODE" value="GAP2"/>
+                <field name="REF_LABEL" value="TE inf à 4 ou inférieur à 20% de la volatilité de l'indice"/>
+                <field name="CLOSE_DATE" value="9999-12-31 00:00:00.0"/>
+            </row>
+        </table>
+        <table name="REF_REFERENCE_MARKETS">
+            <row>
+                <field name="REF_CODE" value="REF1"/>
+                <field name="REF_LABEL" value="Marché des actions françaises"/>
+                <field name="CLOSE_DATE" value="9999-12-31 00:00:00.0"/>
+            </row>
+            <row>
+                <field name="REF_CODE" value="REF2"/>
+                <field name="REF_LABEL"
+                       value="Marché de taux gouvernementaux internationaux représentés par l'indice JPM europe non couvert de change"/>
+                <field name="CLOSE_DATE" value="9999-12-31 00:00:00.0"/>
+            </row>
+            <row>
+                <field name="REF_CODE" value="REF3"/>
+                <field name="REF_LABEL" value="emprunts d'Etat de la zone euro"/>
+                <field name="CLOSE_DATE" value="9999-12-31 00:00:00.0"/>
+            </row>
+            <row>
+                <field name="REF_CODE" value="REF4"/>
+                <field name="REF_LABEL"
+                       value="emprunts d'Etat de la zone euro dont la durée résiduelle est comprise entre 1 et 3 ans"/>
+                <field name="CLOSE_DATE" value="9999-12-31 00:00:00.0"/>
+            </row>
+            <row>
+                <field name="REF_CODE" value="REF5"/>
+                <field name="REF_LABEL" value="actions internationales"/>
+                <field name="CLOSE_DATE" value="9999-12-31 00:00:00.0"/>
+            </row>
+            <row>
+                <field name="REF_CODE" value="REF6"/>
+                <field name="REF_LABEL"
+                       value="marché des actions des mines aurifères et des ressources naturelles"/>
+                <field name="CLOSE_DATE" value="9999-12-31 00:00:00.0"/>
+            </row>
+        </table>
+        <table name="REF_OPCVM_TERM">
+            <row>
+                <field name="REF_CODE" value="TERM1"/>
+                <field name="REF_LABEL" value="31/12/2008"/>
+                <field name="CLOSE_DATE" value="9999-12-31 00:00:00.0"/>
+            </row>
+            <row>
+                <field name="REF_CODE" value="TERM2"/>
+                <field name="REF_LABEL" value="5 ans"/>
+                <field name="CLOSE_DATE" value="9999-12-31 00:00:00.0"/>
+            </row>
+        </table>
+        <table name="REF_INVOICING_PERIODICITY">
+            <row>
+                <field name="REF_CODE" value="PER1"/>
+                <field name="REF_LABEL" value="Aléatoire"/>
+                <field name="CLOSE_DATE" value="9999-12-31 00:00:00.0"/>
+            </row>
+            <row>
+                <field name="REF_CODE" value="PER2"/>
+                <field name="REF_LABEL" value="Annuelle"/>
+                <field name="CLOSE_DATE" value="9999-12-31 00:00:00.0"/>
+            </row>
+            <row>
+                <field name="REF_CODE" value="PER3"/>
+                <field name="REF_LABEL" value="Mensuelle"/>
+                <field name="CLOSE_DATE" value="9999-12-31 00:00:00.0"/>
+            </row>
+            <row>
+                <field name="REF_CODE" value="PER4"/>
+                <field name="REF_LABEL" value="Semestrielle"/>
+                <field name="CLOSE_DATE" value="9999-12-31 00:00:00.0"/>
+            </row>
+            <row>
+                <field name="REF_CODE" value="PER5"/>
+                <field name="REF_LABEL" value="Trimestrielle"/>
+                <field name="CLOSE_DATE" value="9999-12-31 00:00:00.0"/>
+            </row>
+        </table>
+    </input>
+</story>

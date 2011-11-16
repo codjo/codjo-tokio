@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<!DOCTYPE entities PUBLIC "-//AGF, Inc.//DTD entities 2.0//EN" "http://entities.dtd">
+<entities>
+    <entity id="nominal">
+        <body>
+            <table name="MY_TABLE">
+                <row id="row1" autoComplete="true">
+                    <field name="FIELD1" value="valueField1"/>
+                </row>
+                <copy row="row1" autoComplete="false"/>
+                <copy row="row1"/>
+            </table>
+        </body>
+    </entity>
+</entities>

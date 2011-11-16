@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<entities xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="default.xsd">
+    <entity id="Entity">
+        <comment>Entity</comment>
+        <parameters>
+            <parameter name="param1"/>
+        </parameters>
+        <body>
+            <MY_TABLE>
+                <row id="rowId">
+                    <FIELD1 value="field1"/>
+                    <FIELD2 value="@param1@"/>
+                </row>
+            </MY_TABLE>
+
+        </body>
+    </entity>
+
+    <entity id="EntityWithDefaultValues">
+        <comment>Entity With Default Values</comment>
+        <parameters>
+            <parameter name="paramNull" default="whatever"/>
+            <parameter name="paramEmptyString" default="whatever"/>
+            <parameter name="param1" default="defaultParam1"/>
+            <parameter name="param2" default="defaultParam2"/>
+            <parameter name="param3"/>
+            <parameter name="paramDefaultEmptyString" default=""/>
+            <parameter name="paramDefaultNull" default="null"/>
+        </parameters>
+        <body>
+            <MY_TABLE>
+                <row>
+                    <FIELD_NULL value="@paramNull@"/>
+                    <FIELD_EMPTY_STRING value="@paramEmptyString@"/>
+                    <FIELD1 value="@param1@"/>
+                    <FIELD2 value="@param2@"/>
+                    <FIELD3 value="@param2@ @param3@"/>
+                    <FIELD_DEFAULT_EMPTY_STRING value="@paramDefaultEmptyString@"/>
+                    <FIELD_DEFAULT_NULL value="@paramDefaultNull@"/>
+                </row>
+            </MY_TABLE>
+        </body>
+    </entity>
+    <entity id="EntityWithNoDefaultValuesErrorCase">
+        <comment>Entity With No Default Values Error Case</comment>
+        <parameters>
+            <parameter name="param1"/>
+        </parameters>
+        <body>
+            <MY_TABLE>
+                <row>
+                    <FIELD1 value="@param1@"/>
+                </row>
+            </MY_TABLE>
+        </body>
+    </entity>
+</entities>

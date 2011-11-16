@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<!DOCTYPE entities PUBLIC "-//AGF, Inc.//DTD entities 2.0//EN" "http://entities.dtd">
+<entities>
+    <entity id="son">
+        <parameters>
+            <parameter name="param1" default="value1"/>
+            <parameter name="param2" default="value2"/>
+            <parameter name="param3"/>
+        </parameters>
+        <body>
+            <table name="AP_DUMMY"/>
+        </body>
+    </entity>
+</entities>

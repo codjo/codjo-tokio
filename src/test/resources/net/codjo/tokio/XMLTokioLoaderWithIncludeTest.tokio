@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<!DOCTYPE cases SYSTEM "http://cases.dtd">
+<cases>
+    <case id="nominal">
+        <include-story file="TokioWithAntProperties.tokio"/>
+    </case>
+    <case id="etalon">
+        <input>
+            <table name="TABLE">
+                <row>
+                    <field name="FIELD" value="value1"/>
+                </row>
+            </table>
+        </input>
+    </case>
+</cases>

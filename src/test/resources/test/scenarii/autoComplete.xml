@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<?xml-stylesheet type="text/xsl" href="../Scenarii.xsl"?>
+<!DOCTYPE Scenarii PUBLIC "-//AGF, Inc.//DTD Scenarii 2.0//EN" "http://scenarii.dtd">
+<Scenarii>
+    <Scenario id="nominal">
+        <input>
+            <table name="MY_TABLE">
+                <row autoComplete="true">
+                    <field name="FIELD1" value="valueField1"/>
+                </row>
+                <row autoComplete="false">
+                    <field name="FIELD2" value="valueField2"/>
+                </row>
+                <row>
+                    <field name="FIELD3" value="valueField3"/>
+                </row>
+            </table>
+        </input>
+
+        <etalon>
+            <table name="MY_TABLE">
+                <row autoComplete="true">
+                    <field name="FIELD4" value="valueField4"/>
+                </row>
+                <row autoComplete="false">
+                    <field name="FIELD5" value="valueField5"/>
+                </row>
+                <row>
+                    <field name="FIELD6" value="valueField6"/>
+                </row>
+            </table>
+        </etalon>
+    </Scenario>
+</Scenarii>

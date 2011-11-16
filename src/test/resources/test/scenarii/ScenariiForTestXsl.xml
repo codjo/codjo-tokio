@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<?xml-stylesheet type="text/xsl" href="../Scenarii.xsl"?>
+<!DOCTYPE Scenarii PUBLIC '-//AGF, Inc.//DTD Scenarii 2.0//EN' "http://scenarii.dtd">
+<Scenarii name="Controles des VL">
+    <Scenario id="ControleCoherence">
+        <comment><![CDATA[
+        Controle que <b>COL_A</b> + COL_B = COL_SOMME.
+        ]]></comment>
+        <input>
+            <table name="AP_VL_QUARANTINE" identityInsert="on">
+                <row id="vl.coherence.ok">
+                    <field name="CODE_SICOVAM" value="6969"/>
+                    <field name="COL_A" value="5"/>
+                    <field name="COL_B" value="6"/>
+                    <field name="COL_SOMME" value="11"/>
+                    <field name="ANOMALY" value="0"/>
+                </row>
+                <row id="vl.coherence.nok" inheritId="vl.coherence.ok" comment="Difference">
+                    <field name="CODE_SICOVAM" value="0071"/>
+                    <field name="COL_SOMME" value="10"/>
+                    <field name="ANOMALY" value="0"/>
+                </row>
+            </table>
+        </input>
+        <etalon>
+            <table name="AP_VL_QUARANTINE">
+                <row inheritId="vl.coherence.ok"/>
+                <row inheritId="vl.coherence.nok">
+                    <field name="ANOMALY" value="1"/>
+                </row>
+            </table>
+        </etalon>
+    </Scenario>
+</Scenarii>

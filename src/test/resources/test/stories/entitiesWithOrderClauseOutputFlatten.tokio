@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<story id="UseCaseEntities">
+
+    <include-entities file="../entities/entitiesWithOrderClauseFlatten.xml"/>
+
+    <input>
+        <create-entity name="MyEntity" id="entity1">
+            <parameter name="param" value=""/>
+        </create-entity>
+    </input>
+    <output>
+        <copy-entity entity="entity1" id="entity1Output"/>
+        <create-entity name="MyEntity2" id="entity2">
+            <parameter name="param" value=""/>
+        </create-entity>
+    </output>
+
+</story>

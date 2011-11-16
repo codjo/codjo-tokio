@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<entities xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+          xsi:noNamespaceSchemaLocation="file:C:/dev/platform/cache/xsd/red-entities.xsd">
+    <entity id="child">
+        <body/>
+        <required>
+            <table name="AP_COUSIN">
+                <row>
+                    <field name="FIRSTNAME" value="Harry"/>
+                    <field name="LASTNAME" value="POTTER"/>
+                </row>
+            </table>
+            <table name="AP_REQUIRED">
+                <row>
+                    <field name="DUMMY" value="dummy"/>
+                </row>
+            </table>
+        </required>
+    </entity>
+</entities>

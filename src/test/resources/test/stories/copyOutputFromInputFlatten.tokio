@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<story id="CopyOutputFromInput">
+
+    <input>
+        <MY_TABLE>
+            <row id="row1">
+                <FIELD1 value="valueField1Row1"/>
+                <FIELD2 value="valueField2Row1"/>
+            </row>
+            <row id="row2">
+                <FIELD1 value="valueField1Row2"/>
+                <FIELD2 value="valueField2Row2"/>
+            </row>
+        </MY_TABLE>
+    </input>
+
+    <output>
+        <MY_TABLE>
+            <copy row="row1">
+                <FIELD2 value="newValue"/>
+            </copy>
+            <copy row="row2"/>
+        </MY_TABLE>
+    </output>
+</story>

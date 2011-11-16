@@ -1,0 +1,100 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<?xml-stylesheet type="text/xsl" href="../Scenarii.xsl"?>
+<Scenarii name="Controles des VL">
+    <Scenario id="ControleCoherence">
+        <comment><![CDATA[
+        Controle que <b>COL_A</b> + COL_B = COL_SOMME.
+        ]]></comment>
+        <input>
+            <AP_VL_QUARANTINE identityInsert="on">
+                <row id="vl.coherence.ok">
+                    <CODE_SICOVAM value="6969"/>
+                    <COL_A value="5"/>
+                    <COL_B value="6"/>
+                    <COL_SOMME value="11"/>
+                    <ANOMALY value="0"/>
+                </row>
+                <row id="vl.coherence.nok" inheritId="vl.coherence.ok" comment="Difference">
+                    <CODE_SICOVAM value="0071"/>
+                    <COL_SOMME value="10"/>
+                    <ANOMALY value="0"/>
+                    <NULLFIELDFORCED null="true"/>
+                </row>
+            </AP_VL_QUARANTINE>
+        </input>
+        <etalon>
+            <AP_VL_QUARANTINE orderClause="COL_A">
+                <row inheritId="vl.coherence.ok"/>
+                <row inheritId="vl.coherence.nok">
+                    <ANOMALY value="1"/>
+                    <NULLFIELD/>
+                </row>
+            </AP_VL_QUARANTINE>
+        </etalon>
+    </Scenario>
+    <Scenario id="ControleComparator">
+        <comment><![CDATA[
+        Controle des balises comparator.
+        ]]></comment>
+        <input>
+            <mytable>
+                <row>
+                    <PATH value="FOLDER1/FOLDER2/file.txt"/>
+                    <COMMENT value="Cette VL est modifiée tous les fin de mois"/>
+                    <CREATION_DATE value="2004-03-05 10:30:00.0"/>
+                    <UPDATE_DATE value="2004-03-05 10:30:00.0"/>
+                    <AMOUNT value="1.05247"/>
+                    <BEFORE_DATE value="2004-03-05 10:30:00.0"/>
+                    <AFTER_DATE value="2004-03-05 10:30:00.0"/>
+                </row>
+            </mytable>
+            <mytableNok>
+                <row>
+                    <PATH value="FOLDER1/FOLDER2/COB.pdf"/>
+                    <COMMENT value="Cette VL est modifiée tous les fin de mois"/>
+                    <CREATION_DATE value="2004-03-05 10:30:00.0"/>
+                    <UPDATE_DATE value="2004-03-05 10:30:00.0"/>
+                    <AMOUNT value="1.05247"/>
+                    <BEFORE_DATE value="2004-03-05 10:30:00.0"/>
+                    <AFTER_DATE value="2004-03-05 10:30:00.0"/>
+                </row>
+            </mytableNok>
+        </input>
+        <etalon>
+            <comparators>
+                <comparator field="PATH" assert="contains"/>
+                <comparator field="COMMENT" assert="contains"/>
+                <comparator field="CREATION_DATE" assert="closeTo" param="1000"/>
+                <comparator field="UPDATE_DATE" precision="2000"/>
+                <comparator field="AMOUNT" precision="0.01"/>
+                <comparator field="BEFORE_DATE" assert="before" param="86400000"/>
+                <!-- 1jour-->
+                <comparator field="AFTER_DATE" assert="after" param="172800000"/>
+                <!-- 2jours-->
+            </comparators>
+
+            <mytable>
+                <row comment="ligne ok">
+                    <PATH value="file.txt"/>
+                    <COMMENT value="fin de mois"/>
+                    <CREATION_DATE value="2004-03-05 10:30:00.5"/>
+                    <UPDATE_DATE value="2004-03-05 10:30:01.5"/>
+                    <AMOUNT value="1.05000"/>
+                    <BEFORE_DATE value="2004-03-04 10:35:00.0"/>
+                    <AFTER_DATE value="2004-03-06 10:45:00.0"/>
+                </row>
+            </mytable>
+            <mytableNok>
+                <row comment="ligne nok">
+                    <PATH value="report.pdf"/>
+                    <COMMENT value="trimestriellement"/>
+                    <CREATION_DATE value="2004-03-05 10:30:09.0"/>
+                    <UPDATE_DATE value="2004-03-04 10:30:00.0"/>
+                    <AMOUNT value="2.500000"/>
+                    <BEFORE_DATE value="2004-03-03 10:30:00.0"/>
+                    <AFTER_DATE value="2004-03-08 10:30:00.0"/>
+                </row>
+            </mytableNok>
+        </etalon>
+    </Scenario>
+</Scenarii>

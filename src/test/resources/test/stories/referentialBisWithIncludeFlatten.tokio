@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<story id="Referential">
+
+    <include-story file="referentialStandardFlatten.tokio"/>
+
+    <input>
+        <MY_TABLE>
+            <row>
+                <FIELD1 value="valueField1RefBis"/>
+                <FIELD2 value="valueField2RefBis"/>
+            </row>
+        </MY_TABLE>
+
+        <MY_TABLE_BIS>
+            <row>
+                <BIS1 value="bis1"/>
+                <BIS2 value="bis2"/>
+            </row>
+        </MY_TABLE_BIS>
+    </input>
+
+</story>

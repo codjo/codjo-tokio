@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<!DOCTYPE entities PUBLIC "-//AGF, Inc.//DTD entities 2.0//EN" "http://entities.dtd">
+<entities>
+    <entity id="MyEntity">
+        <comment>MyEntity</comment>
+        <parameters>
+            <parameter name="param"></parameter>
+        </parameters>
+        <body>
+            <table name="TABLE1" orderClause="FIELD1">
+                <row>
+                    <field name="FIELD1" value="field4"/>
+                </row>
+                <row>
+                    <field name="FIELD1" value="field3"/>
+                </row>
+            </table>
+        </body>
+
+    </entity>
+    <entity id="MyEntity2">
+        <parameters>
+            <parameter name="param"></parameter>
+        </parameters>
+        <body>
+            <table name="TABLE2" orderClause="FIELD2">
+                <row>
+                    <field name="FIELD1" value="field1"/>
+                    <field name="FIELD2" value="field2"/>
+                </row>
+           </table>
+        </body>
+
+    </entity>
+</entities>

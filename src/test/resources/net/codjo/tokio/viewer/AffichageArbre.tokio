@@ -1,0 +1,506 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<!DOCTYPE story PUBLIC "-//AGF, Inc.//DTD stories 2.0//EN" "http://story.dtd">
+
+<story id="ProduitArborescence">
+    <include-story file="RefCodification.tokio"/>
+    <input>
+        <table name="AP_STATUS_CODIFICATION">
+            <row id="P005-old" comment="archive">
+                <field name="STATUS_CODIFICATION_CODE" value="005"/>
+                <field name="STATUS_CODIFICATION_LABEL" value="AGF ACTION OLD"/>
+                <field name="PRODUCT_TYPE_CODE" value="OPCVM"/>
+                <field name="ACCOUNT_CLOSE_DATE"/>
+                <field name="CREATION_DATE" value="1998-01-01 00:00:00.0"/>
+                <field name="CLOSE_DATE"/>
+                <field name="BEGIN_DATE" value="1990-01-01 00:00:00.0"/>
+                <field name="END_DATE" value="2001-12-31 00:00:00.0"/>
+                <field name="CREATION_BY" value="OZONE"/>
+                <field name="CREATION_DATETIME" value="2006-09-01 00:00:00.0"/>
+                <field name="UPDATE_BY"/>
+                <field name="UPDATE_DATETIME"/>
+            </row>
+            <copy id="P005-new" row="P005-old"
+                  comment="defini par un seul élément de chaque niveau">
+                <field name="STATUS_CODIFICATION_LABEL" value="AGF ACTION Z"/>
+                <field name="BEGIN_DATE" value="2001-12-31 00:00:00.0"/>
+                <field name="END_DATE" value="9999-01-01 00:00:00.0"/>
+            </copy>
+            <row id="P006">
+                <field name="STATUS_CODIFICATION_CODE" value="006"/>
+                <field name="STATUS_CODIFICATION_LABEL" value="AGF ACTION A"/>
+                <field name="PRODUCT_TYPE_CODE" value="OPCVM"/>
+                <field name="ACCOUNT_CLOSE_DATE"/>
+                <field name="CREATION_DATE" value="1998-01-01 00:00:00.0"/>
+                <field name="CLOSE_DATE"/>
+                <field name="BEGIN_DATE" value="1990-01-01 00:00:00.0"/>
+                <field name="END_DATE" value="9999-01-01 00:00:00.0"/>
+                <field name="CREATION_BY" value="OZONE"/>
+                <field name="CREATION_DATETIME" value="2006-09-01 00:00:00.0"/>
+                <field name="UPDATE_BY"/>
+                <field name="UPDATE_DATETIME"/>
+            </row>
+            <copy id="P666" row="P005-old" comment="PTF fermé 01 janvier 2002">
+                <field name="STATUS_CODIFICATION_CODE" value="666"/>
+                <field name="STATUS_CODIFICATION_LABEL" value="AGF ACTION (FERME)"/>
+
+                <field name="CLOSE_DATE" value="2002-01-01 00:00:00.0"/>
+                <field name="BEGIN_DATE" value="1990-01-01 00:00:00.0"/>
+                <field name="END_DATE" value="9999-01-01 00:00:00.0"/>
+            </copy>
+        </table>
+        <table name="AP_SEGMENT_CODIFICATION">
+            <row id="P05" comment="Utilisé pour interdire une duplication du code">
+                <field name="SEGMENT_CODIFICATION_CODE" value="05"/>
+                <field name="SEGMENT_CODIF_LABEL" value="AGF ACTION"/>
+
+                <field name="EXTERNAL_VALUATION" value="false"/>
+
+                <field name="CREATION_DATE" value="1998-01-01 00:00:00.0"/>
+                <field name="CLOSE_DATE"/>
+
+                <field name="BEGIN_DATE" value="1900-01-01 00:00:00.0"/>
+                <field name="END_DATE" value="1999-12-31 00:00:00.0"/>
+
+                <field name="CREATION_BY" value="OZONE"/>
+                <field name="CREATION_DATETIME" value="2006-09-01 00:00:00.0"/>
+                <field name="UPDATE_BY"/>
+                <field name="UPDATE_DATETIME"/>
+
+                <field name="COMPUTED_SEGMENT_LABEL" value="05"/>
+            </row>
+            <copy id="P05_NEW" row="P05">
+                <field name="EXTERNAL_VALUATION" value="true"/>
+                <field name="BEGIN_DATE" value="1999-12-31 00:00:00.0"/>
+                <field name="END_DATE" value="9999-01-01 00:00:00.0"/>
+            </copy>
+            <row id="S_REF" comment="S_06">
+                <field name="SEGMENT_CODIFICATION_CODE" value="06"/>
+                <field name="SEGMENT_CODIF_LABEL" value="AGF OBLIGATION COMPARTIMENT-0"/>
+
+                <field name="EXTERNAL_VALUATION" value="false"/>
+
+                <field name="CREATION_DATE" value="1998-01-01 00:00:00.0"/>
+                <field name="CLOSE_DATE"/>
+
+                <field name="BEGIN_DATE" value="1900-01-01 00:00:00.0"/>
+                <field name="END_DATE" value="9999-01-01 00:00:00.0"/>
+
+                <field name="CREATION_BY" value="OZONE"/>
+                <field name="CREATION_DATETIME" value="2006-09-01 00:00:00.0"/>
+                <field name="UPDATE_BY"/>
+                <field name="UPDATE_DATETIME"/>
+
+                <field name="COMPUTED_SEGMENT_LABEL" value="06"/>
+            </row>
+            <copy id="S_061" row="S_REF" comment="diff de REF : Comp-1">
+                <field name="SEGMENT_CODIFICATION_CODE" value="061"/>
+                <field name="SEGMENT_CODIF_LABEL" value="AGF OBLIGATION COMPARTIMENT-1"/>
+            </copy>
+            <copy id="P66" row="P05" comment="PTF fermé 01 janvier 2002">
+                <field name="SEGMENT_CODIFICATION_CODE" value="66"/>
+
+                <field name="CLOSE_DATE" value="2002-01-01 00:00:00.0"/>
+                <field name="BEGIN_DATE" value="1999-12-31 00:00:00.0"/>
+                <field name="END_DATE" value="9999-01-01 00:00:00.0"/>
+            </copy>
+            <row comment="Segment fermé">
+                <field name="SEGMENT_CODIFICATION_CODE" value="62"/>
+                <field name="BEGIN_DATE" value="1900-01-01 00:00:00.0"/>
+                <field name="END_DATE" value="2100-12-31 00:00:00.0"/>
+                <field name="CLOSE_DATE" value="2000-01-01"/>
+                <field name="CREATION_DATE" value="1998-01-01 00:00:00.0"/>
+                <field name="SEGMENT_CODIF_LABEL" value="AGF ACTION Fermé"/>
+                <field name="EXTERNAL_VALUATION" value="false"/>
+                <field name="CREATION_BY" value="OZONE"/>
+                <field name="CREATION_DATETIME" value="2006-09-01 00:00:00.0"/>
+                <field name="UPDATE_BY"/>
+                <field name="UPDATE_DATETIME"/>
+                <field name="COMPUTED_SEGMENT_LABEL" value="07"/>
+            </row>
+
+        </table>
+        <table name="AP_CLASS_CODIFICATION">
+            <row id="P05R" comment="Utilisé pour interdire une duplication du code">
+                <field name="CLASS_CODIFICATION_CODE" value="05R"/>
+                <field name="CLASS_TYPE_CODE" value="R"/>
+                <field name="CLASS_TYPE_CODE_ST" value="0"/>
+
+                <field name="FICTIVE_PRODUCT" value="false"/>
+
+                <field name="CREATION_DATE" value="1998-01-01 00:00:00.0"/>
+                <field name="CLOSE_DATE"/>
+
+                <field name="BEGIN_DATE" value="1900-01-01 00:00:00.0"/>
+                <field name="END_DATE" value="9999-01-01 00:00:00.0"/>
+
+                <field name="CREATION_BY" value="OZONE"/>
+                <field name="CREATION_DATETIME" value="2006-09-01 00:00:00.0"/>
+                <field name="UPDATE_BY"/>
+                <field name="UPDATE_DATETIME"/>
+
+                <field name="COMPUTED_CLASS_LABEL" value="05 R"/>
+            </row>
+            <row id="C_REF" comment="C06R">
+                <field name="CLASS_CODIFICATION_CODE" value="06R"/>
+                <field name="CLASS_TYPE_CODE" value="R"/>
+                <field name="CLASS_TYPE_CODE_ST" value="0"/>
+
+                <field name="FICTIVE_PRODUCT" value="false"/>
+                <field name="CREATION_DATE" value="1998-01-01 00:00:00.0"/>
+                <field name="CLOSE_DATE"/>
+                <field name="BEGIN_DATE" value="1900-01-01 00:00:00.0"/>
+                <field name="END_DATE" value="9999-01-01 00:00:00.0"/>
+                <field name="CREATION_BY" value="OZONE"/>
+                <field name="CREATION_DATETIME" value="2006-09-01 00:00:00.0"/>
+                <field name="UPDATE_BY"/>
+                <field name="UPDATE_DATETIME"/>
+
+                <field name="COMPUTED_CLASS_LABEL" value="06 R"/>
+            </row>
+            <copy id="C061R" row="C_REF" comment="diff de REF : comp 1">
+                <field name="CLASS_CODIFICATION_CODE" value="061R"/>
+            </copy>
+            <copy id="C061I" row="C_REF" comment="diff de REF : comp 1">
+                <field name="CLASS_CODIFICATION_CODE" value="061I"/>
+                <field name="CLASS_TYPE_CODE" value="I"/>
+            </copy>
+            <row id="P66R" comment="PTF fermé 01 janvier 2002">
+                <field name="CLASS_CODIFICATION_CODE" value="66R"/>
+                <field name="CLASS_TYPE_CODE" value="R"/>
+                <field name="CLASS_TYPE_CODE_ST" value="0"/>
+
+                <field name="FICTIVE_PRODUCT" value="false"/>
+
+                <field name="CREATION_DATE" value="1998-01-01 00:00:00.0"/>
+                <field name="CLOSE_DATE" value="2002-01-01 00:00:00.0"/>
+
+                <field name="BEGIN_DATE" value="1900-01-01 00:00:00.0"/>
+                <field name="END_DATE" value="9999-01-01 00:00:00.0"/>
+
+                <field name="CREATION_BY" value="OZONE"/>
+                <field name="CREATION_DATETIME" value="2006-09-01 00:00:00.0"/>
+                <field name="UPDATE_BY"/>
+                <field name="UPDATE_DATETIME"/>
+
+                <field name="COMPUTED_CLASS_LABEL" value="66 R"/>
+            </row>
+
+            <row id="P062R" comment="Classe fermé">
+                <field name="CLASS_CODIFICATION_CODE" value="62R"/>
+                <field name="CLASS_TYPE_CODE" value="R"/>
+                <field name="CLASS_TYPE_CODE_ST" value="0"/>
+                <field name="BEGIN_DATE" value="1900-01-01 00:00:00.0"/>
+                <field name="END_DATE" value="2100-12-31 00:00:00.0"/>
+                <field name="CLOSE_DATE" value="2000-01-01"/>
+                <field name="CREATION_DATE" value="1998-01-01 00:00:00.0"/>
+                <field name="COMPUTED_CLASS_LABEL" value="062 R"/>
+                <field name="FICTIVE_PRODUCT" value="false"/>
+                <field name="CREATION_DATETIME" value="2006-09-01 00:00:00.0"/>
+                <field name="UPDATE_BY"/>
+                <field name="UPDATE_DATETIME"/>
+            </row>
+
+        </table>
+        <table name="AP_PART_CODIFICATION">
+            <row id="P05RC" comment="Branche unique archivé">
+                <field name="PART_CODIFICATION_CODE" value="05R_C_21011999"/>
+
+                <field name="C_D_CODE" value="C"/>
+
+                <field name="CREATION_DATE" value="1998-01-01 00:00:00.0"/>
+                <field name="CLOSE_DATE"/>
+
+                <field name="BEGIN_DATE" value="1900-01-01 00:00:00.0"/>
+                <field name="END_DATE" value="1999-12-31 00:00:00.0"/>
+
+                <field name="COMPUTED_PART_LABEL" value="05 R C"/>
+            </row>
+            <copy id="P05DC_NEW" row="P05RC">
+                <field name="BEGIN_DATE" value="1999-12-31 00:00:00.0"/>
+                <field name="END_DATE" value="9999-01-01 00:00:00.0"/>
+            </copy>
+            <row id="P_REF" comment="P06R_C_01011999">
+                <field name="PART_CODIFICATION_CODE" value="06R_C_01011999"/>
+                <field name="C_D_CODE" value="C"/>
+
+                <field name="CREATION_DATE" value="1998-01-01 00:00:00.0"/>
+                <field name="CLOSE_DATE"/>
+
+                <field name="BEGIN_DATE" value="1900-01-01 00:00:00.0"/>
+                <field name="END_DATE" value="9999-01-01 00:00:00.0"/>
+
+                <field name="CREATION_BY" value="OZONE"/>
+                <field name="CREATION_DATETIME" value="2006-09-01 00:00:00.0"/>
+                <field name="UPDATE_BY"/>
+                <field name="UPDATE_DATETIME"/>
+
+                <field name="COMPUTED_PART_LABEL" value="06 R C"/>
+            </row>
+            <copy id="P06R_D_01011999" row="P_REF" comment="diff de REF : part D">
+                <field name="PART_CODIFICATION_CODE" value="06R_D_01011999"/>
+                <field name="C_D_CODE" value="D"/>
+                <field name="COMPUTED_PART_LABEL" value="06 R D"/>
+            </copy>
+            <copy id="P061R_C_01011999" row="P_REF" comment="diff de REF : comp 1">
+                <field name="PART_CODIFICATION_CODE" value="061R_C_01011999"/>
+            </copy>
+            <copy id="P061R_D_01011999" row="P_REF" comment="diff de REF : comp 1, part D">
+                <field name="PART_CODIFICATION_CODE" value="061R_D_01011999"/>
+                <field name="C_D_CODE" value="D"/>
+                <field name="COMPUTED_PART_LABEL" value="06 R D"/>
+            </copy>
+            <copy id="P061I_C_01011999" row="P_REF" comment="diff de REF : comp 1, classe I">
+                <field name="PART_CODIFICATION_CODE" value="061I_C_01011999"/>
+            </copy>
+            <copy id="P061I_D_01011999" row="P_REF" comment="diff de REF : comp 1, classe I">
+                <field name="PART_CODIFICATION_CODE" value="061I_D_01011999"/>
+                <field name="C_D_CODE" value="D"/>
+                <field name="COMPUTED_PART_LABEL" value="06 I D"/>
+            </copy>
+            <copy id="P66RC" row="P05RC">
+                <field name="PART_CODIFICATION_CODE" value="66R_C_21011999"/>
+                <field name="CLOSE_DATE" value="2002-01-01 00:00:00.0"/>
+
+                <field name="BEGIN_DATE" value="1999-12-31 00:00:00.0"/>
+                <field name="END_DATE" value="9999-01-01 00:00:00.0"/>
+            </copy>
+            <row id="P062RC" comment="Part fermée">
+                <field name="PART_CODIFICATION_CODE" value="062R_C_01011900"/>
+                <field name="C_D_CODE" value="C"/>
+                <field name="BEGIN_DATE" value="1900-01-01 00:00:00.0"/>
+                <field name="END_DATE" value="2100-12-31 00:00:00.0"/>
+                <field name="CLOSE_DATE" value="2000-01-01"/>
+                <field name="CREATION_DATE" value="1998-01-01 00:00:00.0"/>
+                <field name="COMPUTED_PART_LABEL" value="062 R C"/>
+            </row>
+        </table>
+        <table name="AP_BRANCH_CODIFICATION">
+            <row id="P05RC_FRF"
+                 comment="Branche unique archivé en EUR">
+                <field name="BRANCH_CODE" value="05R_C_21011999_FRF"/>
+                <field name="CURRENCY_CODE" value="FRF"/>
+                <field name="ISIN_CODE" value="FR00000AAA"/>
+                <field name="CREATION_DATE" value="1998-01-01 00:00:00.0"/>
+                <field name="CLOSE_DATE"/>
+                <field name="BEGIN_DATE" value="1900-01-01 00:00:00.0"/>
+                <field name="END_DATE" value="1999-12-31 00:00:00.0"/>
+                <field name="CREATION_BY" value="OZONE"/>
+                <field name="CREATION_DATETIME" value="2006-09-01 00:00:00.0"/>
+                <field name="UPDATE_BY"/>
+                <field name="UPDATE_DATETIME"/>
+                <field name="COMPUTED_BRANCH_LABEL" value="05 R C FRF"/>
+            </row>
+            <copy id="P05RC_EUR" row="P05RC_FRF">
+                <field name="CURRENCY_CODE" value="EUR"/>
+                <field name="ISIN_CODE" value="FR00000BBB"/>
+                <field name="BEGIN_DATE" value="1999-12-31 00:00:00.0"/>
+                <field name="END_DATE" value="9999-01-01 00:00:00.0"/>
+                <field name="COMPUTED_BRANCH_LABEL" value="05 R C EUR"/>
+            </copy>
+            <row id="REF">
+                <field name="BRANCH_CODE" value="06R_C_01011999_EUR"/>
+                <field name="CURRENCY_CODE" value="EUR"/>
+                <field name="ISIN_CODE"/>
+                <field name="SICOVAM_CODE"/>
+                <field name="CREATION_DATE" value="1998-01-01 00:00:00.0"/>
+                <field name="BEGIN_DATE" value="1900-01-01 00:00:00.0"/>
+                <field name="END_DATE" value="9999-01-01 00:00:00.0"/>
+                <field name="COMPUTED_BRANCH_LABEL" value="06 R C EUR"/>
+            </row>
+            <copy id="B06R_D_01011999_EUR" row="REF" comment="diff de REF : part D">
+                <field name="BRANCH_CODE" value="06R_D_01011999_EUR"/>
+            </copy>
+            <copy id="B061R_C_01011999_EUR" row="REF" comment="diff de REF : comp 1">
+                <field name="BRANCH_CODE" value="061R_C_01011999_EUR"/>
+            </copy>
+            <copy id="B061R_D_01011999_EUR" row="REF" comment="diff de REF : comp 1,part D">
+                <field name="BRANCH_CODE" value="061R_D_01011999_EUR"/>
+            </copy>
+            <copy id="B061R_D_01011999_GBP" row="REF" comment="diff de REF : comp 1,part D, dev GBP">
+                <field name="BRANCH_CODE" value="061R_D_01011999_GBP"/>
+                <field name="CURRENCY_CODE" value="GBP"/>
+                <field name="COMPUTED_BRANCH_LABEL" value="061 R D GBP"/>
+            </copy>
+            <copy id="B061I_C_01011999_EUR" row="REF" comment="diff de REF : comp 1, classe I">
+                <field name="BRANCH_CODE" value="061I_C_01011999_EUR"/>
+            </copy>
+            <copy id="B061I_C_01011999_USD" row="REF" comment="diff de REF:comp 1,classe I,dev USD">
+                <field name="BRANCH_CODE" value="061I_C_01011999_USD"/>
+                <field name="CURRENCY_CODE" value="USD"/>
+                <field name="COMPUTED_BRANCH_LABEL" value="061 I C USD"/>
+            </copy>
+            <copy id="B061I_D_01011999_EUR" row="REF" comment="diff de REF:comp 1,classe I,part D">
+                <field name="BRANCH_CODE" value="061I_D_01011999_EUR"/>
+            </copy>
+            <copy id="P66RC_EUR" row="P05RC_FRF">
+                <field name="BRANCH_CODE" value="66R_C_21011999_FRF"/>
+                <field name="CLOSE_DATE" value="2002-01-01 00:00:00.0"/>
+
+                <field name="CURRENCY_CODE" value="FRF"/>
+                <field name="ISIN_CODE" value="FR00000BBB"/>
+                <field name="BEGIN_DATE" value="1999-12-31 00:00:00.0"/>
+                <field name="END_DATE" value="9999-01-01 00:00:00.0"/>
+
+                <field name="COMPUTED_BRANCH_LABEL" value="66 R C FRF"/>
+            </copy>
+            <row comment="Branche fermée">
+                <field name="BRANCH_CODE" value="062R_C_01011900_FRF"/>
+                <field name="CURRENCY_CODE" value="FRF"/>
+                <field name="ISIN_CODE"/>
+                <field name="SICOVAM_CODE"/>
+                <field name="BEGIN_DATE" value="1900-01-01 00:00:00.0"/>
+                <field name="END_DATE" value="2100-12-31 00:00:00.0"/>
+                <field name="CLOSE_DATE" value="2000-01-01"/>
+                <field name="CREATION_DATE" value="1998-01-01 00:00:00.0"/>
+                <field name="COMPUTED_BRANCH_LABEL" value="06 R C EUR"/>
+            </row>
+        </table>
+
+        <table name="AP_STATUS_CODE">
+            <row>
+                <field name="STATUS_CODIFICATION_CODE" value="005"/>
+            </row>
+            <row>
+                <field name="STATUS_CODIFICATION_CODE" value="006"/>
+            </row>
+            <row>
+                <field name="STATUS_CODIFICATION_CODE" value="666"/>
+            </row>
+        </table>
+        <table name="AP_SEGMENT_CODE">
+            <row>
+                <field name="SEGMENT_CODIFICATION_CODE" value="05"/>
+                <field name="STATUS_CODIFICATION_CODE" value="005"/>
+            </row>
+            <row>
+                <field name="SEGMENT_CODIFICATION_CODE" value="06"/>
+                <field name="STATUS_CODIFICATION_CODE" value="006"/>
+            </row>
+            <row>
+                <field name="SEGMENT_CODIFICATION_CODE" value="061"/>
+                <field name="STATUS_CODIFICATION_CODE" value="006"/>
+            </row>
+            <row>
+                <field name="SEGMENT_CODIFICATION_CODE" value="66"/>
+                <field name="STATUS_CODIFICATION_CODE" value="666"/>
+            </row>
+            <row>
+                <field name="SEGMENT_CODIFICATION_CODE" value="62"/>
+                <field name="STATUS_CODIFICATION_CODE" value="666"/>
+            </row>
+        </table>
+        <table name="AP_CLASS_CODE">
+            <row>
+                <field name="CLASS_CODIFICATION_CODE" value="05R"/>
+                <field name="SEGMENT_CODIFICATION_CODE" value="05"/>
+            </row>
+            <row>
+                <field name="CLASS_CODIFICATION_CODE" value="06R"/>
+                <field name="SEGMENT_CODIFICATION_CODE" value="06"/>
+            </row>
+            <row>
+                <field name="CLASS_CODIFICATION_CODE" value="061R"/>
+                <field name="SEGMENT_CODIFICATION_CODE" value="061"/>
+            </row>
+            <row>
+                <field name="CLASS_CODIFICATION_CODE" value="061I"/>
+                <field name="SEGMENT_CODIFICATION_CODE" value="061"/>
+            </row>
+            <row>
+                <field name="CLASS_CODIFICATION_CODE" value="66R"/>
+                <field name="SEGMENT_CODIFICATION_CODE" value="66"/>
+            </row>
+            <row>
+                <field name="CLASS_CODIFICATION_CODE" value="62R"/>
+                <field name="SEGMENT_CODIFICATION_CODE" value="62"/>
+            </row>
+        </table>
+        <table name="AP_PART_CODE">
+            <row>
+                <field name="PART_CODIFICATION_CODE" value="05R_C_21011999"/>
+                <field name="CLASS_CODIFICATION_CODE" value="05R"/>
+            </row>
+            <row>
+                <field name="PART_CODIFICATION_CODE" value="06R_C_01011999"/>
+                <field name="CLASS_CODIFICATION_CODE" value="06R"/>
+            </row>
+            <row>
+                <field name="PART_CODIFICATION_CODE" value="06R_D_01011999"/>
+                <field name="CLASS_CODIFICATION_CODE" value="06R"/>
+            </row>
+            <row>
+                <field name="PART_CODIFICATION_CODE" value="061R_C_01011999"/>
+                <field name="CLASS_CODIFICATION_CODE" value="061R"/>
+            </row>
+            <row>
+                <field name="PART_CODIFICATION_CODE" value="061R_D_01011999"/>
+                <field name="CLASS_CODIFICATION_CODE" value="061R"/>
+            </row>
+
+            <row>
+                <field name="PART_CODIFICATION_CODE" value="061I_C_01011999"/>
+                <field name="CLASS_CODIFICATION_CODE" value="061I"/>
+            </row>
+
+            <row>
+                <field name="PART_CODIFICATION_CODE" value="061I_D_01011999"/>
+                <field name="CLASS_CODIFICATION_CODE" value="061I"/>
+            </row>
+            <row>
+                <field name="PART_CODIFICATION_CODE" value="66R_C_21011999"/>
+                <field name="CLASS_CODIFICATION_CODE" value="66R"/>
+            </row>
+            <row>
+                <field name="PART_CODIFICATION_CODE" value="062R_C_01011900"/>
+                <field name="CLASS_CODIFICATION_CODE" value="62R"/>
+            </row>
+        </table>
+        <table name="AP_BRANCH_CODE">
+            <row>
+                <field name="BRANCH_CODE" value="05R_C_21011999_FRF"/>
+                <field name="PART_CODIFICATION_CODE" value="05R_C_21011999"/>
+            </row>
+            <row>
+                <field name="BRANCH_CODE" value="06R_C_01011999_EUR"/>
+                <field name="PART_CODIFICATION_CODE" value="06R_C_01011999"/>
+            </row>
+            <row>
+                <field name="BRANCH_CODE" value="06R_D_01011999_EUR"/>
+                <field name="PART_CODIFICATION_CODE" value="06R_D_01011999"/>
+            </row>
+            <row>
+                <field name="BRANCH_CODE" value="061R_C_01011999_EUR"/>
+                <field name="PART_CODIFICATION_CODE" value="061R_C_01011999"/>
+            </row>
+            <row>
+                <field name="BRANCH_CODE" value="061R_D_01011999_EUR"/>
+                <field name="PART_CODIFICATION_CODE" value="061R_D_01011999"/>
+            </row>
+            <row>
+                <field name="BRANCH_CODE" value="061R_D_01011999_GBP"/>
+                <field name="PART_CODIFICATION_CODE" value="061R_D_01011999"/>
+            </row>
+            <row>
+                <field name="BRANCH_CODE" value="061I_C_01011999_EUR"/>
+                <field name="PART_CODIFICATION_CODE" value="061I_C_01011999"/>
+            </row>
+            <row>
+                <field name="BRANCH_CODE" value="061I_C_01011999_USD"/>
+                <field name="PART_CODIFICATION_CODE" value="061I_C_01011999"/>
+            </row>
+            <row>
+                <field name="BRANCH_CODE" value="061I_D_01011999_EUR"/>
+                <field name="PART_CODIFICATION_CODE" value="061I_D_01011999"/>
+            </row>
+            <row>
+                <field name="BRANCH_CODE" value="66R_C_21011999_FRF"/>
+                <field name="PART_CODIFICATION_CODE" value="66R_C_21011999"/>
+            </row>
+            <row>
+                <field name="BRANCH_CODE" value="062R_C_01011900_FRF"/>
+                <field name="PART_CODIFICATION_CODE" value="062R_C_01011900"/>
+            </row>
+        </table>
+    </input>
+    <output/>
+</story>

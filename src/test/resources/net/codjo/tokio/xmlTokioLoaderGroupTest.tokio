@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<story id="xmlTokioLoaderGroupTest" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:noNamespaceSchemaLocation="file:C:/dev/platform/cache/xsd/red-story.xsd">
+
+    <include-entities file="XmlTokioLoaderGroupEntity.entity"/>
+    <input>
+        <group>
+            <table name="AP_TEST_DANS_GROUP">
+                <row>
+                    <field name="field1" value="code"/>
+                </row>
+            </table>
+        </group>
+        <table name="AP_TEST2"/>
+        <create-entity name="entityWithGroup" id="inutilID"/>
+    </input>
+
+</story>

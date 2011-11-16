@@ -1,0 +1,59 @@
+<BODY>
+Le package <code>tokio</code> est un ensemble de classe permettant de specifier
+les tests fonctionnel dans un fichier XML. <P>
+
+Ce package est décomposé en 4 parties : xml (une DTD,et un XSL), un model de
+donnée (abstrait de la couche XML), un chargeur de Test (XMLScenariiLoader)
+et un positionneur d'environnement de test JDBC (JDBCScenario). <P>
+
+<HR width="100%" SIZE=2>
+<STRONG>Utilisation du package</STRONG> <BR>
+<u>Chargement du fichier XML :</u>
+Dans le cas ou le fichier XML se trouve sur le disque.
+<pre>
+    loader = new XMLScenariiLoader(new File("xml/test/ScenariiForTest.xml"));
+</pre>
+Dans le cas ou le fichier XML se trouve dans une archive JAR.
+<pre>
+    loader = new XMLScenariiLoader(MaClass.class.getResource("Scenarii.xml"));
+</pre>
+
+<p>
+<u>Execution d'un scénario de test :</u>
+<br>Dans cet exemple l'environnement de depart du scenario <code>ControleCoherence</code>
+est positionné dans la base au travers d'une connection.
+<pre>
+        Scenario scenario = loader.getScenario("ControleCoherence");
+        JDBCScenario jdbcsc = new JDBCScenario(scenario);
+        <b>jdbcsc.insertInputInDb(con);</b>
+</pre>
+<P>
+<u>Vérification du résultat d'un scénario de test :</u>
+<br>Dans cet exemple on verifie le contenu de la table <code>AP_VL</code> en triant
+sur la colonne <code>COL_NUMBER</code>.
+<pre>
+        Scenario scenario = loader.getScenario("ControleCoherence");
+        JDBCScenario jdbcsc = new JDBCScenario(scenario);
+        jdbcsc.insertInputInDb(con);
+        ... // lancement des opérations
+        assertTrue(<b>jdbcsc.verifyOutputs(con, "AP_VL", "COL_NUMBER")</b>);
+        </pre>
+<P>
+<u>Vérification de tout les résultats d'un scénario de test :</u>
+<br>Dans cet exemple on verifie le contenu de toutes les tables etalon en triant
+avec la clause définit dans le fichier tokio.
+<pre>
+        Scenario scenario = loader.getScenario("ControleCoherence");
+        JDBCScenario jdbcsc = new JDBCScenario(scenario);
+        jdbcsc.insertInputInDb(con);
+        ... // lancement des opérations
+        assertTrue(<b>jdbcsc.verifyAllOutputs(con)</b>);
+        </pre>
+<P>
+
+<HR width="100%" SIZE=2>
+<STRONG>Extension</STRONG> <BR>
+non documenté.
+<P>
+
+</BODY>

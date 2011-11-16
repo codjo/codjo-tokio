@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<entities>
+    <entity id="MyEntity">
+        <comment>MyEntity</comment>
+
+        <parameters>
+            <parameter name="param1">
+                <generateNumeric precision="23,2"/>
+            </parameter>
+            <parameter name="param2">
+                <generateString precision="255"/>
+            </parameter>
+            <parameter name="param3">
+                <generateDate/>
+            </parameter>
+            <parameter name="param4" default="@param5@ test"/>
+            <parameter name="param5" default="@param6@ @param1@"/>
+            <parameter name="param6" default="en titi"/>
+        </parameters>
+
+        <body>
+            <TABLE>
+                <row>
+                    <FIELD1 value="field1"/>
+                    <FIELD2_ONLY_PARAM value="@param1@"/>
+                    <FIELD3_BEFORE_PARAM value="Before@param1@"/>
+                    <FIELD4_AFTER_PARAM value="@param1@After"/>
+                    <FIELD5_MIDDLE_PARAM value="Before@param1@After"/>
+                    <FIELD6_BEFORE_NULL_PARAM value="Before@param2@"/>
+                    <FIELD7_MIDDLE_NULL_PARAM value="Before@param2@After"/>
+                    <FIELD8_AFTER_NULL_PARAM value="@param2@After"/>
+                    <FIELD9_EMPTY_PARAM value="Before@param3@After"/>
+                    <FIELD10 value="@param4@"/>
+                    <FIELD11 value="@param5@"/>
+                    <FIELD12 value="@param6@"/>
+                </row>
+            </TABLE>
+        </body>
+
+    </entity>
+</entities>

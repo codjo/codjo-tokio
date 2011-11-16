@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+
+<!ELEMENT Scenarii ( Scenario+ ) >
+<!ATTLIST Scenarii name CDATA #IMPLIED >
+
+<!ELEMENT Scenario ( comment?, properties?, property*, input?, etalon ) >
+<!ATTLIST Scenario id ID #REQUIRED >
+
+<!ELEMENT comment (#PCDATA)* >
+
+<!ELEMENT properties EMPTY >
+<!ATTLIST properties filename CDATA #IMPLIED >
+<!ATTLIST properties overwrite CDATA #IMPLIED >
+
+<!ELEMENT property EMPTY >
+<!ATTLIST property name CDATA #REQUIRED >
+<!ATTLIST property value CDATA #REQUIRED >
+
+<!ELEMENT input ( table* ) >
+
+<!ELEMENT etalon ( comparators?,table* ) >
+
+<!ELEMENT table ( row* ) >
+<!ATTLIST table name CDATA #REQUIRED >
+<!ATTLIST table identityInsert CDATA #IMPLIED >
+<!ATTLIST table orderClause CDATA #IMPLIED >
+<!ATTLIST table temporary CDATA #IMPLIED >
+
+<!ELEMENT comparators ( comparator* ) >
+<!ELEMENT comparator EMPTY >
+<!ATTLIST comparator field CDATA #REQUIRED >
+<!ATTLIST comparator assert CDATA #IMPLIED >
+<!ATTLIST comparator precision CDATA #IMPLIED >
+<!ATTLIST comparator param CDATA #IMPLIED >
+
+<!ELEMENT row ( field* ) >
+<!ATTLIST row id ID #IMPLIED >
+<!ATTLIST row inheritId IDREF #IMPLIED >
+<!ATTLIST row comment CDATA #IMPLIED >
+
+<!ELEMENT field EMPTY >
+<!ATTLIST field name NMTOKEN #REQUIRED >
+<!ATTLIST field value CDATA #IMPLIED >
+<!ATTLIST field null CDATA #IMPLIED >

@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<?xml-stylesheet type="text/xsl" href="../Scenarii.xsl"?>
+<!DOCTYPE Scenarii PUBLIC '-//AGF, Inc.//DTD Scenarii 2.0//EN' "http://scenarii.dtd">
+<Scenarii name="Controles des VL">
+    <Scenario id="replaceAntVariablesSrc">
+        <comment>Commentaire $key1$</comment>
+        <input>
+            <table name="TABLE">
+                <row>
+                    <field name="FIELD" value="$key2$"/>
+                </row>
+            </table>
+        </input>
+        <etalon>
+            <table name="TABLE">
+                <row>
+                    <field name="FIELD" value="$key3$"/>
+                </row>
+            </table>
+        </etalon>
+    </Scenario>
+    <Scenario id="replaceAntVariablesRef">
+        <comment>Commentaire value1</comment>
+        <input>
+            <table name="TABLE">
+                <row>
+                    <field name="FIELD" value="value2"/>
+                </row>
+            </table>
+        </input>
+        <etalon>
+            <table name="TABLE">
+                <row>
+                    <field name="FIELD" value="value3"/>
+                </row>
+            </table>
+        </etalon>
+    </Scenario>
+</Scenarii>

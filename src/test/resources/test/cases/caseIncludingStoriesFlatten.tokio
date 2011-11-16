@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<cases xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="default.xsd">
+    <case id="NominalCase">
+        <include-story file="referentialWithInputFlatten.tokio"/>
+        <include-story file="referentialWithOutputFlatten.tokio"/>
+
+        <input>
+            <MY_TABLE>
+                <copy id="copyRowInput" row="refRowInput">
+                    <FIELD1 value="copyValueField1Row0"/>
+                </copy>
+            </MY_TABLE>
+            <ANOTHER_TABLE>
+                <row>
+                    <ANOTHER_FIELD1 value="valueInputField1"/>
+                    <ANOTHER_FIELD2 value="valueInputField2"/>
+                </row>
+            </ANOTHER_TABLE>
+        </input>
+        <output>
+            <MY_TABLE>
+                <copy id="copyRowOutput" row="refRowOutput">
+                    <FIELD1 value="copyValueField1"/>
+                </copy>
+            </MY_TABLE>
+            <ANOTHER_TABLE>
+                <row>
+                    <ANOTHER_FIELD1 value="valueOutputField1"/>
+                    <ANOTHER_FIELD2 value="valueOutputField2"/>
+                </row>
+            </ANOTHER_TABLE>
+        </output>
+    </case>
+    <case id="AuxiliaryCase" inheritId="NominalCase">
+        <include-story file="auxiliaryReferential.tokio"/>
+
+        <input>
+            <MY_TABLE>
+                <copy row="copyRowInput">
+                    <FIELD2 value="copyValueField2Row0"/>
+                </copy>
+            </MY_TABLE>
+        </input>
+        <output>
+            <MY_TABLE>
+                <copy row="refRowOutput">
+                    <FIELD2 value="copyValueField2"/>
+                </copy>
+            </MY_TABLE>
+        </output>
+    </case>
+</cases>

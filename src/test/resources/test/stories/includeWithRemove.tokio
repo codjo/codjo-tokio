@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<!DOCTYPE story PUBLIC "-//AGF, Inc.//DTD story 2.0//EN" "http://story.dtd">
+<story id="UseCaseRemove">
+    <include-story file="referentialStandard.tokio"/>
+    <input>
+        <table name="MY_TABLE">
+            <remove row="refRow"/>
+        </table>
+        <table name="MY_TABLE_SPEC">
+            <row>
+                <field name="SPEC_FIELD1" value="valueSpecField1"/>
+                <field name="SPEC_FIELD2" value="valueSpecField2"/>
+            </row>
+        </table>
+    </input>
+</story>

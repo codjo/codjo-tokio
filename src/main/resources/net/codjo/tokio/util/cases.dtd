@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+
+<!ELEMENT cases ( include-entities*, case+ ) >
+<!ATTLIST cases name CDATA #IMPLIED >
+<!ATTLIST cases xmlns:xsi CDATA #IMPLIED >
+<!ATTLIST cases xsi:noNamespaceSchemaLocation CDATA #IMPLIED >
+
+<!ELEMENT case ( include-story*, comment?, properties?, property*, input?, output? ) >
+<!ATTLIST case id ID #REQUIRED >
+<!ATTLIST case inheritId IDREF #IMPLIED >
+
+<!ELEMENT comment (#PCDATA)* >
+
+<!ELEMENT include-story EMPTY >
+<!ATTLIST include-story file CDATA #REQUIRED >
+
+<!ELEMENT include-entities EMPTY >
+<!ATTLIST include-entities file CDATA #REQUIRED >
+
+<!ELEMENT properties EMPTY >
+<!ATTLIST properties filename CDATA #IMPLIED >
+<!ATTLIST properties overwrite CDATA #IMPLIED >
+
+<!ELEMENT property EMPTY >
+<!ATTLIST property name CDATA #REQUIRED >
+<!ATTLIST property value CDATA #REQUIRED >
+
+<!ELEMENT input ((table|create-entity|copy-entity)*) >
+
+<!ELEMENT output ( comparators?,(table|create-entity|copy-entity)* ) >
+
+<!ELEMENT create-entity ( parameter* ) >
+<!ATTLIST create-entity name CDATA #REQUIRED >
+<!ATTLIST create-entity id ID #REQUIRED >
+<!ATTLIST create-entity comment CDATA #IMPLIED >
+
+<!ELEMENT copy-entity EMPTY >
+<!ATTLIST copy-entity entity CDATA #REQUIRED >
+<!ATTLIST copy-entity id ID #REQUIRED >
+<!ATTLIST copy-entity comment CDATA #IMPLIED >
+
+<!ELEMENT parameter EMPTY >
+<!ATTLIST parameter name NMTOKEN #REQUIRED >
+<!ATTLIST parameter value CDATA #IMPLIED >
+<!ATTLIST parameter null CDATA #IMPLIED >
+
+<!ELEMENT table ( (row|copy|remove|replace)* ) >
+<!ATTLIST table name CDATA #REQUIRED >
+<!ATTLIST table identityInsert CDATA #IMPLIED >
+<!ATTLIST table orderClause CDATA #IMPLIED >
+<!ATTLIST table temporary CDATA #IMPLIED >
+
+<!ELEMENT comparators ( comparator* ) >
+<!ELEMENT comparator EMPTY >
+<!ATTLIST comparator field CDATA #REQUIRED >
+<!ATTLIST comparator assert CDATA #IMPLIED >
+<!ATTLIST comparator precision CDATA #IMPLIED >
+<!ATTLIST comparator param CDATA #IMPLIED >
+
+<!ELEMENT row ( field* ) >
+<!ATTLIST row id ID #IMPLIED >
+<!ATTLIST row comment CDATA #IMPLIED >
+
+<!ELEMENT copy ( field* ) >
+<!ATTLIST copy id ID #IMPLIED >
+<!ATTLIST copy row CDATA #REQUIRED >
+<!ATTLIST copy comment CDATA #IMPLIED >
+
+<!ELEMENT replace ( field* ) >
+<!ATTLIST replace row CDATA #REQUIRED >
+<!ATTLIST replace comment CDATA #IMPLIED >
+
+<!ELEMENT remove EMPTY >
+<!ATTLIST remove row CDATA #REQUIRED >
+<!ATTLIST remove comment CDATA #IMPLIED >
+
+<!ELEMENT field EMPTY >
+<!ATTLIST field name NMTOKEN #REQUIRED >
+<!ATTLIST field value CDATA #IMPLIED >

@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+
+<!ELEMENT entities ( entity+ ) >
+
+<!ELEMENT entity ( comment?,parameters?, body ) >
+<!ATTLIST entity id ID #REQUIRED >
+
+<!ELEMENT comment (#PCDATA)* >
+
+<!ELEMENT body ( table+ ) >
+
+<!ELEMENT parameters ( parameter+ ) >
+
+<!ELEMENT parameter EMPTY >
+<!ATTLIST parameter name CDATA #REQUIRED >
+<!ATTLIST parameter default CDATA #IMPLIED >
+
+<!ELEMENT table ( row*,copy* ) >
+<!ATTLIST table name CDATA #REQUIRED >
+<!ATTLIST table identityInsert CDATA #IMPLIED >
+<!ATTLIST table orderClause CDATA #IMPLIED >
+<!ATTLIST table temporary CDATA #IMPLIED >
+
+<!ELEMENT row ( field* ) >
+<!ATTLIST row id ID #IMPLIED >
+<!ATTLIST row comment CDATA #IMPLIED >
+
+<!ELEMENT copy ( field* ) >
+<!ATTLIST copy id ID #IMPLIED >
+<!ATTLIST copy row CDATA #REQUIRED >
+<!ATTLIST copy comment CDATA #IMPLIED >
+
+<!ELEMENT field EMPTY >
+<!ATTLIST field name CDATA #REQUIRED >
+<!ATTLIST field value CDATA #IMPLIED >

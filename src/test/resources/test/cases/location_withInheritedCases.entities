@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<entities>
+    <entity id="row1">
+        <required>
+            <table name="AP_TABLE">
+                <row>
+                    <field name="FIELD1"/>
+                </row>
+            </table>
+        </required>
+    </entity>
+</entities>

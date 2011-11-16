@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<entities>
+    <entity id="MyEntity">
+        <parameters>
+            <parameter name="param1"/>
+            <parameter name="param2"/>
+        </parameters>
+
+        <body>
+            <FIRST_TABLE>
+                <row id="refRow">
+                    <FIRST_FIELD1 value="field1"/>
+                    <FIRST_FIELD2 value="@param1@"/>
+                    <FIRST_FIELD3 value="field3"/>
+                </row>
+                <copy row="refRow">
+                    <FIRST_FIELD1 value="newField1"/>
+                    <FIRST_FIELD2 value="@param2@"/>
+                </copy>
+            </FIRST_TABLE>
+
+            <SECOND_TABLE>
+                <row>
+                    <SECOND_FIELD1 value="@param2@"/>
+                </row>
+            </SECOND_TABLE>
+        </body>
+
+    </entity>
+</entities>

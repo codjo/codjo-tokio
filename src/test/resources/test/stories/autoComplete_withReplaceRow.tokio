@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<!DOCTYPE story PUBLIC "-//AGF, Inc.//DTD story 2.0//EN" "http://story.dtd">
+<story id="nominal">
+    <input>
+        <table name="MY_TABLE">
+            <row id="row1" autoComplete="true">
+                <field name="FIELD1" value="valueField1"/>
+            </row>
+            <row id="row2" autoComplete="true">
+                <field name="FIELD2" value="valueField2"/>
+            </row>
+            <replace row="row1" autoComplete="false"/>
+            <replace row="row2"/>
+        </table>
+    </input>
+</story>

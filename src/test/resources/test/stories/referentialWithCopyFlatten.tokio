@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<story id="UseCase">
+    <comment>useCase</comment>
+    <include-story file="referentialStandardFlatten.tokio"/>
+    <input>
+        <MY_TABLE>
+            <copy row="refRow">
+                <FIELD1 value="valueField1UseCase"/>
+            </copy>
+        </MY_TABLE>
+    </input>
+
+</story>

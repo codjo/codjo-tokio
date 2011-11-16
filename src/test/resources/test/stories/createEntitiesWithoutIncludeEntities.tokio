@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<!DOCTYPE story PUBLIC "-//AGF, Inc.//DTD story 2.0//EN" "http://story.dtd">
+<story id="UseCaseEntities">
+
+    <input>
+        <table name="MY_TABLE">
+            <row>
+                <field name="FIELD1" value="valueField1"/>
+                <field name="FIELD2" value="valueField2"/>
+            </row>
+        </table>
+
+        <create-entity name="MyEntity" id="entity1">
+            <parameter name="param1" value="valueParam1"/>
+            <parameter name="param2" value="valueParam2"/>
+        </create-entity>
+    </input>
+
+</story>

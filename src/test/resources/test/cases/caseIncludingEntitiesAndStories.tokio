@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<!DOCTYPE cases PUBLIC "-//AGF, Inc.//DTD stories 2.0//EN" "http://cases.dtd">
+<cases>
+    <include-entities file="entities.xml"/>
+    <case id="NominalCase">
+        <include-story file="referentialWithInput.tokio"/>
+
+        <input>
+            <create-entity name="Entity" id="myEntity">
+                <parameter name="param1" value="fieldValueParameter"/>
+            </create-entity>
+            <table name="ANOTHER_TABLE">
+                <row>
+                    <field name="ANOTHER_FIELD1" value="valueInputField1"/>
+                    <field name="ANOTHER_FIELD2" value="valueInputField2"/>
+                </row>
+            </table>
+        </input>
+        <output>
+            <copy-entity entity="myEntity" id="anotherEntity"/>
+        </output>
+    </case>
+    <case id="AuxiliaryCase" inheritId="NominalCase">
+        <include-story file="referentialWithOutput.tokio"/>
+
+        <input>
+            <table name="MY_TABLE">
+                <replace row="myEntity.rowId">
+                    <field name="FIELD2" value="newValueInput"/>
+                </replace>
+            </table>
+        </input>
+        <output>
+            <table name="MY_TABLE">
+                <copy row="anotherEntity.rowId">
+                    <field name="FIELD2" value="newValueOutput"/>
+                </copy>
+            </table>
+        </output>
+    </case>
+</cases>

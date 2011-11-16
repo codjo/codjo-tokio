@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<entities>
+    <include-entities file="caseCompositeEntity_entityToInclude.xml"/>
+    <entity id="father">
+        <body>
+            <create-entity name="child" id="son">
+                <parameter name="age" value="12"/>
+            </create-entity>
+            <create-entity name="child">
+                <parameter name="age" value="8"/>
+            </create-entity>
+            <create-entity name="child">
+                <parameter name="age" value="6"/>
+            </create-entity>
+        </body>
+    </entity>
+</entities>

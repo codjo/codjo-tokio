@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<cases>
+    <case id="NominalCase">
+        <include-story file="referentialWithEntityFlatten.tokio"/>
+
+        <input>
+            <MY_TABLE>
+                <copy row="myEntity.rowId">
+                    <FIELD1 value="copyValueField1"/>
+                </copy>
+            </MY_TABLE>
+        </input>
+        <output>
+            <MY_TABLE>
+                <copy row="anotherEntity.rowId">
+                    <FIELD1 value="copyValueField1"/>
+                </copy>
+            </MY_TABLE>
+        </output>
+    </case>
+</cases>

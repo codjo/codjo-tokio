@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<table name="REF_COUNTRY">
+    <row>
+        <field name="CODE" value="FR"/>
+        <field name="LABEL" value="FRANCE"/>
+    </row>
+</table>

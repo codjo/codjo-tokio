@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<story id="UseCaseEntities">
+
+    <include-entities file="../entities/entitiesWithRequired.xml"/>
+
+    <input>
+
+        <create-entity name="MyEntity" id="entity1">
+            <parameter name="param1">
+                <generateString precision="255"/>
+            </parameter>
+            <parameter name="param2" value="valueParam2"/>
+        </create-entity>
+
+        <create-entity name="MyEntity" id="entity1">
+            <parameter name="param1">
+                <generateString precision="255"/>
+            </parameter>
+            <parameter name="param2" value="valueParam2"/>
+        </create-entity>
+
+    </input>
+
+</story>

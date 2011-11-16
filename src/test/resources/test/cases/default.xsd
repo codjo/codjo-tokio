@@ -1,0 +1,101 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema">
+    <xs:element name="cases">
+        <xs:complexType>
+            <xs:sequence maxOccurs="unbounded">
+                <xs:element ref="case"/>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+
+    <xs:element name="case">
+        <xs:complexType>
+            <xs:sequence maxOccurs="1">
+                <xs:element ref="input" minOccurs="0" maxOccurs="1"/>
+                <xs:element ref="output" minOccurs="0" maxOccurs="1"/>
+            </xs:sequence>
+            <xs:attribute name="id" type="xs:string">
+                <xs:annotation>
+                    <xs:documentation xml:lang="fr">Identifiant du cas.</xs:documentation>
+                </xs:annotation>
+            </xs:attribute>
+            <xs:attribute name="inheritId" type="xs:string" use="optional">
+                <xs:annotation>
+                    <xs:documentation xml:lang="fr">Identifiant du cas herite.</xs:documentation>
+                </xs:annotation>
+            </xs:attribute>
+        </xs:complexType>
+    </xs:element>
+
+    <xs:element name="input" type="inputoutput"/>
+    <xs:element name="output" type="inputoutput"/>
+
+    <xs:complexType name="inputoutput">
+        <xs:choice maxOccurs="unbounded">
+            <xs:element name="table">
+                <xs:complexType>
+                    <xs:sequence>
+                        <xs:element name="row">
+                            <xs:complexType>
+                                <xs:sequence>
+                                    <xs:element name="field">
+                                        <xs:complexType>
+                                            <xs:attribute name="name"/>
+                                            <xs:attribute name="value"/>
+                                        </xs:complexType>
+                                    </xs:element>
+                                </xs:sequence>
+                                <xs:attribute name="id"/>
+                            </xs:complexType>
+                        </xs:element>
+                    </xs:sequence>
+                    <xs:attribute name="name"/>
+                </xs:complexType>
+            </xs:element>
+            <xs:element ref="MY_TABLE"/>
+            <xs:element name="YOUR_TABLE"/>
+        </xs:choice>
+    </xs:complexType>
+
+    <xs:element name="MY_TABLE">
+        <xs:complexType>
+            <xs:sequence maxOccurs="unbounded">
+                <xs:element name="row" type="row-MY_TABLE" minOccurs="0"/>
+                <xs:element name="copy" type="row-MY_TABLE" minOccurs="0">
+                    <xs:complexType>
+                        <xs:attribute name="row" type="xs:string">
+                            <xs:annotation>
+                                <xs:documentation xml:lang="fr">Identifiant de la ligne.</xs:documentation>
+                            </xs:annotation>
+                        </xs:attribute>
+                    </xs:complexType>
+                </xs:element>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+
+    <xs:complexType name="row-MY_TABLE">
+        <xs:all maxOccurs="1">
+            <xs:element name="FIELD1" type="field" minOccurs="0" maxOccurs="1"/>
+            <xs:element name="FIELD2" type="field" minOccurs="0" maxOccurs="1"/>
+        </xs:all>
+        <xs:attribute name="id" type="xs:string">
+            <xs:annotation>
+                <xs:documentation xml:lang="fr">Identifiant de la ligne.</xs:documentation>
+            </xs:annotation>
+        </xs:attribute>
+        <xs:attribute name="value" type="xs:string">
+            <xs:annotation>
+                <xs:documentation xml:lang="fr">Valeur du champ.</xs:documentation>
+            </xs:annotation>
+        </xs:attribute>
+    </xs:complexType>
+
+    <xs:complexType name="field">
+        <xs:attribute name="value" type="xs:string">
+            <xs:annotation>
+                <xs:documentation xml:lang="fr">Valeur du champ.</xs:documentation>
+            </xs:annotation>
+        </xs:attribute>
+    </xs:complexType>
+</xs:schema>

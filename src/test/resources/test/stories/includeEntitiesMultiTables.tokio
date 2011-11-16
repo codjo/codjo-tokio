@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<!DOCTYPE story PUBLIC "-//AGF, Inc.//DTD story 2.0//EN" "http://story.dtd">
+<story id="UseCaseEntities">
+
+    <include-entities file="../entities/entities.xml"/>
+
+    <input>
+        <table name="MY_TABLE">
+            <row>
+                <field name="FIELD1" value="valueField1"/>
+                <field name="FIELD2" value="valueField2"/>
+            </row>
+        </table>
+
+        <create-entity name="MultiTables" id="entity1">
+            <parameter name="tableName" value="FIRST_TABLE"/>
+            <parameter name="param" value="firstValueParam"/>
+        </create-entity>
+
+        <create-entity name="MultiTables" id="entity2">
+            <parameter name="tableName" value="SECOND_TABLE"/>
+            <parameter name="param" value="secondValueParam"/>
+        </create-entity>
+    </input>
+
+</story>

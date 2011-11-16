@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<!DOCTYPE story PUBLIC "-//AGF, Inc.//DTD story 2.0//EN" "http://story.dtd">
+<story id="UseCaseEntities">
+
+    <include-entities file="../entities/entities.xml"/>
+
+    <input>
+        <table name="MY_TABLE">
+            <row>
+                <field name="FIELD1" value="valueField1"/>
+                <field name="FIELD2" value="valueField2"/>
+            </row>
+        </table>
+
+        <create-entity name="MyEntity" id="entity1">
+            <parameter name="param1" value="valueParam1Entity1"/>
+            <parameter name="param2" value="valueParam2Entity1"/>
+        </create-entity>
+
+        <table name="FIRST_TABLE">
+            <replace row="entity1.firstTableFirstRow">
+                <field name="FIRST_FIELD1" value="field1Replace"/>
+            </replace>
+        </table>
+    </input>
+
+    <output>
+        <copy-entity entity="entity1" id="entity1Copy"/>
+        <table name="FIRST_TABLE">
+            <replace row="entity1Copy.firstTableFirstRow">
+                <field name="FIRST_FIELD1" value="newValue"/>
+            </replace>
+            <copy row="entity1.firstTableFirstRow">
+                <field name="FIRST_FIELD2" value="newValueField2"/>
+            </copy>
+        </table>
+    </output>
+
+</story>

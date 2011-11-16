@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<!DOCTYPE story PUBLIC "-//AGF, Inc.//DTD story 2.0//EN" "http://story.dtd">
+<story id="Simple">
+    <include-story file="RefCodification.tokio"/>
+    <include-entities file="../required_withEntities.entities"/>
+    <input>
+        <create-entity name="parent" id="parent"/>
+    </input>
+    <output/>
+</story>

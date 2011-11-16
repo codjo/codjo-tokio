@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<cases>
+    <include-entities file="entitiesFlatten.xml"/>
+    <case id="DefaultValueErrorCase">
+        <input>
+            <create-entity name="EntityWithNoDefaultValuesErrorCase" id="EntityWithNoDefaultValuesErrorCase"/>
+        </input>
+        <output/>
+    </case>
+</cases>

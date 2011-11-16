@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<entities>
+    <include-entities file="createEntity_inRequired_includedEntity.xml"/>
+    <entity id="father">
+        <required>
+            <create-entity name="son" id="kevin"/>
+        </required>
+    </entity>
+</entities>

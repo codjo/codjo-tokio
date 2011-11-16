@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<entities>
+    <entity id="MyEntity">
+        <comment>MyEntity</comment>
+        <parameters>
+            <parameter name="param1"/>
+            <parameter name="param2"/>
+        </parameters>
+        <body>
+            <TABLE1 orderClause="FIELD1">
+                <row>
+                    <FIELD1 value="field4"/>
+                </row>
+            </TABLE1>
+
+        </body>
+        <required>
+            <TABLE2>
+                <row>
+                    <FIELD1 value="@param1@"/>
+                    <FIELD2 value="@param2@"/>
+                </row>
+            </TABLE2>
+        </required>
+
+    </entity>
+</entities>

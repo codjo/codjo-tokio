@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<story id="Referential">
+    <comment>Référentiel</comment>
+    <properties filename="../properties/load.properties" overwrite="true"/>
+    <property name="tralala" value="youpi"/>
+    <input>
+        <MY_TABLE>
+            <row id="refRow">
+                <FIELD1 value="valueField1Row0"/>
+                <FIELD2 value="valueField2Row0"/>
+            </row>
+            <row>
+                <FIELD1 value="valueField1Row1"/>
+                <FIELD2 value="valueField2Row1"/>
+            </row>
+        </MY_TABLE>
+    </input>
+
+</story>

@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<cases xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="default.xsd">
+    <include-entities file="entitiesFlatten.xml"/>
+    <case id="NominalCase">
+        <input>
+            <create-entity name="Entity" id="myEntity">
+                <parameter name="param1" value="fieldValueParameter"/>
+            </create-entity>
+            <ANOTHER_TABLE>
+                <row>
+                    <ANOTHER_FIELD1 value="valueInputField1"/>
+                    <ANOTHER_FIELD2 value="valueInputField2"/>
+                </row>
+            </ANOTHER_TABLE>
+        </input>
+        <output>
+            <copy-entity entity="myEntity" id="anotherEntity"/>
+        </output>
+    </case>
+    <case id="AuxiliaryCase" inheritId="NominalCase">
+        <input>
+            <MY_TABLE>
+                <replace row="myEntity.rowId">
+                    <FIELD2 value="newValueInput"/>
+                </replace>
+            </MY_TABLE>
+        </input>
+        <output>
+            <MY_TABLE>
+                <copy row="anotherEntity.rowId">
+                    <FIELD2 value="newValueOutput"/>
+                </copy>
+            </MY_TABLE>
+        </output>
+    </case>
+	<case id="DefaultValueCase">
+        <input>
+            <create-entity name="EntityWithDefaultValues" id="myEntityWithDefaultValues">
+                <parameter name="paramNull"/>
+                <parameter name="paramEmptyString" value=""/>
+                <parameter name="param1" value="ExplicitParam1"/>
+                <parameter name="param3" value="ExplicitParam3"/>
+            </create-entity>
+        </input>
+        <output/>
+    </case>
+</cases>

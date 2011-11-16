@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<story id="ReferentialWithInput" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:noNamespaceSchemaLocation="default.xsd">
+    <comment>Référentiel</comment>
+
+    <input>
+        <MY_TABLE>
+            <row id="refRowInput">
+                <FIELD1 value="valueField1Row0"/>
+                <FIELD2 value="valueField2Row0"/>
+            </row>
+            <row>
+                <FIELD1 value="valueField1Row1"/>
+                <FIELD2 value="valueField2Row1"/>
+            </row>
+        </MY_TABLE>
+    </input>
+
+</story>

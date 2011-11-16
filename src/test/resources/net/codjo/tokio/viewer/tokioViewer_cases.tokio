@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<!DOCTYPE cases PUBLIC "-//AGF, Inc.//DTD story 2.0//EN" "http://cases.dtd">
+<cases>
+    <case id="Simple">
+        <input>
+            <table name="MY_TABLE">
+                <row id="replaceRow">
+                    <field name="MY_TABLE_FIELD1" value="myTableField1Row0"/>
+                    <field name="MY_TABLE_FIELD2" value="myTableField2Row0"/>
+                </row>
+            </table>
+            <table name="MY_TABLE_INPUT">
+                <row>
+                    <field name="MY_TABLE_INPUT_FIELD1" value="myTableInputField1Row0"/>
+                    <field name="MY_TABLE_INPUT_FIELD2" value="myTableInputField2Row0"/>
+                </row>
+            </table>
+        </input>
+        <output>
+            <table name="MY_TABLE">
+                <row id="replaceRowOutput">
+                    <field name="MY_TABLE_FIELD1" value="myTableField1Row0"/>
+                    <field name="MY_TABLE_FIELD2" value="myTableField2Row0"/>
+                </row>
+            </table>
+        </output>
+    </case>
+    <case id="HeritageSansModificationStructure" inheritId="Simple">
+        <input>
+            <table name="MY_TABLE">
+                <replace row="replaceRow">
+                    <field name="MY_TABLE_FIELD1" value="myTableNewValue"/>
+                </replace>
+            </table>
+        </input>
+        <output>
+            <table name="MY_TABLE">
+                <replace row="replaceRowOutput">
+                    <field name="MY_TABLE_FIELD1" value="myTableNewValueOutput"/>
+                </replace>
+            </table>
+        </output>
+    </case>
+    <case id="HeritageAvecModificationStructure" inheritId="Simple">
+        <input>
+            <table name="MY_TABLE">
+                <row>
+                    <field name="MY_TABLE_FIELD1" value="newValueMyTableField1"/>
+                    <field name="MY_TABLE_FIELD3" value="newValueMyTableField3"/>
+                </row>
+            </table>
+        </input>
+        <output>
+            <table name="MY_TABLE">
+                <row>
+                    <field name="MY_TABLE_FIELD1" value="newValueMyTableField1Output"/>
+                    <field name="MY_TABLE_FIELD3" value="newValueMyTableField3Output"/>
+                </row>
+            </table>
+        </output>
+    </case>
+</cases>

@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<?xml-stylesheet type="text/xsl" href="../Scenarii.xsl"?>
+<!DOCTYPE Scenarii PUBLIC "-//AGF, Inc.//DTD Scenarii 2.0//EN" "http://scenarii.dtd">
+<Scenarii name="Changement de properties">
+    <Scenario id="PasDeChargementProperties">
+        <properties/>
+        <etalon/>
+    </Scenario>
+    <Scenario id="ChargementProperties">
+        <properties filename="../properties/load.properties"/>
+        <etalon/>
+    </Scenario>
+    <Scenario id="ChargementPropertiesNotFound">
+        <properties filename="../properties/file.unexisting"/>
+        <etalon/>
+    </Scenario>
+    <Scenario id="ChargementPropertiesBadProperty">
+        <properties filename="../properties/bad.properties"/>
+        <etalon/>
+    </Scenario>
+    <Scenario id="ChargementPropertiesCorrupted">
+        <properties filename="../properties/file.corrupted"/>
+        <etalon/>
+    </Scenario>
+    <Scenario id="ChargementPropertiesOverwrite">
+        <properties filename="../properties/overwrite.properties" overwrite="true"/>
+        <etalon/>
+    </Scenario>
+    <Scenario id="ChargementPropertySimple">
+        <property name="user.name" value="toto"/>
+        <input>
+            <table name="USER">
+                <row>
+                    <field name="USER_NAME" value="$user.name"/>
+                </row>
+            </table>
+        </input>
+        <etalon/>
+    </Scenario>
+</Scenarii>

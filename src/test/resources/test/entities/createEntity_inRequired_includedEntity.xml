@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<entities>
+    <entity id="son">
+        <body>
+            <AP_TABLE>
+                <row>
+                    <NAME value="kevin"/>
+                </row>
+            </AP_TABLE>
+        </body>
+    </entity>
+</entities>

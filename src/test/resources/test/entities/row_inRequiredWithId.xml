@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<entities>
+    <include-entities file="createEntity_inRequired_includedEntity.xml"/>
+    <entity id="father">
+        <required>
+            <AP_TABLE>
+                <row id="row1"/>
+            </AP_TABLE>
+        </required>
+    </entity>
+</entities>

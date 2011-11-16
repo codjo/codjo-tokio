@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<story id="UseCaseDoubleRowId">
+    <include-story file="referentialStandardFlatten.tokio"/>
+    <input>
+        <MY_TABLE>
+            <row id="refRow">
+                <FIELD1 value="valueField1UseCaseReplace"/>
+                <FIELD2 value="valueField2UseCaseReplace"/>
+            </row>
+        </MY_TABLE>
+    </input>
+</story>

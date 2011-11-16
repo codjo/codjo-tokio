@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<!DOCTYPE story PUBLIC "-//AGF, Inc.//DTD story 2.0//EN" "http://story.dtd">
+<story id="ReferentialWithOutput">
+    <comment>Référentiel</comment>
+
+    <output>
+        <table name="MY_TABLE">
+            <row id="refRowOutput">
+                <field name="FIELD1" value="valueField1"/>
+                <field name="FIELD2" value="valueField2"/>
+            </row>
+        </table>
+    </output>
+
+</story>

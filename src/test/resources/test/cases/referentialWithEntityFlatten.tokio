@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<story id="referentialWithEntity">
+    <include-entities file="entities.xml"/>
+
+    <input>
+        <create-entity name="Entity" id="myEntity">
+            <parameter name="param1" value="fieldValueParameter"/>
+        </create-entity>
+    </input>
+
+    <output>
+        <copy-entity entity="myEntity" id="anotherEntity"/>
+    </output>
+
+</story>

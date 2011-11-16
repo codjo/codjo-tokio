@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<entities>
+    <entity id="MyEntity">
+        <comment>MyEntity</comment>
+        <parameters>
+            <parameter name="param"></parameter>
+        </parameters>
+        <body>
+            <TABLE1 orderClause="FIELD1">
+                <row>
+                    <FIELD1 value="field4"/>
+                </row>
+                <row>
+                    <FIELD1 value="field3"/>
+                </row>
+            </TABLE1>
+        </body>
+
+    </entity>
+    <entity id="MyEntity2">
+        <parameters>
+            <parameter name="param"></parameter>
+        </parameters>
+        <body>
+            <TABLE2 orderClause="FIELD2">
+                <row>
+                    <FIELD1 value="field1"/>
+                    <FIELD2 value="field2"/>
+                </row>
+           </TABLE2>
+        </body>
+
+    </entity>
+</entities>

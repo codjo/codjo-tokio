@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<!DOCTYPE story PUBLIC "-//AGF, Inc.//DTD story 2.0//EN" "http://story.dtd">
+<story id="Generator">
+    <input>
+        <table name="MY_TABLE_SPEC">
+            <row>
+                <field name="SPEC_FIELD1">
+                    <generateNumeric precision="23,5"/>
+                </field>
+                <field name="SPEC_FIELD2">
+                    <generateString precision="6"/>
+                </field>
+                <field name="SPEC_FIELD3">
+                    <generateDate/>
+                </field>
+                <field name="SPEC_FIELD4">
+                    <generateTimestamp/>
+                </field>
+                <field name="SPEC_FIELD5">
+                    <generateBoolean/>
+                </field>
+            </row>
+        </table>
+    </input>
+</story>

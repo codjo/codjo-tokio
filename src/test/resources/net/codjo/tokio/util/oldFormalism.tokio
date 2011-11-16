@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<!DOCTYPE Scenarii SYSTEM "http://scenarii.dtd" [
+      <!ENTITY refCurrency SYSTEM "src/test/resources/net/codjo/tokio/util/refCurrency.tokio">
+      <!ENTITY refCountry  SYSTEM "src/test/resources/net/codjo/tokio/util/refCountry.tokio">
+      ]>
+<Scenarii name="olfFormalism">
+    <Scenario id="nominal">
+        <input>
+            &refCurrency;
+            &refCountry;
+            <table name="AP_FAMILY">
+                <row>
+                    <field name="FIRSTNAME" value="John"/>
+                    <field name="LASTNAME" value="SMITH"/>
+                </row>
+            </table>
+        </input>
+        <etalon/>
+    </Scenario>
+</Scenarii>

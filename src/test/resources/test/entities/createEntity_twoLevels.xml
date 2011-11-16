@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<entities>
+    <include-entities file="createEntity_twoLevels_firstIncludedEntity.xml"/>
+    <entity id="father">
+        <body>
+            <create-entity name="son">
+                <parameter name="param2" value="newValue2"/>
+            </create-entity>
+        </body>
+    </entity>
+</entities>

@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<table name="REF_CURRENCY">
+    <row>
+        <field name="CODE" value="EUR"/>
+        <field name="LABEL" value="EURO"/>
+    </row>
+</table>

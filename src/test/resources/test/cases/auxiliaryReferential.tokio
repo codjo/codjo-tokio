@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<!DOCTYPE story PUBLIC "-//AGF, Inc.//DTD story 2.0//EN" "http://story.dtd">
+<story id="AuxiliaryReferential">
+    <comment>Référentiel</comment>
+
+    <output>
+        <table name="AUXILIARY_TABLE">
+            <row>
+                <field name="AUXILIARY_FIELD" value="auxiliary"/>
+            </row>
+        </table>
+    </output>
+
+</story>

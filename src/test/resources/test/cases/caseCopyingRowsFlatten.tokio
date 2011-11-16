@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<cases xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="default.xsd">
+    <case id="NominalCase">
+        <input>
+            <MY_TABLE>
+                <row id="row1">
+                    <FIELD1 value="valueField1">
+                        <generateNumeric precision="38,3"/>
+                    </FIELD1>
+                    <FIELD2 value="valueField2">
+                        <generateNumeric precision="38,3"/>
+                    </FIELD2>
+                </row>
+            </MY_TABLE>
+        </input>
+        <output>
+            <MY_TABLE>
+                <row id="row2">
+                    <FIELD1 value="valueOutputField1"/>
+                    <FIELD2 value="valueOutputField2"/>
+                </row>
+            </MY_TABLE>
+        </output>
+    </case>
+    <case id="AuxiliaryFirstCase" inheritId="NominalCase">
+        <input>
+            <MY_TABLE>
+                <row>
+                    <FIELD1 value="valueField1NewRow"/>
+                    <FIELD2 value="valueField2NewRow"/>
+                </row>
+                <copy row="row1">
+                    <FIELD2 value="newValueField2"/>
+                </copy>
+            </MY_TABLE>
+        </input>
+        <output>
+            <MY_TABLE>
+                <row>
+                    <FIELD1 value="valueOutputField1NewRow"/>
+                    <FIELD2 value="valueOutputField2NewRow"/>
+                </row>
+                <copy id="copyRow2" row="row2">
+                    <FIELD1 value="newValueOutputField1"/>
+                </copy>
+            </MY_TABLE>
+        </output>
+    </case>
+    <case id="AuxiliarySecondCase" inheritId="AuxiliaryFirstCase">
+        <input>
+            <MY_TABLE>
+                <copy row="row1">
+                    <FIELD2 value="copyValueField2"/>
+                </copy>
+            </MY_TABLE>
+        </input>
+        <output>
+            <MY_TABLE>
+                <copy row="copyRow2">
+                    <FIELD2 value="copyValueOutputField2"/>
+                </copy>
+            </MY_TABLE>
+        </output>
+    </case>
+</cases>

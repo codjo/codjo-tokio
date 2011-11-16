@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<!DOCTYPE cases SYSTEM "http://cases.dtd">
+<cases>
+    <case id="myStory">
+        <input>
+            <table name="#TABLE_TEST">
+                <row>
+                    <field name="COL_A" value="ANCIEN"/>
+                </row>
+            </table>
+        </input>
+        <output>
+            <table name="#TABLE_TEST">
+                <row>
+                    <field name="COL_A" value="NEW"/>
+                </row>
+            </table>
+        </output>
+    </case>
+</cases>

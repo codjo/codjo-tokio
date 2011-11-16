@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<cases xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:noNamespaceSchemaLocation="file:C:/dev/platform/cache/xsd/red-cases.xsd">
+    <include-entities file="caseCompositeEntity_entity.xml"/>
+    <case id="myCase">
+        <input>
+            <create-entity name="father" id="fatherID"/>
+            <copy-entity entity="fatherID" id="copyID"/>
+        </input>
+        <output/>
+    </case>
+</cases>

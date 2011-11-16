@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<!DOCTYPE cases PUBLIC "-//AGF, Inc.//DTD stories 2.0//EN" "http://cases.dtd">
+<cases>
+    <case id="nominal">
+        <input>
+            <table name="MY_TABLE">
+                <row autoComplete="true">
+                    <field name="FIELD1" value="valueField1"/>
+                </row>
+                <row autoComplete="false">
+                    <field name="FIELD2" value="valueField2"/>
+                </row>
+                <row>
+                    <field name="FIELD3" value="valueField3"/>
+                </row>
+            </table>
+        </input>
+
+        <output>
+            <table name="MY_TABLE">
+                <row autoComplete="true">
+                    <field name="FIELD4" value="valueField4"/>
+                </row>
+                <row autoComplete="false">
+                    <field name="FIELD5" value="valueField5"/>
+                </row>
+                <row>
+                    <field name="FIELD6" value="valueField6"/>
+                </row>
+            </table>
+        </output>
+    </case>
+</cases>

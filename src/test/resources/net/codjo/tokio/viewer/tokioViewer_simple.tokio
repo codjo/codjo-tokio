@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<!DOCTYPE story PUBLIC "-//AGF, Inc.//DTD story 2.0//EN" "http://story.dtd">
+<story id="Simple">
+
+    <input>
+        <table name="MY_TABLE">
+            <row>
+                <field name="MY_TABLE_FIELD1" value="myTableField1Row0"/>
+                <field name="MY_TABLE_FIELD2" value="myTableField2Row0"/>
+            </row>
+            <row>
+                <field name="MY_TABLE_FIELD1" value="myTableField1Row1"/>
+                <field name="MY_TABLE_FIELD3" value="myTableField3Row1"/>
+            </row>
+        </table>
+        <table name="MY_TABLE_INPUT">
+            <row id="ATCHUM">
+                <field name="MY_TABLE_INPUT_FIELD1" value="myTableInputField1Row0"/>
+                <field name="MY_TABLE_INPUT_FIELD2" value="myTableInputField2Row0"/>
+            </row>
+        </table>
+    </input>
+    <output>
+        <table name="MY_TABLE">
+            <row>
+                <field name="MY_TABLE_FIELD1" value="myTableField1Row0"/>
+                <field name="MY_TABLE_FIELD2" value="myTableField2Row0"/>
+            </row>
+        </table>
+        <table name="MY_TABLE_OUTPUT">
+            <row>
+                <field name="MY_TABLE_OUTPUT_FIELD1" value="myTableOutputField1Row0"/>
+                <field name="MY_TABLE_OUTPUT_FIELD2" value="myTableOutputField2Row0"/>
+            </row>
+        </table>
+    </output>
+
+</story>

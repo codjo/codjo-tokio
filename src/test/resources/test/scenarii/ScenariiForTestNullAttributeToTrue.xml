@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<?xml-stylesheet type="text/xsl" href="../Scenarii.xsl"?>
+<!DOCTYPE Scenarii PUBLIC "-//AGF, Inc.//DTD Scenarii 2.0//EN" "http://scenarii.dtd">
+<Scenarii name="Controles des VL">
+    <Scenario id="ControleNoCoherenceForAttributes">
+        <input>
+            <table name="AP_VL_QUARANTINE" identityInsert="on">
+                <row>
+                    <field name="NULLFIELDFORCED" value="0" null="true"/>
+                </row>
+            </table>
+        </input>
+        <etalon/>
+    </Scenario>
+</Scenarii>

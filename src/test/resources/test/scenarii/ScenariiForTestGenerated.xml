@@ -1,0 +1,105 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<?xml-stylesheet type="text/xsl" href="../Scenarii.xsl"?>
+<!DOCTYPE Scenarii PUBLIC "-//AGF, Inc.//DTD Scenarii 2.0//EN" "http://scenarii.dtd">
+<Scenarii name="Controles des VL">
+    <Scenario id="ControleCoherence">
+        <comment><![CDATA[
+        Controle que <b>COL_A</b> + COL_B = COL_SOMME.
+        ]]></comment>
+        <input>
+            <table name="AP_VL_QUARANTINE" identityInsert="on">
+                <row id="vl.coherence.ok">
+                    <field name="CODE_SICOVAM">
+                        <generateNumeric precision="4,0"/>
+                    </field>
+                    <field name="COL_A" value="5"/>
+                    <field name="COL_B" value="6"/>
+                    <field name="COL_SOMME" value="11"/>
+                    <field name="ANOMALY">
+                        <generateBoolean/>
+                    </field>
+                </row>
+                <row id="vl.coherence.nok" inheritId="vl.coherence.ok" comment="Difference">
+                    <field name="CODE_SICOVAM" value="0071"/>
+                    <field name="COL_SOMME" value="10"/>
+                    <field name="ANOMALY" value="0"/>
+                    <field name="NULLFIELDFORCED" null="true"/>
+                </row>
+            </table>
+        </input>
+        <etalon>
+            <table name="AP_VL_QUARANTINE" orderClause="COL_A">
+                <row inheritId="vl.coherence.ok"/>
+                <row inheritId="vl.coherence.nok">
+                    <field name="ANOMALY" value="1"/>
+                    <field name="NULLFIELD"/>
+                </row>
+            </table>
+        </etalon>
+    </Scenario>
+    <Scenario id="ControleComparator">
+        <comment><![CDATA[
+        Controle des balises comparator.
+        ]]></comment>
+        <input>
+            <table name="mytable">
+                <row>
+                    <field name="PATH" value="FOLDER1/FOLDER2/file.txt"/>
+                    <field name="COMMENT" value="Cette VL est modifiée tous les fin de mois"/>
+                    <field name="CREATION_DATE" value="2004-03-05 10:30:00.0"/>
+                    <field name="UPDATE_DATE" value="2004-03-05 10:30:00.0"/>
+                    <field name="AMOUNT" value="1.05247"/>
+                    <field name="BEFORE_DATE" value="2004-03-05 10:30:00.0"/>
+                    <field name="AFTER_DATE" value="2004-03-05 10:30:00.0"/>
+                </row>
+            </table>
+            <table name="mytableNok">
+                <row>
+                    <field name="PATH" value="FOLDER1/FOLDER2/COB.pdf"/>
+                    <field name="COMMENT" value="Cette VL est modifiée tous les fin de mois"/>
+                    <field name="CREATION_DATE" value="2004-03-05 10:30:00.0"/>
+                    <field name="UPDATE_DATE" value="2004-03-05 10:30:00.0"/>
+                    <field name="AMOUNT" value="1.05247"/>
+                    <field name="BEFORE_DATE" value="2004-03-05 10:30:00.0"/>
+                    <field name="AFTER_DATE" value="2004-03-05 10:30:00.0"/>
+                </row>
+            </table>
+        </input>
+        <etalon>
+            <comparators>
+                <comparator field="PATH" assert="contains"/>
+                <comparator field="COMMENT" assert="contains"/>
+                <comparator field="CREATION_DATE" assert="closeTo" param="1000"/>
+                <comparator field="UPDATE_DATE" precision="2000"/>
+                <comparator field="AMOUNT" precision="0.01"/>
+                <comparator field="BEFORE_DATE" assert="before" param="86400000"/>
+                <!-- 1jour-->
+                <comparator field="AFTER_DATE" assert="after" param="172800000"/>
+                <!-- 2jours-->
+            </comparators>
+
+            <table name="mytable">
+                <row comment="ligne ok">
+                    <field name="PATH" value="file.txt"/>
+                    <field name="COMMENT" value="fin de mois"/>
+                    <field name="CREATION_DATE" value="2004-03-05 10:30:00.5"/>
+                    <field name="UPDATE_DATE" value="2004-03-05 10:30:01.5"/>
+                    <field name="AMOUNT" value="1.05000"/>
+                    <field name="BEFORE_DATE" value="2004-03-04 10:35:00.0"/>
+                    <field name="AFTER_DATE" value="2004-03-06 10:45:00.0"/>
+                </row>
+            </table>
+            <table name="mytableNok">
+                <row comment="ligne nok">
+                    <field name="PATH" value="report.pdf"/>
+                    <field name="COMMENT" value="trimestriellement"/>
+                    <field name="CREATION_DATE" value="2004-03-05 10:30:09.0"/>
+                    <field name="UPDATE_DATE" value="2004-03-04 10:30:00.0"/>
+                    <field name="AMOUNT" value="2.500000"/>
+                    <field name="BEFORE_DATE" value="2004-03-03 10:30:00.0"/>
+                    <field name="AFTER_DATE" value="2004-03-08 10:30:00.0"/>
+                </row>
+            </table>
+        </etalon>
+    </Scenario>
+</Scenarii>

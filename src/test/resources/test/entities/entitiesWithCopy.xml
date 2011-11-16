@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<!DOCTYPE entities PUBLIC "-//AGF, Inc.//DTD entities 2.0//EN" "http://entities.dtd">
+<entities>
+    <entity id="MyEntity">
+        <parameters>
+            <parameter name="param1"/>
+            <parameter name="param2"/>
+        </parameters>
+
+        <body>
+            <table name="FIRST_TABLE">
+                <row id="refRow">
+                    <field name="FIRST_FIELD1" value="field1"/>
+                    <field name="FIRST_FIELD2" value="@param1@"/>
+                    <field name="FIRST_FIELD3" value="field3"/>
+                </row>
+                <copy row="refRow">
+                    <field name="FIRST_FIELD1" value="newField1"/>
+                    <field name="FIRST_FIELD2" value="@param2@"/>
+                </copy>
+            </table>
+
+            <table name="SECOND_TABLE">
+                <row>
+                    <field name="SECOND_FIELD1" value="@param2@"/>
+                </row>
+            </table>
+        </body>
+
+    </entity>
+</entities>

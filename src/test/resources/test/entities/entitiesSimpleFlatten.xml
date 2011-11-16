@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<entities>
+    <entity id="MyEntitySimple">
+        <comment>MyEntitySimple</comment>
+
+        <parameters>
+            <parameter name="param1"/>
+        </parameters>
+
+        <body>
+            <TABLE>
+                <row id="firstTableFirstRow">
+                    <FIELD1 value="field1"/>
+                    <FIELD2 value="@param1@"/>
+                </row>
+            </TABLE>
+
+        </body>
+
+    </entity>
+</entities>

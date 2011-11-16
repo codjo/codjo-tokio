@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<cases>
+    <include-entities file="entitiesFlatten.xml"/>
+    <case id="NominalCase">
+        <include-story file="referentialWithInputFlatten.tokio"/>
+
+        <input>
+            <create-entity name="Entity" id="myEntity">
+                <parameter name="param1" value="fieldValueParameter"/>
+            </create-entity>
+            <ANOTHER_TABLE>
+                <row>
+                    <ANOTHER_FIELD1 value="valueInputField1"/>
+                    <ANOTHER_FIELD2 value="valueInputField2"/>
+                </row>
+            </ANOTHER_TABLE>
+        </input>
+        <output>
+            <copy-entity entity="myEntity" id="anotherEntity"/>
+        </output>
+    </case>
+    <case id="AuxiliaryCase" inheritId="NominalCase">
+        <include-story file="referentialWithOutput.tokio"/>
+
+        <input>
+            <MY_TABLE>
+                <replace row="myEntity.rowId">
+                    <FIELD2 value="newValueInput"/>
+                </replace>
+            </MY_TABLE>
+        </input>
+        <output>
+            <MY_TABLE>
+                <copy row="anotherEntity.rowId">
+                    <FIELD2 value="newValueOutput"/>
+                </copy>
+            </MY_TABLE>
+        </output>
+    </case>
+</cases>

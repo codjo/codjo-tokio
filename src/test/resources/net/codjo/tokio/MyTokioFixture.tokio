@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<!DOCTYPE cases SYSTEM "http://cases.dtd">
+<cases>
+    <case>
+        <include-story file="existepas.tokio"/>
+        <input>
+            <table name="#TABLE_TEST">
+                <row id="truc">
+                    <field name="COL_A" value="ANCIEN"/>
+                </row>
+            </table>
+        </input>
+        <output>
+            <table name="#TABLE_TEST">
+                <copy row="truc">
+                    <field name="COL_A" value="NEW"/>
+                </copy>
+            </table>
+        </output>
+    </case>
+    <case id="myStory" inheritId="common">
+        <input>
+            <table name="#TABLE_TEST">
+                <replace row="truc">
+                    <field name="COL_A" value="ANCIEN"/>
+                </replace>
+            </table>
+        </input>
+    </case>
+</cases>

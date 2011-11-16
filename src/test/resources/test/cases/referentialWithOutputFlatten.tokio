@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<story id="ReferentialWithOutput" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:noNamespaceSchemaLocation="default.xsd">
+    <comment>Référentiel</comment>
+
+    <output>
+        <MY_TABLE>
+            <row id="refRowOutput">
+                <FIELD1 value="valueField1"/>
+                <FIELD2 value="valueField2"/>
+            </row>
+        </MY_TABLE>
+    </output>
+
+</story>
