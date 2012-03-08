@@ -44,12 +44,10 @@
         <dependency>
             <groupId>net.codjo.test</groupId>
             <artifactId>codjo-test-common</artifactId>
-            <scope>compile</scope>
         </dependency>
         <dependency>
             <groupId>junit</groupId>
             <artifactId>junit</artifactId>
-            <scope>compile</scope>
         </dependency>
         <dependency>
             <groupId>org.mockito</groupId>
