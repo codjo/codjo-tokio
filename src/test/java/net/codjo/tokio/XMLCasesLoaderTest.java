@@ -4,26 +4,26 @@
  * Copyright (c) 2001 AGF Asset Management.
  */
 package net.codjo.tokio;
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
+import java.util.Properties;
 import net.codjo.tokio.model.DatasetChecker;
 import net.codjo.tokio.model.LoggerLocationVisitor;
 import net.codjo.tokio.model.Row;
 import net.codjo.tokio.model.Scenario;
 import net.codjo.tokio.model.ScenarioList;
-import java.io.File;
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.List;
-import java.util.Properties;
 import org.hamcrest.BaseMatcher;
 import org.hamcrest.Description;
 import org.hamcrest.Matcher;
+
 import static org.junit.Assert.assertThat;
 public class XMLCasesLoaderTest extends XMLCasesLoaderTestCase {
     private StringBuilder stringBuilder = new StringBuilder();
 
 
     public void test_caseStandard() throws Exception {
-        XMLCasesLoader loader = load(new File(CASES_DIR + "caseStandard.tokio").toURL().toString());
+        XMLCasesLoader loader = load(CASES_DIR + "caseStandard.tokio");
 
         ScenarioList scenarii = loader.getScenarii();
         assertEquals(2, scenarii.getScenarioCount());
@@ -34,7 +34,7 @@ public class XMLCasesLoaderTest extends XMLCasesLoaderTestCase {
 
 
     public void test_flatten_caseStandart() throws Exception {
-        XMLCasesLoader loader = load(new File(CASES_DIR + "caseStandardFlatten.tokio").toURL().toString());
+        XMLCasesLoader loader = load(CASES_DIR + "caseStandardFlatten.tokio");
 
         ScenarioList scenarii = loader.getScenarii();
         assertEquals(2, scenarii.getScenarioCount());
@@ -45,8 +45,7 @@ public class XMLCasesLoaderTest extends XMLCasesLoaderTestCase {
 
 
     public void test_caseStandardWithGeneratedValues() throws Exception {
-        XMLCasesLoader loader = load(new File(
-              CASES_DIR + "caseStandardWithGenerated.tokio").toURL().toString());
+        XMLCasesLoader loader = load(CASES_DIR + "caseStandardWithGenerated.tokio");
 
         ScenarioList scenarii = loader.getScenarii();
         assertEquals(1, scenarii.getScenarioCount());
@@ -80,7 +79,7 @@ public class XMLCasesLoaderTest extends XMLCasesLoaderTestCase {
 
 
     public void test_properties() throws Exception {
-        XMLCasesLoader loader = load(new File(CASES_DIR + "caseProperties.tokio").toURL().toString());
+        XMLCasesLoader loader = load(CASES_DIR + "caseProperties.tokio");
 
         ScenarioList scenarii = loader.getScenarii();
         Scenario scenario = scenarii.getScenario("NominalCase");
@@ -93,7 +92,7 @@ public class XMLCasesLoaderTest extends XMLCasesLoaderTestCase {
 
 
     public void test_compositeEntity() throws Exception {
-        XMLCasesLoader loader = load(new File(CASES_DIR + "caseCompositeEntity.tokio").toURL().toString());
+        XMLCasesLoader loader = load(CASES_DIR + "caseCompositeEntity.tokio");
 
         ScenarioList scenarii = loader.getScenarii();
         Scenario scenario = scenarii.getScenario("myCase");
@@ -122,7 +121,7 @@ public class XMLCasesLoaderTest extends XMLCasesLoaderTestCase {
 
 
     public void test_caseAddingRows() throws Exception {
-        XMLCasesLoader loader = load(new File(CASES_DIR + "caseAddingRows.tokio").toURL().toString());
+        XMLCasesLoader loader = load(CASES_DIR + "caseAddingRows.tokio");
 
         ScenarioList scenarii = loader.getScenarii();
         assertEquals(2, scenarii.getScenarioCount());
@@ -132,7 +131,7 @@ public class XMLCasesLoaderTest extends XMLCasesLoaderTestCase {
 
 
     public void test_flatten_caseAddingRows() throws Exception {
-        XMLCasesLoader loader = load(new File(CASES_DIR + "caseAddingRowsFlatten.tokio").toURL().toString());
+        XMLCasesLoader loader = load(CASES_DIR + "caseAddingRowsFlatten.tokio");
 
         ScenarioList scenarii = loader.getScenarii();
         assertEquals(2, scenarii.getScenarioCount());
@@ -142,7 +141,7 @@ public class XMLCasesLoaderTest extends XMLCasesLoaderTestCase {
 
 
     public void test_caseCopyingRows() throws Exception {
-        XMLCasesLoader loader = load(new File(CASES_DIR + "caseCopyingRows.tokio").toURL().toString());
+        XMLCasesLoader loader = load(CASES_DIR + "caseCopyingRows.tokio");
 
         ScenarioList scenarii = loader.getScenarii();
         assertEquals(3, scenarii.getScenarioCount());
@@ -153,7 +152,7 @@ public class XMLCasesLoaderTest extends XMLCasesLoaderTestCase {
 
 
     public void test_flatten_caseCopyingRows() throws Exception {
-        XMLCasesLoader loader = load(new File(CASES_DIR + "caseCopyingRowsFlatten.tokio").toURL().toString());
+        XMLCasesLoader loader = load(CASES_DIR + "caseCopyingRowsFlatten.tokio");
 
         ScenarioList scenarii = loader.getScenarii();
         assertEquals(3, scenarii.getScenarioCount());
@@ -164,7 +163,7 @@ public class XMLCasesLoaderTest extends XMLCasesLoaderTestCase {
 
 
     public void test_caseReplacingRows() throws Exception {
-        XMLCasesLoader loader = load(new File(CASES_DIR + "caseReplacingRows.tokio").toURL().toString());
+        XMLCasesLoader loader = load(CASES_DIR + "caseReplacingRows.tokio");
 
         ScenarioList scenarii = loader.getScenarii();
         assertEquals(3, scenarii.getScenarioCount());
@@ -175,8 +174,7 @@ public class XMLCasesLoaderTest extends XMLCasesLoaderTestCase {
 
 
     public void test_flatten_caseReplacingRows() throws Exception {
-        XMLCasesLoader loader = load(new File(
-              CASES_DIR + "caseReplacingRowsFlatten.tokio").toURL().toString());
+        XMLCasesLoader loader = load(CASES_DIR + "caseReplacingRowsFlatten.tokio");
 
         ScenarioList scenarii = loader.getScenarii();
         assertEquals(3, scenarii.getScenarioCount());
@@ -187,8 +185,7 @@ public class XMLCasesLoaderTest extends XMLCasesLoaderTestCase {
 
 
     public void test_flatten_caseReplacingRows_generated() throws Exception {
-        XMLCasesLoader loader = load(new File(
-              CASES_DIR + "caseReplacingRowsFlattenGenerated.tokio").toURL().toString());
+        XMLCasesLoader loader = load(CASES_DIR + "caseReplacingRowsFlattenGenerated.tokio");
 
         ScenarioList scenarii = loader.getScenarii();
         assertEquals(3, scenarii.getScenarioCount());
@@ -230,7 +227,7 @@ public class XMLCasesLoaderTest extends XMLCasesLoaderTestCase {
 
 
     public void test_caseRemovingRows() throws Exception {
-        XMLCasesLoader loader = load(new File(CASES_DIR + "caseRemovingRows.tokio").toURL().toString());
+        XMLCasesLoader loader = load(CASES_DIR + "caseRemovingRows.tokio");
 
         ScenarioList scenarii = loader.getScenarii();
         assertEquals(3, scenarii.getScenarioCount());
@@ -240,8 +237,7 @@ public class XMLCasesLoaderTest extends XMLCasesLoaderTestCase {
 
 
     public void test_flatten_caseRemovingRows() throws Exception {
-        XMLCasesLoader loader = load(new File(
-              CASES_DIR + "caseRemovingRowsFlatten.tokio").toURL().toString());
+        XMLCasesLoader loader = load(CASES_DIR + "caseRemovingRowsFlatten.tokio");
 
         ScenarioList scenarii = loader.getScenarii();
         assertEquals(3, scenarii.getScenarioCount());
@@ -267,7 +263,7 @@ public class XMLCasesLoaderTest extends XMLCasesLoaderTestCase {
 
     public void test_caseIncludingNotExistingStroy() throws Exception {
         try {
-            load(new File(CASES_DIR + "caseIncludingNotExistingStory.tokio").toURL().toString());
+            load(CASES_DIR + "caseIncludingNotExistingStory.tokio");
             fail("Le fichier inclus n'existant pas, il y aurait dû y avoir une erreur");
         }
         catch (Exception e) {
@@ -277,7 +273,7 @@ public class XMLCasesLoaderTest extends XMLCasesLoaderTestCase {
 
 
     public void test_caseIncludingEntities() throws Exception {
-        XMLCasesLoader loader = load(new File(CASES_DIR + "caseIncludingEntities.tokio").toURL().toString());
+        XMLCasesLoader loader = load(CASES_DIR + "caseIncludingEntities.tokio");
 
         ScenarioList scenarii = loader.getScenarii();
         assertEquals(3, scenarii.getScenarioCount());
@@ -289,8 +285,7 @@ public class XMLCasesLoaderTest extends XMLCasesLoaderTestCase {
 
 
     public void test_caseIncludingEntities_withNullField() throws Exception {
-        XMLCasesLoader loader = load(new File(
-              CASES_DIR + "caseIncludingEntities_withNullField.tokio").toURL().toString());
+        XMLCasesLoader loader = load(CASES_DIR + "caseIncludingEntities_withNullField.tokio");
 
         ScenarioList scenarii = loader.getScenarii();
         assertEquals(1, scenarii.getScenarioCount());
@@ -309,8 +304,7 @@ public class XMLCasesLoaderTest extends XMLCasesLoaderTestCase {
 
 
     public void test_caseIncludingEntitiesWithGeneratedParameters() throws Exception {
-        XMLCasesLoader loader = load(new File(
-              CASES_DIR + "caseIncludingEntitiesWithGenerated.tokio").toURL().toString());
+        XMLCasesLoader loader = load(CASES_DIR + "caseIncludingEntitiesWithGenerated.tokio");
 
         ScenarioList scenarii = loader.getScenarii();
         assertEquals(3, scenarii.getScenarioCount());
@@ -345,8 +339,7 @@ public class XMLCasesLoaderTest extends XMLCasesLoaderTestCase {
 
 
     public void test_flatten_caseIncludingEntities() throws Exception {
-        XMLCasesLoader loader = load(new File(
-              CASES_DIR + "caseIncludingEntitiesFlatten.tokio").toURL().toString());
+        XMLCasesLoader loader = load(CASES_DIR + "caseIncludingEntitiesFlatten.tokio");
 
         ScenarioList scenarii = loader.getScenarii();
         assertEquals(3, scenarii.getScenarioCount());
@@ -359,7 +352,7 @@ public class XMLCasesLoaderTest extends XMLCasesLoaderTestCase {
 
     public void test_caseIncludEntitiesDefaultValueError() throws Exception {
         try {
-            load(new File(CASES_DIR + "caseIncludingEntitiesDefaultValueErrorCase.tokio").toURL().toString());
+            load(CASES_DIR + "caseIncludingEntitiesDefaultValueErrorCase.tokio");
             fail("should get an exception if parameter is missing and has no default value");
         }
         catch (Exception exception) {
@@ -371,8 +364,7 @@ public class XMLCasesLoaderTest extends XMLCasesLoaderTestCase {
 
     public void test_flatten_caseIncludEntitiesDefaultValueError() throws Exception {
         try {
-            load(new File(
-                  CASES_DIR + "caseIncludingEntitiesDefaultValueErrorCaseFlatten.tokio").toURL().toString());
+            load(CASES_DIR + "caseIncludingEntitiesDefaultValueErrorCaseFlatten.tokio");
             fail("should get an exception if parameter is missing and has no default value");
         }
         catch (Exception exception) {
@@ -384,7 +376,7 @@ public class XMLCasesLoaderTest extends XMLCasesLoaderTestCase {
 
     public void testCaseIncludEntitiesWithInvalidParameter() throws Exception {
         try {
-            load(new File(CASES_DIR + "caseIncludingEntitiesWithInvalidParameters.tokio").toURL().toString());
+            load(CASES_DIR + "caseIncludingEntitiesWithInvalidParameters.tokio");
         }
         catch (TokioLoaderException e) {
             assertEquals("Le paramètre invalidParam n'est pas défini dans l'entité Entity", e.getMessage());
@@ -394,8 +386,7 @@ public class XMLCasesLoaderTest extends XMLCasesLoaderTestCase {
 
     public void testFlattenCaseIncludEntitiesWithInvalidParameter() throws Exception {
         try {
-            load(new File(
-                  CASES_DIR + "caseIncludingEntitiesWithInvalidParametersFlatten.tokio").toURL().toString());
+            load(CASES_DIR + "caseIncludingEntitiesWithInvalidParametersFlatten.tokio");
         }
         catch (TokioLoaderException e) {
             assertEquals("Le paramètre invalidParam n'est pas défini dans l'entité Entity", e.getMessage());
@@ -404,8 +395,7 @@ public class XMLCasesLoaderTest extends XMLCasesLoaderTestCase {
 
 
     public void test_caseIncludingEntitiesInResources() throws Exception {
-        XMLCasesLoader loader = load(
-              new File(CASES_DIR + "caseIncludingEntitiesInResources.tokio").toURL().toString());
+        XMLCasesLoader loader = load(CASES_DIR + "caseIncludingEntitiesInResources.tokio");
 
         ScenarioList scenarii = loader.getScenarii();
         assertEquals(2, scenarii.getScenarioCount());
@@ -418,7 +408,7 @@ public class XMLCasesLoaderTest extends XMLCasesLoaderTestCase {
     public void test_caseIncludingEntitiesAndStories()
           throws Exception {
         XMLCasesLoader loader =
-              load(new File(CASES_DIR + "caseIncludingEntitiesAndStories.tokio").toURL().toString());
+              load(CASES_DIR + "caseIncludingEntitiesAndStories.tokio");
 
         ScenarioList scenarii = loader.getScenarii();
         assertEquals(2, scenarii.getScenarioCount());
@@ -431,7 +421,7 @@ public class XMLCasesLoaderTest extends XMLCasesLoaderTestCase {
     public void test_flatten_caseIncludingEntitiesAndStories()
           throws Exception {
         XMLCasesLoader loader =
-              load(new File(CASES_DIR + "caseIncludingEntitiesAndStoriesFlatten.tokio").toURL().toString());
+              load(CASES_DIR + "caseIncludingEntitiesAndStoriesFlatten.tokio");
 
         ScenarioList scenarii = loader.getScenarii();
         assertEquals(2, scenarii.getScenarioCount());
@@ -444,7 +434,7 @@ public class XMLCasesLoaderTest extends XMLCasesLoaderTestCase {
     public void test_hybrid_caseIncludingEntitiesAndStories()
           throws Exception {
         XMLCasesLoader loader =
-              load(new File(CASES_DIR + "caseIncludingEntitiesAndStoriesHybrid.tokio").toURL().toString());
+              load(CASES_DIR + "caseIncludingEntitiesAndStoriesHybrid.tokio");
 
         ScenarioList scenarii = loader.getScenarii();
         assertEquals(2, scenarii.getScenarioCount());
@@ -457,7 +447,7 @@ public class XMLCasesLoaderTest extends XMLCasesLoaderTestCase {
     public void test_caseIncludingStoryWithEntity()
           throws Exception {
         XMLCasesLoader loader =
-              load(new File(CASES_DIR + "caseIncludingStoryWithEntity.tokio").toURL().toString());
+              load(CASES_DIR + "caseIncludingStoryWithEntity.tokio");
 
         ScenarioList scenarii = loader.getScenarii();
         assertEquals(1, scenarii.getScenarioCount());
@@ -469,7 +459,7 @@ public class XMLCasesLoaderTest extends XMLCasesLoaderTestCase {
     public void test_flatten_caseIncludingStoryWithEntity()
           throws Exception {
         XMLCasesLoader loader =
-              load(new File(CASES_DIR + "caseIncludingStoryWithEntityFlatten.tokio").toURL().toString());
+              load(CASES_DIR + "caseIncludingStoryWithEntityFlatten.tokio");
 
         ScenarioList scenarii = loader.getScenarii();
         assertEquals(1, scenarii.getScenarioCount());
@@ -481,8 +471,7 @@ public class XMLCasesLoaderTest extends XMLCasesLoaderTestCase {
     public void test_caseStoryInWorkingDirWithEntityInResources()
           throws Exception {
         XMLCasesLoader loader =
-              load(new File(CASES_DIR + "caseIncludingStoryInWorkingDirectoryWithEntityInResources.tokio")
-                    .toURL().toString());
+              load(CASES_DIR + "caseIncludingStoryInWorkingDirectoryWithEntityInResources.tokio");
 
         ScenarioList scenarii = loader.getScenarii();
         assertEquals(1, scenarii.getScenarioCount());
@@ -494,8 +483,7 @@ public class XMLCasesLoaderTest extends XMLCasesLoaderTestCase {
     public void test_caseStoryInResourcesWithEntityInResources()
           throws Exception {
         XMLCasesLoader loader =
-              load(new File(CASES_DIR + "caseIncludingStoryInResourcesWithEntityInResources.tokio")
-                    .toURL().toString());
+              load(CASES_DIR + "caseIncludingStoryInResourcesWithEntityInResources.tokio");
 
         ScenarioList scenarii = loader.getScenarii();
         assertEquals(1, scenarii.getScenarioCount());
@@ -505,7 +493,7 @@ public class XMLCasesLoaderTest extends XMLCasesLoaderTestCase {
 
 
     public void test_autoComplete() throws Exception {
-        XMLCasesLoader loader = load(new File(CASES_DIR + "autoComplete.tokio").toURL().toString());
+        XMLCasesLoader loader = load(CASES_DIR + "autoComplete.tokio");
 
         ScenarioList scenarii = loader.getScenarii();
         assertEquals(1, scenarii.getScenarioCount());
@@ -522,8 +510,7 @@ public class XMLCasesLoaderTest extends XMLCasesLoaderTestCase {
 
 
     public void test_autoComplete_withCopyRow() throws Exception {
-        XMLCasesLoader loader = load(new File(
-              CASES_DIR + "autoComplete_withCopyRow.tokio").toURL().toString());
+        XMLCasesLoader loader = load(CASES_DIR + "autoComplete_withCopyRow.tokio");
 
         ScenarioList scenarii = loader.getScenarii();
         assertEquals(1, scenarii.getScenarioCount());
@@ -540,8 +527,7 @@ public class XMLCasesLoaderTest extends XMLCasesLoaderTestCase {
 
 
     public void test_autoComplete_withInheritId() throws Exception {
-        XMLCasesLoader loader = load(new File(
-              CASES_DIR + "autoComplete_withInheritId.tokio").toURL().toString());
+        XMLCasesLoader loader = load(CASES_DIR + "autoComplete_withInheritId.tokio");
 
         ScenarioList scenarii = loader.getScenarii();
         assertEquals(2, scenarii.getScenarioCount());
@@ -560,8 +546,7 @@ public class XMLCasesLoaderTest extends XMLCasesLoaderTestCase {
 
 
     public void test_autoComplete_withReplaceRow() throws Exception {
-        XMLCasesLoader loader = load(new File(
-              CASES_DIR + "autoComplete_withReplaceRow.tokio").toURL().toString());
+        XMLCasesLoader loader = load(CASES_DIR + "autoComplete_withReplaceRow.tokio");
 
         ScenarioList scenarii = loader.getScenarii();
         assertEquals(1, scenarii.getScenarioCount());
@@ -573,8 +558,7 @@ public class XMLCasesLoaderTest extends XMLCasesLoaderTestCase {
 
 
     public void test_location_withInheritedCases() throws Exception {
-        XMLCasesLoader loader = load(new File(
-              CASES_DIR + "location_withInheritedCases.tokio").toURL().toString());
+        XMLCasesLoader loader = load(CASES_DIR + "location_withInheritedCases.tokio");
 
         Scenario scenario = loader.getScenarii().getScenario("extended2");
 
@@ -618,8 +602,7 @@ public class XMLCasesLoaderTest extends XMLCasesLoaderTestCase {
 
 
     public void test_location_casesWithEntities() throws Exception {
-        XMLCasesLoader loader = load(new File(
-              CASES_DIR + "caseIncludingEntities.tokio").toURL().toString());
+        XMLCasesLoader loader = load(CASES_DIR + "caseIncludingEntities.tokio");
 
         Scenario scenario = loader.getScenarii().getScenario("NominalCase");
 
@@ -634,8 +617,7 @@ public class XMLCasesLoaderTest extends XMLCasesLoaderTestCase {
 
 
     public void test_location_casesWithComposedEntities() throws Exception {
-        XMLCasesLoader loader = load(new File(
-              CASES_DIR + "caseCompositeEntity.tokio").toURL().toString());
+        XMLCasesLoader loader = load(CASES_DIR + "caseCompositeEntity.tokio");
 
         Scenario scenario = loader.getScenarii().getScenario("myCase");
 
@@ -653,8 +635,7 @@ public class XMLCasesLoaderTest extends XMLCasesLoaderTestCase {
 
 
     public void test_location_caseIncludingStories() throws Exception {
-        XMLCasesLoader loader = load(new File(
-              CASES_DIR + "caseIncludingStories.tokio").toURL().toString());
+        XMLCasesLoader loader = load(CASES_DIR + "caseIncludingStories.tokio");
 
         Scenario scenario = loader.getScenarii().getScenario("NominalCase");
 
@@ -669,7 +650,7 @@ public class XMLCasesLoaderTest extends XMLCasesLoaderTestCase {
 
 
     private void assertCaseIncludesStories(String tokioFileName) throws Exception {
-        XMLCasesLoader loader = load(new File(CASES_DIR + tokioFileName).toURL().toString());
+        XMLCasesLoader loader = load(CASES_DIR + tokioFileName);
 
         ScenarioList scenarii = loader.getScenarii();
         assertEquals(2, scenarii.getScenarioCount());
@@ -1295,7 +1276,7 @@ public class XMLCasesLoaderTest extends XMLCasesLoaderTestCase {
     private Matcher<Iterable<Row>> equalsTo(final String... expectedRows) {
         return new BaseMatcher<Iterable<Row>>() {
             public boolean matches(Object item) {
-                List<Row> actualRows = (List<Row>)item;
+                @SuppressWarnings({"unchecked"}) List<Row> actualRows = (List<Row>)item;
                 if (expectedRows.length != actualRows.size()) {
                     return false;
                 }
