@@ -4,15 +4,31 @@
  * Copyright (c) 2001 AGF Asset Management.
  */
 package net.codjo.tokio;
+import fakedb.FakeDriver;
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.sql.Timestamp;
+import java.sql.Types;
+import java.text.DateFormat;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.Calendar;
+import java.util.Collections;
+import java.util.Date;
+import java.util.GregorianCalendar;
+import java.util.List;
+import java.util.StringTokenizer;
 import net.codjo.database.common.api.DatabaseFactory;
 import net.codjo.database.common.api.DatabaseHelper;
 import net.codjo.database.common.api.DatabaseQueryHelper;
 import net.codjo.database.common.api.JdbcFixture;
 import net.codjo.database.common.api.confidential.DatabaseTranscoder;
-import static net.codjo.database.common.api.structure.SqlField.field;
-import static net.codjo.database.common.api.structure.SqlField.fieldName;
-import static net.codjo.database.common.api.structure.SqlTable.table;
-import static net.codjo.database.common.api.structure.SqlTable.temporaryTable;
+import net.codjo.database.common.api.structure.SqlTable;
 import net.codjo.test.common.DateUtil;
 import net.codjo.test.common.LogString;
 import net.codjo.tokio.foreignkeys.ForeignKeyMetadata;
@@ -24,14 +40,10 @@ import net.codjo.tokio.model.Row;
 import net.codjo.tokio.model.Scenario;
 import net.codjo.tokio.tableorder.TableOrder;
 import net.codjo.tokio.tableorder.TableOrderBuilder;
-import fakedb.FakeDriver;
-import java.sql.Connection;
-import java.sql.DriverManager;
-import java.sql.PreparedStatement;
-import java.sql.ResultSet;
-import java.sql.SQLException;
-import java.sql.Timestamp;
-import java.sql.Types;
+import org.junit.After;
+import org.junit.Before;
+import org.junit.Test;
+
 import static java.sql.Types.BIT;
 import static java.sql.Types.DATE;
 import static java.sql.Types.DOUBLE;
@@ -39,29 +51,19 @@ import static java.sql.Types.NUMERIC;
 import static java.sql.Types.REAL;
 import static java.sql.Types.TIMESTAMP;
 import static java.sql.Types.VARCHAR;
-import java.text.DateFormat;
-import java.text.ParseException;
-import java.text.SimpleDateFormat;
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.Calendar;
-import java.util.Collections;
-import java.util.Date;
-import java.util.GregorianCalendar;
 import static java.util.GregorianCalendar.HOUR_OF_DAY;
 import static java.util.GregorianCalendar.MONTH;
 import static java.util.GregorianCalendar.YEAR;
-import java.util.List;
-import java.util.StringTokenizer;
-import org.junit.After;
+import static net.codjo.database.common.api.structure.SqlField.field;
+import static net.codjo.database.common.api.structure.SqlField.fieldName;
+import static net.codjo.database.common.api.structure.SqlTable.table;
+import static net.codjo.database.common.api.structure.SqlTable.temporaryTable;
 import static org.junit.Assert.assertArrayEquals;
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertFalse;
 import static org.junit.Assert.assertNotNull;
 import static org.junit.Assert.assertTrue;
 import static org.junit.Assert.fail;
-import org.junit.Before;
-import org.junit.Test;
 public class JDBCScenarioTest {
     private Row rowA;
     private Scenario scenario;
@@ -205,23 +207,28 @@ public class JDBCScenarioTest {
         assertEquals(expectedDatePlus1Day, actualDatePlus1Day);
 
         String expectedDatePlus10Month = getRelativeDate(new Date(), MONTH, 10, DD_MM_YYYY);
-        String actualDatePlus10Month = formatDate((java.sql.Date)jdbcScenario.convertValue("TODAY_DATE+10M", Types.DATE));
+        String actualDatePlus10Month = formatDate((java.sql.Date)jdbcScenario.convertValue("TODAY_DATE+10M",
+                                                                                           Types.DATE));
         assertEquals(expectedDatePlus10Month, actualDatePlus10Month);
 
         String expectedDatePlus100Year = getRelativeDate(new Date(), YEAR, 100, DD_MM_YYYY);
-        String actualDatePlus100Year = formatDate((java.sql.Date)jdbcScenario.convertValue("TODAY_DATE+100Y", Types.DATE));
+        String actualDatePlus100Year = formatDate((java.sql.Date)jdbcScenario.convertValue("TODAY_DATE+100Y",
+                                                                                           Types.DATE));
         assertEquals(expectedDatePlus100Year, actualDatePlus100Year);
 
         String expectedDateMoins11Day = getRelativeDate(new Date(), GregorianCalendar.DATE, -11, DD_MM_YYYY);
-        String actualDateMoins11Day = formatDate((java.sql.Date)jdbcScenario.convertValue("TODAY_DATE-11D", Types.DATE));
+        String actualDateMoins11Day = formatDate((java.sql.Date)jdbcScenario.convertValue("TODAY_DATE-11D",
+                                                                                          Types.DATE));
         assertEquals(expectedDateMoins11Day, actualDateMoins11Day);
 
         String expectedDateMoins11Month = getRelativeDate(new Date(), MONTH, -11, DD_MM_YYYY);
-        String actualDateMoins11Month = formatDate((java.sql.Date)jdbcScenario.convertValue("TODAY_DATE-11M", Types.DATE));
+        String actualDateMoins11Month = formatDate((java.sql.Date)jdbcScenario.convertValue("TODAY_DATE-11M",
+                                                                                            Types.DATE));
         assertEquals(expectedDateMoins11Month, actualDateMoins11Month);
 
         String expectedDateMoins11Year = getRelativeDate(new Date(), YEAR, -11, DD_MM_YYYY);
-        String actualDateMoins11Year = formatDate((java.sql.Date)jdbcScenario.convertValue("TODAY_DATE-11Y", Types.DATE));
+        String actualDateMoins11Year = formatDate((java.sql.Date)jdbcScenario.convertValue("TODAY_DATE-11Y",
+                                                                                           Types.DATE));
         assertEquals(expectedDateMoins11Year, actualDateMoins11Year);
     }
 
@@ -314,6 +321,54 @@ public class JDBCScenarioTest {
         assertDatetime("25/12/2002 12:30:00", resultSet, 2);
         assertEquals("1.23", resultSet.getString(3));
         assertEquals("une string", resultSet.getString(4));
+    }
+
+
+    @Test
+    public void test_insertInputDbWithBolean() throws Exception {
+        String tableName = "TEMP_AP_VL";
+        SqlTable sqlTable = temporaryTable(tableName);
+
+        jdbcFixture.create(sqlTable, "COL_DATE date null,"
+                                     + " COL_DATE_HEURE " + datetime + " null,"
+                                     + " COL_NUMBER numeric(3,2) null,"
+                                     + " COL_BOOL " + getBooleanSqlType(jdbcFixture));
+
+        scenario = new Scenario("test", null);
+
+        rowA = createRow("rowA",
+                         "COL_BOOL=true;"
+                         + "COL_NUMBER=1.23;"
+                         + "COL_DATE=2002-12-20;"
+                         + "COL_DATE_HEURE=2002-12-25 12:30:00");
+        scenario.addInputRow(tableName, rowA);
+
+        FieldMap fields = new FieldMap();
+        fields.putField("COL_BOOL", "true", null);
+        scenario.addOutputRow(tableName, new Row("rowB", "rowA", fields));
+        scenario.getInputTable(tableName).setTemporary(true);
+
+        new JDBCScenario(scenario).insertInputInDb(jdbcFixture.getConnection());
+
+        JDBCScenario jdbcScenario = new JDBCScenario(scenario);
+        assertTrue(jdbcScenario.verifyOutputs(jdbcFixture.getConnection(), tableName, "COL_NUMBER"));
+
+        jdbcFixture.drop(sqlTable);
+    }
+
+
+    private String getBooleanSqlType(JdbcFixture jdbcFixture) throws SQLException {
+        //TODO a faire remonter dans JDBCFixture (Advanced ?)
+        String driverName = jdbcFixture.getConnection().getMetaData().getDriverName();
+        if (driverName.contains("Oracle")) {
+            return "numeric(1) null";
+        }
+        else if (driverName.contains("jConnect")) {
+            return "bit default 0";
+        }
+        else {
+            return null;
+        }
     }
 
 
@@ -518,7 +573,7 @@ public class JDBCScenarioTest {
                 fail();
             }
             catch (SQLException e) {
-                ;
+                //NA
             }
         }
     }
@@ -650,7 +705,7 @@ public class JDBCScenarioTest {
      * Test que la methode de tri marche pour des clefs multiple.
      */
     @Test
-    public void test_sortRows_multiKey() throws Exception {
+    public void test_sortRows_multiKey() {
         FieldMap fieldsC = new FieldMap();
         fieldsC.putField("COL_STR", "une string1", null);
         fieldsC.putField("COL_DATE", "2002-12-20", null);
@@ -682,7 +737,7 @@ public class JDBCScenarioTest {
      * Test que la methode de tri marche même si une lignes ne définit pas la colonne de tri.
      */
     @Test
-    public void test_sortRows_nullKey() throws Exception {
+    public void test_sortRows_nullKey() {
         FieldMap fieldsC = new FieldMap();
         fieldsC.putField("COL_STR", "une string", null);
         fieldsC.putField("COL_DATE", "2002-12-20", null);
@@ -709,7 +764,7 @@ public class JDBCScenarioTest {
      * Test que la methode de trie marche même si deux lignes ont la même valeur sur les colonnes de tri.
      */
     @Test
-    public void test_sortRows_sameKey() throws Exception {
+    public void test_sortRows_sameKey() {
         FieldMap fieldsC = new FieldMap();
         fieldsC.putField("COL_DATE", "2002-12-21", null);
         Row rowC = new Row("rowC", "rowA", fieldsC);
@@ -910,6 +965,8 @@ public class JDBCScenarioTest {
 
     /**
      * Bug de tokio qd on met des lignes en plus dans le fichier au nx de output.
+     *
+     * @throws Exception : NA
      */
     @Test
     public void test_verifyOutputs_bug() throws Exception {
@@ -936,7 +993,7 @@ public class JDBCScenarioTest {
     @Test
     public void test_verifyOutputs_noRowsInDB() throws Exception {
         assertFalse(new JDBCScenario(scenario)
-              .verifyOutputs(jdbcFixture.getConnection(), "AP_VL", "COL_NUMBER"));
+                          .verifyOutputs(jdbcFixture.getConnection(), "AP_VL", "COL_NUMBER"));
     }
 
 
@@ -989,6 +1046,8 @@ public class JDBCScenarioTest {
 
     /**
      * Test qui verifie que Tokio trie les outputs correctement.
+     *
+     * @throws Exception : NA
      */
     @Test
     public void test_verifyOutputs_sortOutput() throws Exception {
@@ -1030,8 +1089,10 @@ public class JDBCScenarioTest {
 
 
     /**
-     * Test qui verifie que Tokio trie les outputs correctement les varchar ne contenant que des chiffres de
-     * taille différente. ex : "3" &gt; "02" en base et " 3" &lt; "02" avec tokio
+     * Test qui verifie que Tokio trie les outputs correctement les varchar ne contenant que des chiffres de taille
+     * différente. ex : "3" &gt; "02" en base et " 3" &lt; "02" avec tokio
+     *
+     * @throws Exception : NA
      */
     @Test
     public void test_verifyOutputs_sortOutput_number_bug() throws Exception {
@@ -1126,7 +1187,7 @@ public class JDBCScenarioTest {
     private Row createRow(String id, String refId, String values, Boolean autoComplete) {
         FieldMap fields = new FieldMap();
         if (values != null && !"".equals(values)) {
-            for (StringTokenizer tokenizer = new StringTokenizer(values, ";"); tokenizer.hasMoreTokens();) {
+            for (StringTokenizer tokenizer = new StringTokenizer(values, ";"); tokenizer.hasMoreTokens(); ) {
                 String columnAndValue = tokenizer.nextToken();
                 StringTokenizer columnElements = new StringTokenizer(columnAndValue, "=");
                 String columnName = columnElements.nextToken();
