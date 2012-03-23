@@ -41,6 +41,7 @@ import net.codjo.tokio.model.Scenario;
 import net.codjo.tokio.tableorder.TableOrder;
 import net.codjo.tokio.tableorder.TableOrderBuilder;
 import org.junit.After;
+import org.junit.Assume;
 import org.junit.Before;
 import org.junit.Test;
 
@@ -369,6 +370,39 @@ public class JDBCScenarioTest {
         else {
             return null;
         }
+    }
+
+
+    @Test
+    public void test_insertInputDbWithClob() throws Exception {
+        Assume.assumeTrue(isOracleSpecific(jdbcFixture));
+        String tableName = "TEMP_AP_VL";
+        SqlTable sqlTable = temporaryTable(tableName);
+
+        jdbcFixture.create(sqlTable, "COL_CLOB clob null");
+
+        scenario = new Scenario("test", null);
+
+        rowA = createRow("rowA", "COL_CLOB=test;");
+        scenario.addInputRow(tableName, rowA);
+
+        FieldMap fields = new FieldMap();
+        fields.putField("COL_CLOB", "test", null);
+        scenario.addOutputRow(tableName, new Row("rowB", "rowA", fields));
+        scenario.getInputTable(tableName).setTemporary(true);
+
+        new JDBCScenario(scenario).insertInputInDb(jdbcFixture.getConnection());
+
+        JDBCScenario jdbcScenario = new JDBCScenario(scenario);
+        assertTrue(jdbcScenario.verifyOutputs(jdbcFixture.getConnection(), tableName));
+
+        jdbcFixture.drop(sqlTable);
+    }
+
+
+    private static boolean isOracleSpecific(JdbcFixture jdbcFixture) throws SQLException {
+        //TODO[Oracle support] a faire remonter dans JDBCFixture (Advanced ?)
+        return jdbcFixture.getConnection().getMetaData().getDriverName().contains("Oracle");
     }
 
 

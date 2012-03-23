@@ -4,7 +4,9 @@
  * Copyright (c) 2001 AGF Asset Management.
  */
 package net.codjo.tokio;
+import java.io.StringReader;
 import java.math.BigDecimal;
+import java.sql.Clob;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -337,6 +339,7 @@ public class JDBCScenario {
                     return Boolean.valueOf(value);
                 case Types.CHAR:
                 case Types.VARCHAR:
+                case Types.CLOB:
                 case Types.LONGVARCHAR:
                     return periodFilter(value);
                 case Types.DATE:
@@ -394,6 +397,11 @@ public class JDBCScenario {
                     return resultSet.getTime(columnName);
                 case Types.TIMESTAMP:
                     return resultSet.getTimestamp(columnName);
+                case Types.CLOB:
+                    Clob clob = resultSet.getClob(columnName);
+                    clob.getAsciiStream();
+                    long len = clob.length();
+                    return clob.getSubString(1, (int)len);
                 default:
                     return resultSet.getObject(columnName);
             }
@@ -747,7 +755,14 @@ public class JDBCScenario {
                 statement.setNull(index, valueType);
             }
             else {
-                statement.setObject(index, convertedValue, valueType);
+                if (Types.CLOB == valueType) {
+                    String stringValue = (String)convertedValue;
+                    StringReader stringReader = new StringReader(stringValue);
+                    statement.setCharacterStream(index, stringReader, stringValue.length());
+                }
+                else {
+                    statement.setObject(index, convertedValue, valueType);
+                }
             }
         }
 
