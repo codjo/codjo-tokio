@@ -4,6 +4,30 @@
  * Copyright (c) 2001 AGF Asset Management.
  */
 package net.codjo.tokio;
+import java.io.StringReader;
+import java.math.BigDecimal;
+import java.sql.Clob;
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.sql.Statement;
+import java.sql.Types;
+import java.text.NumberFormat;
+import java.text.ParseException;
+import java.util.ArrayList;
+import java.util.Calendar;
+import java.util.Collection;
+import java.util.Collections;
+import java.util.Date;
+import java.util.GregorianCalendar;
+import java.util.Iterator;
+import java.util.List;
+import java.util.NoSuchElementException;
+import java.util.Properties;
+import java.util.StringTokenizer;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 import net.codjo.database.common.api.DatabaseFactory;
 import net.codjo.database.common.api.DatabaseHelper;
 import net.codjo.database.common.api.DatabaseQueryHelper;
@@ -26,30 +50,8 @@ import net.codjo.tokio.tableorder.DefaultTableOrderBuilder;
 import net.codjo.tokio.tableorder.TableOrder;
 import net.codjo.tokio.tableorder.TableOrderBuilder;
 import net.codjo.tokio.util.TokioLog;
-import java.sql.Connection;
-import java.sql.PreparedStatement;
-import java.sql.ResultSet;
-import java.sql.SQLException;
-import java.sql.Statement;
-import java.sql.Types;
-import java.text.NumberFormat;
-import java.text.ParseException;
-import java.util.ArrayList;
-import java.util.Calendar;
-import java.util.Collection;
-import java.util.Collections;
-import java.util.Date;
-import java.util.GregorianCalendar;
-import java.util.Iterator;
-import java.util.List;
-import java.util.NoSuchElementException;
-import java.util.Properties;
-import java.util.StringTokenizer;
-import java.util.regex.Matcher;
-import java.util.regex.Pattern;
 /**
- * Classe responsable du positionnement (et de la verification) d'un scenario de test dans un environnement
- * JDBC.
+ * Classe responsable du positionnement (et de la verification) d'un scenario de test dans un environnement JDBC.
  *
  * @author $Author: catteao $
  * @version $Revision: 1.32 $
@@ -197,7 +199,7 @@ public class JDBCScenario {
 
     public boolean verifyAllOutputs(Connection con)
           throws SQLException {
-        for (Iterator i = getScenario().outputTables(); i.hasNext();) {
+        for (Iterator i = getScenario().outputTables(); i.hasNext(); ) {
             Table table = (Table)i.next();
             if (!verifyOutputs(con, table.getName(), table.getOrderClause())) {
                 TokioLog.error("Erreur de comparaison sur " + table.getName()
@@ -213,8 +215,7 @@ public class JDBCScenario {
 
 
     /**
-     * Permet de vérifier que les tables spécifiées en étalon n'ont pas été modifiées par rapport aux données
-     * en input.
+     * Permet de vérifier que les tables spécifiées en étalon n'ont pas été modifiées par rapport aux données en input.
      *
      * @param con une copnnection JDBC (et oui)
      *
@@ -224,7 +225,7 @@ public class JDBCScenario {
      */
     public boolean verifyNoChanges(Connection con)
           throws SQLException {
-        for (Iterator i = getScenario().outputTables(); i.hasNext();) {
+        for (Iterator i = getScenario().outputTables(); i.hasNext(); ) {
             Table outputTable = (Table)i.next();
             Table inputTable = getScenario().getInputTable(outputTable.getName());
             if (inputTable == null) {
@@ -333,11 +334,12 @@ public class JDBCScenario {
                 case Types.BIGINT:
                 case Types.DECIMAL:
                 case Types.NUMERIC:
-                    return new java.math.BigDecimal(value);
+                    return getBigDecimalValue(value);
                 case Types.BIT:
                     return Boolean.valueOf(value);
                 case Types.CHAR:
                 case Types.VARCHAR:
+                case Types.CLOB:
                 case Types.LONGVARCHAR:
                     return periodFilter(value);
                 case Types.DATE:
@@ -395,6 +397,11 @@ public class JDBCScenario {
                     return resultSet.getTime(columnName);
                 case Types.TIMESTAMP:
                     return resultSet.getTimestamp(columnName);
+                case Types.CLOB:
+                    Clob clob = resultSet.getClob(columnName);
+                    clob.getAsciiStream();
+                    long len = clob.length();
+                    return clob.getSubString(1, (int)len);
                 default:
                     return resultSet.getObject(columnName);
             }
@@ -404,6 +411,17 @@ public class JDBCScenario {
             throw new IllegalArgumentException(
                   "Erreur de conversion  pour la colonne = " + columnName + " erreur = " + e);
         }
+    }
+
+
+    private BigDecimal getBigDecimalValue(String value) {
+        if ("true".equalsIgnoreCase(value)) {
+            return new BigDecimal(1);
+        }
+        else if ("false".equalsIgnoreCase(value)) {
+            return new BigDecimal(0);
+        }
+        return new BigDecimal(value);
     }
 
 
@@ -552,12 +570,12 @@ public class JDBCScenario {
             else if (value != null && value.startsWith(VariableName.TODAY + "+")) {
                 long added = Long.parseLong(value.substring(6));
                 return new java.sql.Timestamp(java.sql.Timestamp.valueOf(todayTimestamp)
-                      .getTime() + added);
+                                                    .getTime() + added);
             }
             else if (value != null && value.startsWith(VariableName.TODAY + "-")) {
                 long added = Long.parseLong(value.substring(6));
                 return new java.sql.Timestamp(java.sql.Timestamp.valueOf(todayTimestamp)
-                      .getTime() - added);
+                                                    .getTime() - added);
             }
         }
         catch (NumberFormatException nfe) {
@@ -717,6 +735,7 @@ public class JDBCScenario {
     }
 
 
+    @SuppressWarnings({"ThrowableResultOfMethodCallIgnored"})
     private void insertRow(Connection connection,
                            Table table,
                            Row row,
@@ -736,7 +755,14 @@ public class JDBCScenario {
                 statement.setNull(index, valueType);
             }
             else {
-                statement.setObject(index, convertedValue, valueType);
+                if (Types.CLOB == valueType) {
+                    String stringValue = (String)convertedValue;
+                    StringReader stringReader = new StringReader(stringValue);
+                    statement.setCharacterStream(index, stringReader, stringValue.length());
+                }
+                else {
+                    statement.setObject(index, convertedValue, valueType);
+                }
             }
         }
 
@@ -762,7 +788,7 @@ public class JDBCScenario {
                   .setIdentityInsert(connection, null, table.getName(), table.isTemporary(), identityInsert);
         }
         catch (SQLException ex) {
-            ; // NA
+            // NA
         }
     }
 
@@ -770,7 +796,7 @@ public class JDBCScenario {
     private String resultSetToString(ResultSet rs, Collection columns)
           throws SQLException {
         StringBuilder buffer = new StringBuilder("{");
-        for (Iterator i = columns.iterator(); i.hasNext();) {
+        for (Iterator i = columns.iterator(); i.hasNext(); ) {
             String col = i.next().toString();
 
             buffer.append(col).append("=").append(rs.getObject(col));
