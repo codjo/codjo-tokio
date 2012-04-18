@@ -14,7 +14,7 @@ net.codjo.tokio
 	-> net.codjo.tokio.util
 	-> fakedb
 	-> org.mockito
-	-> org.mockito.internal.progress
+	-> org.mockito.stubbing
 	-> org.w3c.dom
 	-> org.xml.sax
 
