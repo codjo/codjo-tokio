@@ -201,7 +201,7 @@ public class JDBCScenario {
           throws SQLException {
         for (Iterator i = getScenario().outputTables(); i.hasNext(); ) {
             Table table = (Table)i.next();
-            if (!verifyOutputs(con, table.getName(), table.getOrderClause())) {
+            if (!verifyOutputs(con, table.getName(), table.getOrderClause(), table.isNullFirst())) {
                 TokioLog.error("Erreur de comparaison sur " + table.getName()
                                + " avec comme clause de remise en ordre " + table.getOrderClause()
                                + " si la precdente valeur est egale à 'null' "
@@ -233,7 +233,7 @@ public class JDBCScenario {
                 inputTable.setTemporary(outputTable.isTemporary());
             }
 
-            if (!verifyTable(con, inputTable, outputTable.getOrderClause())) {
+            if (!verifyTable(con, inputTable, outputTable.getOrderClause(), outputTable.isNullFirst())) {
                 TokioLog.error("Erreur de comparaison sur " + outputTable.getName()
                                + " avec comme clause de remise en ordre "
                                + outputTable.getOrderClause()
@@ -247,14 +247,13 @@ public class JDBCScenario {
     }
 
 
-    public boolean verifyOutputs(Connection con, String tableName)
-          throws SQLException {
+    public boolean verifyOutputs(Connection con, String tableName) throws SQLException {
         Table table = getScenario().getOutputTable(tableName);
-        return verifyOutputs(con, tableName, table.getOrderClause());
+        return verifyOutputs(con, tableName, table.getOrderClause(), table.isNullFirst());
     }
 
 
-    public boolean verifyOutputs(Connection con, String tableName, String orderClause)
+    public boolean verifyOutputs(Connection con, String tableName, String orderClause, boolean nullFirst)
           throws SQLException {
         Table table = getScenario().getOutputTable(tableName);
 
@@ -265,14 +264,14 @@ public class JDBCScenario {
         if (getScenario().getInputTable(tableName) != null) {
             table.setTemporary(getScenario().getInputTable(tableName).isTemporary());
         }
-        return verifyTable(con, table, orderClause);
+        return verifyTable(con, table, orderClause, nullFirst);
     }
 
 
-    private boolean verifyTable(Connection con, Table table, String orderClause)
+    private boolean verifyTable(Connection con, Table table, String orderClause, boolean nullFirst)
           throws SQLException {
         SQLFieldList sqlTypes = newSQLFieldList(con, table.getName(), table.isTemporary());
-        List<Row> rows = sortRows(table.getRows(), orderClause, sqlTypes);
+        List<Row> rows = sortRows(table.getRows(), orderClause, nullFirst, sqlTypes);
         Statement stmt = con.createStatement();
         try {
             String select = databaseQueryHelper.buildSelectQuery(toSqlTable(table), SelectType.ALL);
@@ -814,6 +813,7 @@ public class JDBCScenario {
             List<Row> rows =
                   sortRows(table.getRows(),
                            orderClause,
+                           true,
                            newSQLFieldList(con, table.getName(), table.isTemporary()));
             TokioLog.info("**** SPOOL de la table " + table.getName() + " par "
                           + orderClause);
@@ -837,11 +837,12 @@ public class JDBCScenario {
 
     List<Row> sortRows(List<Row> rows,
                        String orderClause,
+                       boolean nullFirst,
                        Connection con,
                        String tableName,
                        boolean temporaryTable) {
         try {
-            return sortRows(rows, orderClause, newSQLFieldList(con, tableName, temporaryTable));
+            return sortRows(rows, orderClause, nullFirst, newSQLFieldList(con, tableName, temporaryTable));
         }
         catch (SQLException ex) {
             TokioLog.error("Erreur lors du tri", ex);
@@ -850,13 +851,14 @@ public class JDBCScenario {
     }
 
 
-    List<Row> sortRows(List<Row> rows, String orderClause, SQLFieldList sqlTypes) {
+    List<Row> sortRows(List<Row> rows, String orderClause, boolean nullFirst, SQLFieldList sqlTypes) {
         if (orderClause == null) {
             return rows;
         }
 
         return new RowSorter(rows)
               .orderBy(orderClause)
+              .withNullFirst(nullFirst)
               .withSqlType(sqlTypes)
               .sort();
     }
@@ -882,6 +884,7 @@ public class JDBCScenario {
         private List<Row> rows;
         private List<String> orderClauseFields;
         private SQLFieldList sqlFields;
+        private boolean nullFirst;
 
 
         RowSorter(List<Row> rows) {
@@ -904,6 +907,12 @@ public class JDBCScenario {
 
         public RowSorter withSqlType(SQLFieldList sqlFieldList) {
             this.sqlFields = sqlFieldList;
+            return this;
+        }
+
+
+        public RowSorter withNullFirst(boolean isNullFirst) {
+            this.nullFirst = isNullFirst;
             return this;
         }
 
@@ -943,11 +952,11 @@ public class JDBCScenario {
                 }
 
                 if (value1 == null) {
-                    return -1;
+                    return nullFirst ? -1 : 1;
                 }
 
                 if (value2 == null) {
-                    return 1;
+                    return nullFirst ? 1 : -1;
                 }
 
                 if (isNumberType(sqlFields.getFieldType(field))

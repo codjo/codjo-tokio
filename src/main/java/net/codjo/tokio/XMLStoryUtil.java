@@ -208,6 +208,7 @@ public final class XMLStoryUtil {
         for (String tableName : entityDictionary.getTableNames(entityRef)) {
             Table destinationTable = scDataset.buildTable(tableName);
             destinationTable.setOrderClause(entityDictionary.getOrderClause(tableName));
+            destinationTable.setNullFirst(entityDictionary.isNullFirst(tableName));
             destinationTable.setIdentityInsert(entityDictionary.isIdentityInsert(tableName));
             copyRows(entityRef, entityId, destinationTable, entityDictionary, copyEntityNode);
         }

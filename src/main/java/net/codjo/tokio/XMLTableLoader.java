@@ -38,6 +38,7 @@ public final class XMLTableLoader {
     public static void loadTable(DataSet dataset, Node tableNode, String tableName, RowLoader rowLoader) {
         Boolean identityInsert = XmlUtil.getBooleanAttribute(tableNode, XMLScenariiTags.TABLE_IDENTITY);
         String orderClause = XmlUtil.getAttribute(tableNode, XMLScenariiTags.TABLE_ORDER);
+        Boolean nullFirst = XmlUtil.getBooleanAttribute(tableNode, XMLScenariiTags.TABLE_NULL_FIRST);
         Boolean temporary = XmlUtil.getBooleanAttribute(tableNode, XMLScenariiTags.TABLE_TEMPORARY);
 
         dataset.buildTable(tableName);
@@ -73,6 +74,7 @@ public final class XMLTableLoader {
 
         dataset.getTable(tableName).setIdentityInsert(identityInsert);
         dataset.getTable(tableName).setOrderClause(orderClause);
+        dataset.getTable(tableName).setNullFirst(nullFirst);
         dataset.getTable(tableName).setTemporary(temporary);
     }
 

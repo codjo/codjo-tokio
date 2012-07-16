@@ -27,6 +27,7 @@ public interface XMLTag {
     public static final String TABLE_NAME_TAG = "name";
     public static final String TABLE_IDENTITY_TAG = "identityInsert";
     public static final String TABLE_ORDER_TAG = "orderClause";
+    public static final String TABLE_NULLFIRST_TAG = "nullFirst";
     public static final String TABLE_TEMPORARY_TAG = "temporary";
 
     // Row
