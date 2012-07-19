@@ -253,6 +253,12 @@ public class JDBCScenario {
     }
 
 
+    public boolean verifyOutputs(Connection con, String tableName, String orderClause) throws SQLException {
+        Table table = getScenario().getOutputTable(tableName);
+        return verifyOutputs(con, tableName, table.getOrderClause(), true);
+    }
+
+
     public boolean verifyOutputs(Connection con, String tableName, String orderClause, boolean nullFirst)
           throws SQLException {
         Table table = getScenario().getOutputTable(tableName);
