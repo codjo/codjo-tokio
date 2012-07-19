@@ -46,7 +46,12 @@ public class Table {
 
 
     public void setNullFirst(Boolean nullFirst) {
-        this.nullFirst = (nullFirst != null && nullFirst);
+        if (nullFirst == null) {
+            this.nullFirst = true;
+        }
+        else {
+            this.nullFirst = nullFirst;
+        }
     }
 
 
