@@ -21,6 +21,7 @@ public class Table {
     private String name;
     private String orderClause;
     private boolean temporary;
+    private boolean nullFirst = true;
 
 
     public Table(String name, RowDictionary rowDictionary) {
@@ -36,6 +37,21 @@ public class Table {
 
     public void setIdentityInsert(Boolean identityInsert) {
         this.identityInsert = (identityInsert != null && identityInsert);
+    }
+
+
+    public boolean isNullFirst() {
+        return nullFirst;
+    }
+
+
+    public void setNullFirst(Boolean nullFirst) {
+        if (nullFirst == null) {
+            this.nullFirst = true;
+        }
+        else {
+            this.nullFirst = nullFirst;
+        }
     }
 
 

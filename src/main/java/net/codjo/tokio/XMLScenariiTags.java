@@ -28,6 +28,7 @@ public interface XMLScenariiTags {
     public static final String TABLE_NAME = "name";
     public static final String TABLE_IDENTITY = "identityInsert";
     public static final String TABLE_ORDER = "orderClause";
+    public static final String TABLE_NULL_FIRST = "nullFirst";
     public static final String TABLE_TEMPORARY = "temporary";
     public static final String COMPARATORS = "comparators";
     public static final String COMPARATOR = "comparator";

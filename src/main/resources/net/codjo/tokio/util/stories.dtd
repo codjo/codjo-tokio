@@ -45,6 +45,7 @@
 <!ATTLIST table name CDATA #REQUIRED >
 <!ATTLIST table identityInsert CDATA #IMPLIED >
 <!ATTLIST table orderClause CDATA #IMPLIED >
+<!ATTLIST table nullFirst CDATA #IMPLIED >
 <!ATTLIST table temporary CDATA #IMPLIED >
 
 <!ELEMENT comparators ( comparator* ) >

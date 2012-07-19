@@ -178,6 +178,7 @@ public class XMLScenariiRecorder implements XMLScenariiTags {
         Element node = rootDocument.createElement(TABLE);
         setAttribute(node, TABLE_NAME, table.getName());
         setAttribute(node, TABLE_ORDER, table.getOrderClause());
+        setAttribute(node, TABLE_NULL_FIRST, table.isNullFirst());
         setAttribute(node, TABLE_IDENTITY, table.isIdentityInsert());
 
         for (Row row : table.getRows()) {

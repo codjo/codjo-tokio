@@ -79,8 +79,8 @@ public class JDBCScenarioTest {
     private final DatabaseTranscoder transcoder = databaseFactory.createDatabaseTranscoder();
     private final JdbcFixture jdbcFixture = JdbcFixture.newFixture();
     private static final DateFormat DATE_FORMAT = DateFormat.getDateInstance(DateFormat.SHORT);
-    private static final DateFormat DATETIME_FORMAT = DateFormat
-          .getDateTimeInstance(DateFormat.SHORT, DateFormat.MEDIUM);
+    private static final DateFormat DATETIME_FORMAT =
+          DateFormat.getDateTimeInstance(DateFormat.SHORT, DateFormat.MEDIUM);
     private String datetime = transcoder.transcodeSqlFieldType("datetime");
 
 
@@ -352,7 +352,7 @@ public class JDBCScenarioTest {
         new JDBCScenario(scenario).insertInputInDb(jdbcFixture.getConnection());
 
         JDBCScenario jdbcScenario = new JDBCScenario(scenario);
-        assertTrue(jdbcScenario.verifyOutputs(jdbcFixture.getConnection(), tableName, "COL_NUMBER"));
+        assertTrue(jdbcScenario.verifyOutputs(jdbcFixture.getConnection(), tableName, "COL_NUMBER", true));
 
         jdbcFixture.drop(sqlTable);
     }
@@ -666,6 +666,7 @@ public class JDBCScenarioTest {
 
         assertEquals(expected, jdbcsc.sortRows(scenario.getInputTable("AP_VL").getRows(),
                                                "COL_NUMBER, COL_DATE",
+                                               true,
                                                jdbcFixture.getConnection(),
                                                "AP_VL",
                                                true));
@@ -727,6 +728,7 @@ public class JDBCScenarioTest {
         List result =
               jdbcsc.sortRows(scenario.getInputTable("AP_VL_ETALON").getRows(),
                               "ID",
+                              true,
                               jdbcFixture.getConnection(),
                               "AP_VL_ETALON",
                               true);
@@ -761,6 +763,7 @@ public class JDBCScenarioTest {
         assertEquals(expected,
                      jdbcsc.sortRows(scenario.getInputTable("AP_VL").getRows(),
                                      "COL_STR, COL_DATE",
+                                     true,
                                      jdbcFixture.getConnection(),
                                      "AP_VL",
                                      true));
@@ -788,6 +791,7 @@ public class JDBCScenarioTest {
         assertEquals(expected,
                      jdbcsc.sortRows(scenario.getInputTable("AP_VL").getRows(),
                                      "COL_NUMBER",
+                                     true,
                                      jdbcFixture.getConnection(),
                                      "AP_VL",
                                      true));
@@ -813,6 +817,7 @@ public class JDBCScenarioTest {
         assertEquals(expected,
                      jdbcsc.sortRows(scenario.getInputTable("AP_VL").getRows(),
                                      "COL_NUMBER",
+                                     true,
                                      jdbcFixture.getConnection(),
                                      "AP_VL",
                                      true));
@@ -865,6 +870,7 @@ public class JDBCScenarioTest {
         assertEquals(expected,
                      jdbcsc.sortRows(scenario.getInputTable("AP_VL").getRows(),
                                      "COL_NUMBER",
+                                     true,
                                      jdbcFixture.getConnection(),
                                      "AP_VL",
                                      true));
@@ -883,15 +889,30 @@ public class JDBCScenarioTest {
 
         JDBCScenario jdbcsc = new JDBCScenario(scenario);
 
-        List<Row> expected = new ArrayList<Row>();
-        expected.add(row1);
-        expected.add(row2);
-        expected.add(rowA);
-        expected.add(row3);
+        List<Row> expectedNullFirst = new ArrayList<Row>();
+        expectedNullFirst.add(row1);
+        expectedNullFirst.add(row2);
+        expectedNullFirst.add(rowA);
+        expectedNullFirst.add(row3);
 
-        assertArrayEquals(expected.toArray(),
+        assertArrayEquals(expectedNullFirst.toArray(),
                           jdbcsc.sortRows(scenario.getInputTable("AP_VL").getRows(),
                                           "COL_STR2,COL_STR,COL_NUMBER",
+                                          true,
+                                          jdbcFixture.getConnection(),
+                                          "AP_VL",
+                                          true).toArray());
+
+        List<Row> expectedNullLast = new ArrayList<Row>();
+        expectedNullLast.add(row3);
+        expectedNullLast.add(row2);
+        expectedNullLast.add(row1);
+        expectedNullLast.add(rowA);
+
+        assertArrayEquals(expectedNullLast.toArray(),
+                          jdbcsc.sortRows(scenario.getInputTable("AP_VL").getRows(),
+                                          "COL_STR2,COL_STR,COL_NUMBER",
+                                          false,
                                           jdbcFixture.getConnection(),
                                           "AP_VL",
                                           true).toArray());
@@ -899,7 +920,7 @@ public class JDBCScenarioTest {
 
 
     @Test
-    public void test_sortRows_multiColmns_sameOrderClauseValues() throws Exception {
+    public void test_sortRows_multiColumns_sameOrderClauseValues() throws Exception {
         jdbcFixture.create(temporaryTable("AP_VL_BIS"), "COL_STR varchar(255) null,"
                                                         + " COL_STR2 varchar(255) null");
 
@@ -929,6 +950,7 @@ public class JDBCScenarioTest {
                           jdbcsc.sortRows(
                                 scenario.getInputTable("AP_VL_BIS").getRows(),
                                 "COL_STR2",
+                                true,
                                 jdbcFixture.getConnection(),
                                 "AP_VL_BIS",
                                 true)
@@ -981,7 +1003,7 @@ public class JDBCScenarioTest {
         JDBCScenario jdbcScenario = new JDBCScenario(scenario);
         jdbcScenario.insertInputInDb(jdbcFixture.getConnection());
 
-        assertTrue(jdbcScenario.verifyOutputs(jdbcFixture.getConnection(), "AP_VL", "COL_NUMBER"));
+        assertTrue(jdbcScenario.verifyOutputs(jdbcFixture.getConnection(), "AP_VL", "COL_NUMBER", true));
     }
 
 
@@ -993,7 +1015,7 @@ public class JDBCScenarioTest {
 
         scenario.getOutputTable("AP_VL").getRow(0).setFieldValue("COL_DATE", null, "true", null);
 
-        assertTrue(jdbcScenario.verifyOutputs(jdbcFixture.getConnection(), "AP_VL", "COL_NUMBER"));
+        assertTrue(jdbcScenario.verifyOutputs(jdbcFixture.getConnection(), "AP_VL", "COL_NUMBER", true));
     }
 
 
@@ -1010,7 +1032,7 @@ public class JDBCScenarioTest {
         scenario.addOutputRow("AP_VL", new Row("rowC", "rowB", new FieldMap()));
 
         assertFalse("Nombre de ligne différente, mais 1er ligne OK",
-                    jdbcScenario.verifyOutputs(jdbcFixture.getConnection(), "AP_VL", "COL_NUMBER"));
+                    jdbcScenario.verifyOutputs(jdbcFixture.getConnection(), "AP_VL", "COL_NUMBER", true));
     }
 
 
@@ -1020,14 +1042,14 @@ public class JDBCScenarioTest {
         JDBCScenario jdbcScenario = new JDBCScenario(badEtalon);
         jdbcScenario.insertInputInDb(jdbcFixture.getConnection());
 
-        assertFalse(jdbcScenario.verifyOutputs(jdbcFixture.getConnection(), "AP_VL", "COL_NUMBER"));
+        assertFalse(jdbcScenario.verifyOutputs(jdbcFixture.getConnection(), "AP_VL", "COL_NUMBER", true));
     }
 
 
     @Test
     public void test_verifyOutputs_noRowsInDB() throws Exception {
         assertFalse(new JDBCScenario(scenario)
-                          .verifyOutputs(jdbcFixture.getConnection(), "AP_VL", "COL_NUMBER"));
+                          .verifyOutputs(jdbcFixture.getConnection(), "AP_VL", "COL_NUMBER", true));
     }
 
 
@@ -1041,7 +1063,7 @@ public class JDBCScenarioTest {
         jdbcFixture.executeUpdate(update);
 
         assertFalse("COL_NUMBER est different",
-                    jdbcScenario.verifyOutputs(jdbcFixture.getConnection(), "AP_VL", "COL_NUMBER"));
+                    jdbcScenario.verifyOutputs(jdbcFixture.getConnection(), "AP_VL", "COL_NUMBER", true));
     }
 
 
@@ -1056,7 +1078,7 @@ public class JDBCScenarioTest {
               .addComparator("COL_NUMBER", new SimpleComparator("Parce que !!!"));
 
         jdbcFixture.executeUpdate(update);
-        jdbcScenario.verifyOutputs(jdbcFixture.getConnection(), "AP_VL", "COL_NUMBER");
+        jdbcScenario.verifyOutputs(jdbcFixture.getConnection(), "AP_VL", "COL_NUMBER", true);
 
         assertTrue("Raison attendue dans le message",
                    jdbcScenario.getLastVerifyOutputsReport().contains("Parce que !!!\n"));
@@ -1074,7 +1096,7 @@ public class JDBCScenarioTest {
         preparedStatement.execute();
 
         assertFalse("Nombre de ligne différente, mais 1er ligne OK",
-                    jdbcScenario.verifyOutputs(jdbcFixture.getConnection(), "AP_VL", "COL_NUMBER"));
+                    jdbcScenario.verifyOutputs(jdbcFixture.getConnection(), "AP_VL", "COL_NUMBER", true));
     }
 
 
@@ -1118,7 +1140,7 @@ public class JDBCScenarioTest {
         scenario.addOutputRow("AP_VL", new Row("row2", "rowB", fields));
         scenario.getOutputDataSet().addComparator("COL_NUMBER", ComparatorConverter.newComparator("0"));
 
-        assertTrue(jdbcScenario.verifyOutputs(jdbcFixture.getConnection(), "AP_VL", "COL_NUMBER"));
+        assertTrue(jdbcScenario.verifyOutputs(jdbcFixture.getConnection(), "AP_VL", "COL_NUMBER", true));
     }
 
 
@@ -1161,7 +1183,7 @@ public class JDBCScenarioTest {
 
         JDBCScenario jdbcsc = new JDBCScenario(scenario);
 
-        assertTrue(jdbcsc.verifyOutputs(connection, "AP_VL", "COL_STR"));
+        assertTrue(jdbcsc.verifyOutputs(connection, "AP_VL", "COL_STR", true));
     }
 
 

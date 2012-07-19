@@ -4,14 +4,14 @@
  * Copyright (c) 2001 AGF Asset Management.
  */
 package net.codjo.tokio;
+import java.io.StringWriter;
+import junit.framework.TestCase;
 import net.codjo.tokio.model.ComparatorConverter;
 import net.codjo.tokio.model.FieldMap;
 import net.codjo.tokio.model.Row;
 import net.codjo.tokio.model.Scenario;
 import net.codjo.tokio.model.ScenarioList;
 import net.codjo.tokio.util.Util;
-import java.io.StringWriter;
-import junit.framework.TestCase;
 /**
  * Description of the Class
  *
@@ -89,7 +89,7 @@ public class XMLScenariiRecorderTest extends TestCase {
         Util.compare(Util.flatten("<?xml version=\"1.0\" encoding=\"ISO-8859-1\"?>"
                                   + "<!DOCTYPE Scenarii SYSTEM \"scenarii.dtd\">"
                                   + "<Scenarii name=\"TestTU\">" + "<Scenario id=\"bobo\">" + "<input>"
-                                  + "<table name=\"TABLE\">" + "<row comment=\"une ligne\">"
+                                  + "<table name=\"TABLE\" nullFirst=\"on\">" + "<row comment=\"une ligne\">"
                                   + "<field name=\"CODE_SICOVAM\" value=\"יטא\"/>" + "</row>" + "</table>"
                                   + "</input>" + "<etalon/>" + "</Scenario>" + "</Scenarii>"),
                      Util.flatten(writer.toString()));

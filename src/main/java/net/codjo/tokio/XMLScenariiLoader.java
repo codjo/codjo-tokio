@@ -4,6 +4,11 @@
  * Copyright (c) 2001 AGF Asset Management.
  */
 package net.codjo.tokio;
+import java.io.File;
+import java.io.IOException;
+import java.net.URL;
+import java.util.Map;
+import javax.xml.parsers.ParserConfigurationException;
 import net.codjo.tokio.datagenerators.GeneratorConfiguration;
 import net.codjo.tokio.model.DataSet;
 import net.codjo.tokio.model.FieldMap;
@@ -13,11 +18,6 @@ import net.codjo.tokio.model.RowDictionary;
 import net.codjo.tokio.model.Scenario;
 import net.codjo.tokio.model.ScenarioList;
 import net.codjo.tokio.util.XmlUtil;
-import java.io.File;
-import java.io.IOException;
-import java.net.URL;
-import java.util.Map;
-import javax.xml.parsers.ParserConfigurationException;
 import org.w3c.dom.Document;
 import org.w3c.dom.Element;
 import org.w3c.dom.Node;
@@ -143,6 +143,7 @@ public class XMLScenariiLoader extends XMLFileLoader implements XMLScenariiTags,
     private void loadTable(DataSet dataSet, Node tableNode, String tableName) {
         Boolean identityInsert = XmlUtil.getBooleanAttribute(tableNode, TABLE_IDENTITY);
         String orderClause = XmlUtil.getAttribute(tableNode, TABLE_ORDER);
+        Boolean isNullFirst = XmlUtil.getBooleanAttribute(tableNode, TABLE_NULL_FIRST);
         Boolean temporary = XmlUtil.getBooleanAttribute(tableNode, TABLE_TEMPORARY);
 
         dataSet.buildTable(tableName);
@@ -164,6 +165,7 @@ public class XMLScenariiLoader extends XMLFileLoader implements XMLScenariiTags,
 
         dataSet.getTable(tableName).setIdentityInsert(identityInsert);
         dataSet.getTable(tableName).setOrderClause(orderClause);
+        dataSet.getTable(tableName).setNullFirst(isNullFirst);
         dataSet.getTable(tableName).setTemporary(temporary);
     }
 
