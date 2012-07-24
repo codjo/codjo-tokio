@@ -433,8 +433,7 @@ public class QueryHelper {
             throw new IllegalArgumentException("Clause de tri non renseignee");
         }
         Statement stmt = connection.createStatement();
-        return stmt.executeQuery(SELECT_ALL_FROM + dbTableName + " order by "
-                                 + orderClause);
+        return stmt.executeQuery(SELECT_ALL_FROM + dbTableName + " order by " + orderClause);
     }
 
 

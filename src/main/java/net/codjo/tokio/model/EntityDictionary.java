@@ -17,6 +17,7 @@ public class EntityDictionary {
     private Map<String, Map<String, List<Row>>> entityToRows = new HashMap<String, Map<String, List<Row>>>();
     private Map<String, String> tableNameToOrderClause = new HashMap<String, String>();
     private Map<String, Boolean> tableNameToIdentityInsert = new HashMap<String, Boolean>();
+    private Map<String, Boolean> tableNameToNullFirst = new HashMap<String, Boolean>();
 
 
     public void addRow(String entityId, String tableName, Row newRow) {
@@ -91,5 +92,15 @@ public class EntityDictionary {
 
     public boolean isIdentityInsert(String tableName) {
         return tableNameToIdentityInsert.get(tableName);
+    }
+
+
+    public void setNullFirst(String tableName, boolean nullFirst) {
+        tableNameToNullFirst.put(tableName, nullFirst);
+    }
+
+
+    public boolean isNullFirst(String tableName) {
+        return tableNameToNullFirst.get(tableName);
     }
 }

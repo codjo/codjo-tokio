@@ -189,8 +189,10 @@ public class CreateEntityManager {
         String tableName = convertName(table.getName(), parametersToValues);
         Table destinationTable = destination.buildTable(tableName);
         destinationTable.setOrderClause(table.getOrderClause());
+        destinationTable.setNullFirst(table.isNullFirst());
         destinationTable.setIdentityInsert(table.isIdentityInsert());
         entityDictionary.setOrderClause(tableName, table.getOrderClause());
+        entityDictionary.setNullFirst(tableName, table.isNullFirst());
         entityDictionary.setIdentityInsert(tableName, table.isIdentityInsert());
         return destinationTable;
     }

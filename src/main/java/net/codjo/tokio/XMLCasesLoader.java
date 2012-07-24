@@ -136,6 +136,7 @@ public class XMLCasesLoader extends XMLFileLoader implements XMLCasesTags, XMLSc
             Table table = (Table)iterator.next();
             Table destinationTable = destination.buildTable(table.getName());
             destinationTable.setOrderClause(table.getOrderClause());
+            destinationTable.setNullFirst(table.isNullFirst());
             destinationTable.setIdentityInsert(table.isIdentityInsert());
             destinationTable.setTemporary(table.isTemporary());
             copyRows(table, destinationTable, node);
