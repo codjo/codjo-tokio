@@ -749,40 +749,44 @@ public class JDBCScenario {
         Collection<String> fieldNames = fields.fieldNameSet();
         String query = buildQuery(table, fieldNames);
         PreparedStatement statement = connection.prepareStatement(query);
-
-        int index = 1;
-        for (Iterator<String> iter = fieldNames.iterator(); iter.hasNext(); index++) {
-            String fieldName = iter.next();
-            String value = fields.get(fieldName).getValue();
-            int valueType = getFieldType(table.getName(), sqlTypes, fieldName);
-            Object convertedValue = convertValue(value, valueType);
-            if (convertedValue == null) {
-                statement.setNull(index, valueType);
-            }
-            else {
-                if (Types.CLOB == valueType) {
-                    String stringValue = (String)convertedValue;
-                    StringReader stringReader = new StringReader(stringValue);
-                    statement.setCharacterStream(index, stringReader, stringValue.length());
+        try {
+            int index = 1;
+            for (Iterator<String> iter = fieldNames.iterator(); iter.hasNext(); index++) {
+                String fieldName = iter.next();
+                String value = fields.get(fieldName).getValue();
+                int valueType = getFieldType(table.getName(), sqlTypes, fieldName);
+                Object convertedValue = convertValue(value, valueType);
+                if (convertedValue == null) {
+                    statement.setNull(index, valueType);
                 }
                 else {
-                    statement.setObject(index, convertedValue, valueType);
+                    if (Types.CLOB == valueType) {
+                        String stringValue = (String)convertedValue;
+                        StringReader stringReader = new StringReader(stringValue);
+                        statement.setCharacterStream(index, stringReader, stringValue.length());
+                    }
+                    else {
+                        statement.setObject(index, convertedValue, valueType);
+                    }
                 }
             }
+
+            statement.executeUpdate();
+
+            if (statement.getWarnings() != null) {
+                TokioLog.error("*********** ERREUR WARNING");
+                TokioLog.error("Erreur lors de l'insertion d'une ligne !!!");
+                StringBuilder stringBuilder = new StringBuilder();
+                printErrorMessageRowLocation(row, stringBuilder);
+                TokioLog.error(stringBuilder.toString());
+                TokioLog.error("\t erreur=" + statement.getWarnings());
+                TokioLog.error("\t table=" + table.getName());
+                TokioLog.error("\t row=" + row);
+                throw statement.getWarnings();
+            }
         }
-
-        statement.executeUpdate();
-
-        if (statement.getWarnings() != null) {
-            TokioLog.error("*********** ERREUR WARNING");
-            TokioLog.error("Erreur lors de l'insertion d'une ligne !!!");
-            StringBuilder stringBuilder = new StringBuilder();
-            printErrorMessageRowLocation(row, stringBuilder);
-            TokioLog.error(stringBuilder.toString());
-            TokioLog.error("\t erreur=" + statement.getWarnings());
-            TokioLog.error("\t table=" + table.getName());
-            TokioLog.error("\t row=" + row);
-            throw statement.getWarnings();
+        finally {
+            statement.close();
         }
     }
 
