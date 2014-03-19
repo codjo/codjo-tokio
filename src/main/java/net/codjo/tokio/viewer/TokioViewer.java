@@ -1,18 +1,4 @@
 package net.codjo.tokio.viewer;
-import net.codjo.database.common.api.JdbcFixture;
-import net.codjo.tokio.DefaultSQLFieldListBuilder;
-import net.codjo.tokio.GeneratedValuesTansformer;
-import net.codjo.tokio.ImplicitDataTransformer;
-import net.codjo.tokio.XMLTokioLoader;
-import net.codjo.tokio.model.DataSet;
-import net.codjo.tokio.model.Field;
-import net.codjo.tokio.model.LoggerLocationVisitor;
-import net.codjo.tokio.model.Row;
-import net.codjo.tokio.model.Scenario;
-import net.codjo.tokio.model.ScenarioList;
-import net.codjo.tokio.model.Table;
-import net.codjo.tokio.viewer.model.TableInfo;
-import net.codjo.tokio.viewer.table.TableRendererSorter;
 import com.jidesoft.swing.JideBoxLayout;
 import com.jidesoft.swing.JideSplitPane;
 import java.awt.BorderLayout;
@@ -20,7 +6,6 @@ import java.awt.Color;
 import java.awt.Component;
 import java.awt.Dimension;
 import java.awt.FlowLayout;
-import static java.awt.FlowLayout.LEFT;
 import java.awt.Font;
 import java.awt.Rectangle;
 import java.awt.event.ActionEvent;
@@ -40,7 +25,6 @@ import java.util.HashMap;
 import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
-import java.util.Set;
 import java.util.TreeMap;
 import javax.swing.AbstractAction;
 import javax.swing.BorderFactory;
@@ -71,8 +55,24 @@ import javax.swing.event.TableModelListener;
 import javax.swing.table.DefaultTableCellRenderer;
 import javax.swing.table.TableCellRenderer;
 import javax.swing.table.TableColumn;
+import net.codjo.database.common.api.JdbcFixture;
+import net.codjo.tokio.DefaultSQLFieldListBuilder;
+import net.codjo.tokio.GeneratedValuesTansformer;
+import net.codjo.tokio.ImplicitDataTransformer;
+import net.codjo.tokio.XMLTokioLoader;
+import net.codjo.tokio.model.DataSet;
+import net.codjo.tokio.model.Field;
+import net.codjo.tokio.model.LoggerLocationVisitor;
+import net.codjo.tokio.model.Row;
+import net.codjo.tokio.model.Scenario;
+import net.codjo.tokio.model.ScenarioList;
+import net.codjo.tokio.model.Table;
+import net.codjo.tokio.viewer.model.TableInfo;
+import net.codjo.tokio.viewer.table.TableRendererSorter;
 import org.jdesktop.swingx.JXTable;
 import org.jdesktop.swingx.decorator.HighlighterFactory;
+
+import static java.awt.FlowLayout.LEFT;
 
 public class TokioViewer extends JFrame {
     private static final Color VERY_LIGHT_GRAY = new Color(240, 240, 240);
@@ -111,8 +111,8 @@ public class TokioViewer extends JFrame {
 
     private ImplicitDataTransformer implicitDataTransformer =
           new ImplicitDataTransformer(new DefaultSQLFieldListBuilder());
-    
-    private GeneratedValuesTansformer generatedValuesTansformer = new GeneratedValuesTansformer();
+
+    private GeneratedValuesTansformer generatedValuesTransformer = new GeneratedValuesTansformer();
     private Map<File, Long> filesListWithLastUpdateDate = new TreeMap<File, Long>();
     private Connection connection;
 
@@ -387,7 +387,7 @@ public class TokioViewer extends JFrame {
 
 
     private void applyTransformers(DataSet dataSet) throws Exception {
-        generatedValuesTansformer.transform(dataSet);
+        generatedValuesTransformer.transform(dataSet);
         implicitDataTransformer.transform(connection, dataSet);
     }
 
@@ -800,7 +800,7 @@ public class TokioViewer extends JFrame {
             }
         }
     }
-  
+
     public static enum DetailTableMode {
         INPUT,
         OUTPUT;
